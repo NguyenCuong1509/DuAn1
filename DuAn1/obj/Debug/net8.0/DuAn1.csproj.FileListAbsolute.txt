@@ -141,3 +141,4 @@ C:\Users\ADMIN\source\repos\DuAn1\DuAn1\obj\Debug\net8.0\refint\DuAn1.dll
 C:\Users\ADMIN\source\repos\DuAn1\DuAn1\obj\Debug\net8.0\DuAn1.pdb
 C:\Users\ADMIN\source\repos\DuAn1\DuAn1\obj\Debug\net8.0\DuAn1.genruntimeconfig.cache
 C:\Users\ADMIN\source\repos\DuAn1\DuAn1\obj\Debug\net8.0\ref\DuAn1.dll
+C:\Users\ADMIN\source\repos\DuAn1\DuAn1\obj\Debug\net8.0\DuAn1.sourcelink.json
