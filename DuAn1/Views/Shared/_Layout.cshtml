@@ -1,16 +1,97 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DuAn1</title>
+    <title>@ViewData["Title"] - Quản Lý</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DuAn1.styles.css" asp-append-version="true" />
+    <style>
+        /* Styles cho layout mới */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav {
+            width: 220px;
+            background-color: #444;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            transition: width 0.3s ease;
+        }
+
+            nav:hover {
+                width: 250px; /* Mở rộng menu khi hover */
+            }
+
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+                nav ul li {
+                    margin: 15px 0;
+                }
+
+                    nav ul li a {
+                        color: #fff;
+                        text-decoration: none;
+                        font-size: 18px;
+                        padding: 10px 20px;
+                        display: block;
+                        border-radius: 5px;
+                        transition: background-color 0.3s, padding 0.3s; /* Thêm hiệu ứng chuyển động */
+                    }
+
+                        nav ul li a:hover {
+                            background-color: #666;
+                            padding-left: 25px; /* Thêm khoảng cách bên trái khi hover */
+                        }
+
+        main {
+            margin-left: 240px;
+            padding: 20px;
+            flex-grow: 1;
+            text-align: center;
+            transition: margin-left 0.3s ease; /* Hiệu ứng chuyển động cho main */
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+  @*   <header>
+       @*  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DuAn1</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -28,19 +109,31 @@
                     </ul>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
+        </nav> *@
+    @* </header> *@ 
+    <nav>
+        <ul>
+            <li><a asp-controller="QuanLy" asp-action="Index">Trang Chủ</a></li>
+            <li><a asp-controller="QuanLySanPham" asp-action="Index">Quản Lý Sản Phẩm</a></li>
+            <li><a asp-controller="QuanLyHoaDon" asp-action="Index">Quản Lý Hóa Đơn</a></li>
+            <li><a asp-controller="QuanLyKhuyenMai" asp-action="Index">Quản Lý Khuyến Mãi</a></li>
+            <li><a asp-controller="QuanLyThongKe" asp-action="Index">Thống Kê</a></li>
+            <li><a asp-controller="QuanLyTaiKhoan" asp-action="Index">Quản Lý Tài Khoản</a></li>
+            <li><a asp-controller="#" asp-action="Index">Tài Khoản</a></li>
+        </ul>
+
+    </nav>
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+   @*  <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - DuAn1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer> *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

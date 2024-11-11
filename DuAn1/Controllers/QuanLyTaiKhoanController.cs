@@ -2,9 +2,9 @@
 
 namespace DuAn1.Controllers
 {
-    public class MainHomeController : Controller
+    public class QuanLyTaiKhoanController : Controller
     {
-        public IActionResult TrangChu()
+        public IActionResult Index()
         {
             return View();
         }

@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <nav></nav>
+        <div class="banner"></div>
+        <div class="content1">
+            <div class="mk">
+                <h1>Quên mật khẩu</h1>
+            </div>
+            <div class="laymk" style="padding-left: 20px;">
+                <h3>Bạn quên mật khẩu vào tài khoản?</h3>
+                <p>
+                    Vui lòng nhập địa chỉ email đã đăng ký với chúng tôi để tạo mật khẩu mới. Chúng tôi sẽ gửi 1 email vào địa chỉ email cung cấp và yêu cầu xác minh trước khi có thể tạo mật khẩu mới!
+                </p>
+                <div class="p">
+                    <label>Nhập Email/Số điện thoại của bạn:</label>
+                    <input type="text" id="mk">
+                </div>
+                <button style="margin:10px  227px;">Nhận mã xác minh</button>
+                <div class="mt-3 text-center">
+                    <a asp-controller="DangNhap" asp-action="DangNhap">Đăng Nhập</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+</body>
+
+</html>

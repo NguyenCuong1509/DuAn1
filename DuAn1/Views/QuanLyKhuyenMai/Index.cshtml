@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Khuyến Mãi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <!-- Thêm một số kiểu tùy chỉnh để làm cho giao diện đẹp và phù hợp với màn hình nhỏ -->
+    <style>
+        body {
+            padding-top: 20px;
+            padding-bottom:60px;
+        }
+
+        .container {
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+
+        .modal-content {
+            padding: 20px;
+        }
+
+        .modal .close {
+            font-size: 1.5rem;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .btn {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quản Lý Khuyến Mãi</h1>
+
+        <!-- Form nhập khuyến mãi -->
+        <form id="khuyenMaiForm">
+            <div class="form-group">
+                <label for="maKhuyenMai">Mã Khuyến Mãi:</label>
+                <input type="text" class="form-control" id="maKhuyenMai" name="maKhuyenMai" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tenKhuyenMai">Tên Khuyến Mãi:</label>
+                <input type="text" class="form-control" id="tenKhuyenMai" name="tenKhuyenMai" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phanTramGiam">Phần Trăm Giảm:</label>
+                <input type="number" class="form-control" id="phanTramGiam" name="phanTramGiam" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ngayBatDau">Ngày Bắt Đầu:</label>
+                <input type="date" class="form-control" id="ngayBatDau" name="ngayBatDau" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ngayKetThuc">Ngày Kết Thúc:</label>
+                <input type="date" class="form-control" id="ngayKetThuc" name="ngayKetThuc" required>
+            </div>
+
+            <div class="form-group">
+                <label for="trangThai">Trạng Thái:</label>
+                <select class="form-control" id="trangThai" name="trangThai">
+                    <option value="Sắp bắt đầu">Sắp bắt đầu</option>
+                    <option value="Đang hoạt động">Đang hoạt động</option>
+                    <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu Khuyến Mãi</button>
+            <button type="button" id="clearForm" class="btn btn-secondary">Xóa Form</button>
+        </form>
+
+        <!-- Danh sách khuyến mãi -->
+        <div class="khuyenMaiList mt-4">
+            <h2>Danh Sách Khuyến Mãi</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm khuyến mãi...">
+            </div>
+            <button id="searchButton" class="btn btn-info">Tìm Kiếm</button>
+
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Mã Khuyến Mãi</th>
+                        <th>Tên Khuyến Mãi</th>
+                        <th>Phần Trăm Giảm</th>
+                        <th>Ngày Bắt Đầu</th>
+                        <th>Ngày Kết Thúc</th>
+                        <th>Trạng Thái</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody id="khuyenMaiTableBody">
+                    <!-- Các dòng dữ liệu khuyến mãi sẽ được thêm vào đây -->
+                    <tr>
+                        <td>KM001</td>
+                        <td>Giảm Giá Mùa Hè</td>
+                        <td>20.00</td>
+                        <td>2024-06-01</td>
+                        <td>2024-06-30</td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="btn btn-warning editButton">Sửa</button>
+                            <button class="btn btn-danger deleteButton">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>KM002</td>
+                        <td>Giảm Giá Cuối Năm</td>
+                        <td>30.00</td>
+                        <td>2024-12-01</td>
+                        <td>2024-12-31</td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="btn btn-warning editButton">Sửa</button>
+                            <button class="btn btn-danger deleteButton">Xóa</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal cho sửa khuyến mãi -->
+    <div id="editModal" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sửa Khuyến Mãi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editKhuyenMaiForm">
+                        <div class="form-group">
+                            <label for="editMaKhuyenMai">Mã Khuyến Mãi:</label>
+                            <input type="text" class="form-control" id="editMaKhuyenMai" name="editMaKhuyenMai" required readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editTenKhuyenMai">Tên Khuyến Mãi:</label>
+                            <input type="text" class="form-control" id="editTenKhuyenMai" name="editTenKhuyenMai" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editPhanTramGiam">Phần Trăm Giảm:</label>
+                            <input type="number" class="form-control" id="editPhanTramGiam" name="editPhanTramGiam" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editNgayBatDau">Ngày Bắt Đầu:</label>
+                            <input type="date" class="form-control" id="editNgayBatDau" name="editNgayBatDau" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editNgayKetThuc">Ngày Kết Thúc:</label>
+                            <input type="date" class="form-control" id="editNgayKetThuc" name="editNgayKetThuc" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editTrangThai">Trạng Thái:</label>
+                            <select class="form-control" id="editTrangThai" name="editTrangThai">
+                                <option value="Sắp bắt đầu">Sắp bắt đầu</option>
+                                <option value="Đang hoạt động">Đang hoạt động</option>
+                                <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Cập Nhật</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
