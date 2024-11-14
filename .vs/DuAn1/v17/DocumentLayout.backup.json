@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\desktop\\duan1\\duan1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\desktop\\duan1\\duan1\\views\\quanlytaikhoan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlytaikhoan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\desktop\\duan1\\duan1\\views\\quanlythongke\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlythongke\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\desktop\\duan1\\duan1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\desktop\\duan1\\duan1\\controllers\\dangnhapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\controllers\\dangnhapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\desktop\\duan1\\duan1\\views\\quanlysanpham\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlysanpham\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DangNhapController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Controllers\\DangNhapController.cs",
-              "RelativeDocumentMoniker": "DuAn1\\Controllers\\DangNhapController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Controllers\\DangNhapController.cs",
-              "RelativeToolTip": "DuAn1\\Controllers\\DangNhapController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T09:04:23.617Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Program.cs",
-              "RelativeDocumentMoniker": "DuAn1\\Program.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Program.cs",
-              "RelativeToolTip": "DuAn1\\Program.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T09:00:44.955Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Views\\QuanLyThongKe\\Index.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLyThongKe\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Views\\QuanLyThongKe\\Index.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLyThongKe\\Index.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-14T08:54:39.472Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Views\\QuanLyTaiKhoan\\Index.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLyTaiKhoan\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Views\\QuanLyTaiKhoan\\Index.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLyTaiKhoan\\Index.cshtml",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-14T08:54:29.13Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAKMAAAAAAAAAAAAcwLkAAAAAAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Views\\QuanLySanPham\\Index.cshtml",
+              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLySanPham\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\Views\\QuanLySanPham\\Index.cshtml*",
+              "RelativeToolTip": "DuAn1\\Views\\QuanLySanPham\\Index.cshtml*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-14T08:50:23.617Z",
+              "WhenOpened": "2024-11-14T16:38:15.803Z",
               "EditorCaption": ""
             }
           ]
