@@ -14,15 +14,31 @@ namespace DuAn1.Controllers
 			_context = context;
 		}
 
-		// GET: SanPhams
-		public async Task<IActionResult> Index()
-		{
-			var duan1Context = _context.SanPhams.Include(s => s.MaHangNavigation).Include(s => s.MaKhuyenMaiNavigation).Include(s => s.MaMauSacNavigation);
-			return View(await duan1Context.ToListAsync());
-		}
+        // GET: SanPhams
+        public async Task<IActionResult> Index(string? searchString)
+        {
+            // Khởi tạo truy vấn với các sản phẩm và bao gồm danh mục
+            var productsQuery = _context.SanPhams.AsQueryable();
 
-		// GET: SanPhams/Details/5
-		public async Task<IActionResult> Details(string id)
+            // Áp dụng bộ lọc tìm kiếm nếu có
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                productsQuery = productsQuery.Where(p => p.TenSanPham.Contains(searchString));
+            }
+            // Thực hiện query và lấy danh sách sản phẩm, bao gồm các thông tin liên quan
+            var sanPhams = await productsQuery
+                .Include(s => s.MaHangNavigation)
+                .Include(s => s.MaKhuyenMaiNavigation)
+                .Include(s => s.MaMauSacNavigation)
+                .ToListAsync();
+
+            // Trả về view với danh sách sản phẩm đã được lọc
+            return View(sanPhams);
+        }
+
+
+        // GET: SanPhams/Details/5
+        public async Task<IActionResult> Details(string id)
 		{
 			if (id == null)
 			{
