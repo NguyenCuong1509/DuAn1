@@ -112,24 +112,57 @@ namespace DuAn1.Controllers
 			return View();
 		}
 
-		// POST: SanPhams/Create
-		// To protect from overposting attacks, enable the specific properties you want to bind to.
-		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create([Bind("MaSanPham,TenSanPham, HinhMinhHoa, KichCo,DonGia,SoLuongTonKho,TrangThai, KieuKetNoi, KhoangCachKetNoi, DungLuongPin, MaKhuyenMai,MaHang,MaMauSac")] SanPham sanPham)
-		{
-			if (ModelState.IsValid)
-			{
-				_context.Add(sanPham);
-				await _context.SaveChangesAsync();
-				return RedirectToAction(nameof(Index));
-			}
-			ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "MaHang", sanPham.MaHang);
-			ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "MaKhuyenMai", sanPham.MaKhuyenMai);
-			ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "MaMauSac", sanPham.MaMauSac);
-			return View(sanPham);
-		}
+        // POST: SanPhams/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("MaSanPham,TenSanPham,KichCo,DonGia,SoLuongTonKho,TrangThai,KieuKetNoi,KhoangCachKetNoi,DungLuongPin,MaKhuyenMai,MaHang,MaMauSac")] SanPham sanPham)
+        {
+            // Kiểm tra điều kiện không được để trống
+            if (string.IsNullOrWhiteSpace(sanPham.MaSanPham))
+            {
+                ModelState.AddModelError("MaSanPham", "Mã sản phẩm không được để trống.");
+            }
+
+            if (string.IsNullOrWhiteSpace(sanPham.TenSanPham))
+            {
+                ModelState.AddModelError("TenSanPham", "Tên sản phẩm không được để trống.");
+            }
+
+            if (string.IsNullOrWhiteSpace(sanPham.KichCo))
+            {
+                ModelState.AddModelError("KichCo", "Kích cỡ không được để trống.");
+            }
+
+            if (sanPham.DonGia <= 0)
+            {
+                ModelState.AddModelError("DonGia", "Đơn giá phải lớn hơn 0.");
+            }
+
+            if (sanPham.SoLuongTonKho < 0)
+            {
+                ModelState.AddModelError("SoLuongTonKho", "Số lượng tồn kho không được âm.");
+            }
+
+            if (string.IsNullOrWhiteSpace(sanPham.TrangThai))
+            {
+                ModelState.AddModelError("TrangThai", "Trạng thái không được để trống.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(sanPham);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "MaHang", sanPham.MaHang);
+            ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "MaKhuyenMai", sanPham.MaKhuyenMai);
+            ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "MaMauSac", sanPham.MaMauSac);
+            return View(sanPham);
+        }
+
         public async Task<IActionResult> UpdateStatus(string id)
         {
             if (id == null)
