@@ -1,69 +1,45 @@
 ﻿@model DuAn1.Models.SanPham
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Xóa sản phẩm";
 }
 
-<h1>Delete</h1>
+<h1>Xóa sản phẩm</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn có chắc chắn muốn xóa sản phẩm này?</h3>
 <div>
-    <h4>SanPham</h4>
+    <h4>Sản phẩm</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TenSanPham)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TenSanPham)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.KichCo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.KichCo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DonGia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DonGia)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoLuongTonKho)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoLuongTonKho)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaHangNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaHangNavigation.MaHang)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaKhuyenMaiNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaKhuyenMaiNavigation.MaKhuyenMai)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaMauSacNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaMauSacNavigation.MaMauSac)
-        </dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.TenSanPham)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.TenSanPham)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.KichCo)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.KichCo)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.KieuKetNoi)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.KieuKetNoi)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.KhoangCachKetNoi)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.KhoangCachKetNoi)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.DungLuongPin)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.DungLuongPin)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.DonGia)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.DonGia)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.SoLuongTonKho)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.SoLuongTonKho)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.TrangThai)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.TrangThai)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.MaHangNavigation)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.MaHangNavigation.MaHang)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.MaKhuyenMaiNavigation)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.MaKhuyenMaiNavigation.MaKhuyenMai)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.MaMauSacNavigation)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.MaMauSacNavigation.MaMauSac)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LanSuaGanNhat)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.LanSuaGanNhat)</dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="MaSanPham" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index">Quay lại danh sách</a>
     </form>
 </div>

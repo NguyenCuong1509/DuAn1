@@ -1,12 +1,12 @@
 ﻿@model DuAn1.Models.SanPham
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Sửa sản phẩm";
 }
 
-<h1>Edit</h1>
+<h1>Sửa sản phẩm</h1>
 
-<h4>SanPham</h4>
+<h4>Sản phẩm</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,6 +22,21 @@
                 <label asp-for="KichCo" class="control-label"></label>
                 <input asp-for="KichCo" class="form-control" />
                 <span asp-validation-for="KichCo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KieuKetNoi" class="control-label"></label>
+                <input asp-for="KieuKetNoi" class="form-control" />
+                <span asp-validation-for="KieuKetNoi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KhoangCachKetNoi" class="control-label"></label>
+                <input asp-for="KhoangCachKetNoi" class="form-control" />
+                <span asp-validation-for="KhoangCachKetNoi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DungLuongPin" class="control-label"></label>
+                <input asp-for="DungLuongPin" class="form-control" />
+                <span asp-validation-for="DungLuongPin" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DonGia" class="control-label"></label>
@@ -54,16 +69,18 @@
                 <span asp-validation-for="MaMauSac" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Quay lại danh sách</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

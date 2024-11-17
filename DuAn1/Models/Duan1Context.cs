@@ -187,11 +187,15 @@ public partial class Duan1Context : DbContext
             entity.Property(e => e.MaSanPham).HasMaxLength(10);
             entity.Property(e => e.DonGia).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.KichCo).HasMaxLength(50);
+            entity.Property(e => e.KhoangCachKetNoi).HasMaxLength(10);
             entity.Property(e => e.MaHang).HasMaxLength(10);
             entity.Property(e => e.MaKhuyenMai).HasMaxLength(10);
             entity.Property(e => e.MaMauSac).HasMaxLength(10);
             entity.Property(e => e.TenSanPham).HasMaxLength(255);
+            entity.Property(e => e.HinhMinhHoa).HasMaxLength(255);
             entity.Property(e => e.TrangThai).HasMaxLength(50);
+            entity.Property(e => e.KieuKetNoi).HasMaxLength(50);
+            entity.Property(e => e.LanSuaGanNhat).HasColumnType("datetime");
 
             entity.HasOne(d => d.MaHangNavigation).WithMany(p => p.SanPhams)
                 .HasForeignKey(d => d.MaHang)

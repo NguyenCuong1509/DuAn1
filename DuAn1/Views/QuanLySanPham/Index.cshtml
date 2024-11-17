@@ -2,42 +2,109 @@
 
 @{
     ViewData["Title"] = "Danh sách sản phẩm";
+    var isSearching = !string.IsNullOrEmpty(Context.Request.Query["searchString"]);
 }
+
 <div class="row">
     <ol class="breadcrumb">
         <li>
-            <a href="#">
+            <a asp-controller="QuanLy" asp-action="Index">
                 <em class="fa fa-home"></em>
             </a>
         </li>
-        <li class="active">Quản lý sản phẩm</li>
+        <li class="active">
+            <a asp-controller="QuanLySanPham" asp-action="Index">
+                <i class="fa-brands fa-buffer"></i>
+                Quản lý sản phẩm
+            </a>
+        </li>
+        @if (isSearching)
+        {
+            <li class="active">Tìm kiếm</li>
+        }
     </ol>
 </div><!--/.row-->
+
 <h1>Danh sách sản phẩm</h1>
+
 <!-- Form tìm kiếm -->
 <form method="get" asp-action="Index">
     <div class="input-group mb-3">
         <input type="text" name="searchString" class="form-control" placeholder="Tìm kiếm theo tên sản phẩm" />
+        <select name="trangThai" class="form-control">
+            <option value="">Tất cả trạng thái</option>
+            <option value="Đang kinh doanh">Đang kinh doanh</option>
+            <option value="Ngừng kinh doanh">Ngừng kinh doanh</option>
+        </select>
         <span class="input-group-btn">
-            <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            <button class="btn btn-primary" type="submit" style="height: 80px;">Tìm kiếm</button>
         </span>
     </div>
 </form>
-<p>
-    <a asp-action="Create" class="btn btn-success">Create New</a>
+<h2>Tìm kiếm nâng cao</h2>
+<form method="get" class="form-inline mb-3" >
+    <div class="form-group me-2 col-md-3">
+        <label for="productCode">Mã sản phẩm:</label>
+        <input type="text" class="form-control" id="productCode" name="productCode" placeholder="Nhập mã sản phẩm" />
+    </div>
+    <div class="form-group me-2 col-md-3">
+        <label for="size">Kích cỡ:</label>
+        <input type="text" class="form-control" id="size" name="size" placeholder="Nhập kích cỡ" />
+    </div>
+    <div class="form-group me-2 col-md-3">
+        <label for="connectionDistance">Khoảng cách kết nối:</label>
+        <input type="text" class="form-control" id="connectionDistance" name="connectionDistance" placeholder="Nhập khoảng cách" />
+    </div>
+    <div class="form-group me-2 col-md-3">
+        <label for="batteryCapacity">Dung lượng pin:</label>
+        <input type="number" class="form-control" id="batteryCapacity" name="batteryCapacity" placeholder="Nhập dung lượng pin" />
+    </div>
+    <div class="form-group me-2 col-md-3">
+        <label for="stockQuantity">Số lượng tồn:</label>
+        <input type="number" class="form-control" id="stockQuantity" name="stockQuantity" placeholder="Nhập số lượng tồn" />
+    </div>
+    <div class="form-group me-2 col-md-3">
+        <label for="brandCode">Mã Hãng:</label>
+        <input type="text" class="form-control" id="brandCode" name="brandCode" placeholder="Nhập mã hãng" />
+    </div>
+    <div class="form-group me-2 col-md-3">
+        <label for="color">Màu sắc:</label>
+        <input type="text" class="form-control" id="color" name="color" placeholder="Nhập màu sắc" />
+    </div>
+    <div class="form-group me-2 col-md-6">
+        <label for="priceFrom">Giá từ:</label>
+        <input type="number" class="form-control" id="priceFrom" name="priceFrom" step="0.01" placeholder="Từ" />
+    </div>
+    <div class="form-group me-2 col-md-6">
+        <label for="priceTo">Giá đến:</label>
+        <input type="number" class="form-control" id="priceTo" name="priceTo" step="0.01" placeholder="Đến" />
+    </div>
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-primary col-12">Lọc</button>
+    </div>
+</form>
+
+<p class="col-md-12">
+    <a asp-action="Create" class="btn btn-success">Tạo mới</a>
 </p>
 
-<table class="table">
+<table class="table table-bordered table-hover">
     <thead>
         <tr>
+            <th>@Html.DisplayNameFor(model => model.MaSanPham)</th>
             <th>@Html.DisplayNameFor(model => model.TenSanPham)</th>
-            <th>@Html.DisplayNameFor(model => model.KichCo)</th>
+            <th>@Html.DisplayNameFor(model => model.HinhMinhHoa)</th>
+         @*    <th>@Html.DisplayNameFor(model => model.KichCo)</th> *@
+         @*    <th>@Html.DisplayNameFor(model => model.KieuKetNoi)</th>
+            <th>@Html.DisplayNameFor(model => model.KhoangCachKetNoi)</th>
+            <th>@Html.DisplayNameFor(model => model.DungLuongPin)</th> *@
             <th>@Html.DisplayNameFor(model => model.DonGia)</th>
             <th>@Html.DisplayNameFor(model => model.SoLuongTonKho)</th>
             <th>@Html.DisplayNameFor(model => model.TrangThai)</th>
             <th>@Html.DisplayNameFor(model => model.MaHangNavigation)</th>
             <th>@Html.DisplayNameFor(model => model.MaKhuyenMaiNavigation)</th>
             <th>@Html.DisplayNameFor(model => model.MaMauSacNavigation)</th>
+            <th>@Html.DisplayNameFor(model => model.LanSuaGanNhat)</th>
             <th></th>
         </tr>
     </thead>
@@ -45,20 +112,85 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>@Html.DisplayFor(modelItem => item.MaSanPham)</td>
                 <td>@Html.DisplayFor(modelItem => item.TenSanPham)</td>
-                <td>@Html.DisplayFor(modelItem => item.KichCo)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.HinhMinhHoa))
+                    {
+                        <img src="@item.HinhMinhHoa" alt="@item.TenSanPham" style="width: 100px; height: auto;" />
+                    }
+                    else
+                    {
+                        <span>Không có hình ảnh</span>
+                    }
+                </td>
+            @*     <td>@Html.DisplayFor(modelItem => item.KichCo)</td> *@
+          @*       <td>@Html.DisplayFor(modelItem => item.KieuKetNoi)</td>
+                <td>@Html.DisplayFor(modelItem => item.KhoangCachKetNoi)</td>
+                <td>@Html.DisplayFor(modelItem => item.DungLuongPin)</td> *@
                 <td>@Html.DisplayFor(modelItem => item.DonGia)</td>
                 <td>@Html.DisplayFor(modelItem => item.SoLuongTonKho)</td>
                 <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
                 <td>@Html.DisplayFor(modelItem => item.MaHangNavigation.MaHang)</td>
                 <td>@Html.DisplayFor(modelItem => item.MaKhuyenMaiNavigation.MaKhuyenMai)</td>
                 <td>@Html.DisplayFor(modelItem => item.MaMauSacNavigation.MaMauSac)</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.MaSanPham">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.MaSanPham">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.MaSanPham">Delete</a>
+                <td>@Html.DisplayFor(modelItem => item.LanSuaGanNhat)</td>
+                <td class="btn-group-vertical">
+                    <a asp-action="Edit" asp-route-id="@item.MaSanPham" class="btn btn-primary">Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.MaSanPham" class="btn btn-info">Chi tiết</a>
+
+                    <!-- Chỉ hiển thị nút Ngừng kinh doanh khi trạng thái là Đang kinh doanh -->
+                    @if (item.TrangThai == "Đang kinh doanh")
+                    {
+                        <button onclick="updateStatus('@item.MaSanPham')" class="btn btn-warning">Dừng kinh doanh</button>
+                    }
+
+                    <!-- Chỉ hiển thị nút Đang kinh doanh khi trạng thái là Ngừng kinh doanh -->
+                    @if (item.TrangThai == "Ngừng kinh doanh")
+                    {
+                        <button onclick="updateTrangthai('@item.MaSanPham')" class="btn btn-primary"> Đang kinh doanh</button>
+                    }
+
+                    <a asp-action="Delete" asp-route-id="@item.MaSanPham" class="btn btn-danger">Xóa</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function updateStatus(id) {
+        $.ajax({
+            url: '@Url.Action("UpdateStatus", "QuanLySanPham")/' + id,
+            type: 'POST',
+            success: function (result) {
+                if (result.success) {
+                    location.reload(); // Tải lại trang để thấy sự thay đổi
+                } else {
+                    alert("Cập nhật không thành công.");
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("Có lỗi xảy ra: " + error);
+            }
+        });
+    }
+
+    function updateTrangthai(id) {
+        $.ajax({
+            url: '@Url.Action("UpdateTrangthai", "QuanLySanPham")/' + id,
+            type: 'POST',
+            success: function (result) {
+                if (result.success) {
+                    location.reload(); // Tải lại trang để thấy sự thay đổi
+                } else {
+                    alert("Cập nhật không thành công.");
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("Có lỗi xảy ra: " + error);
+            }
+        });
+    }
+</script>
