@@ -15,7 +15,7 @@ namespace DuAn1.Controllers
 		}
 
         // GET: SanPhams
-        public async Task<IActionResult> Index(string? searchString, string? trangThai, decimal? priceFrom, decimal? priceTo, string? productCode, string? size, string? connectionDistance, int? batteryCapacity, int? stockQuantity, string? brandCode, string? color)
+        public async Task<IActionResult> Index(string? searchString, string? trangThai, decimal? priceFrom, decimal? priceTo, string? productCode, string? size, string? connectionDistance, int? batteryCapacity, int? stockQuantity, string? brandCode, string? color, int page = 1,int pageSize = 5)
         {
             var productsQuery = _context.SanPhams.AsQueryable();
 
@@ -115,9 +115,10 @@ namespace DuAn1.Controllers
         // POST: SanPhams/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: SanPhams/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaSanPham,TenSanPham,KichCo,DonGia,SoLuongTonKho,TrangThai,KieuKetNoi,KhoangCachKetNoi,DungLuongPin,MaKhuyenMai,MaHang,MaMauSac")] SanPham sanPham)
+        public async Task<IActionResult> Create([Bind("MaSanPham,TenSanPham,KichCo,DonGia,SoLuongTonKho,TrangThai,KieuKetNoi,KhoangCachKetNoi,DungLuongPin,MaKhuyenMai,MaHang,MaMauSac,HinhMinhHoa")] SanPham sanPham)
         {
             // Kiểm tra điều kiện không được để trống
             if (string.IsNullOrWhiteSpace(sanPham.MaSanPham))
@@ -150,13 +151,51 @@ namespace DuAn1.Controllers
                 ModelState.AddModelError("TrangThai", "Trạng thái không được để trống.");
             }
 
+            if (string.IsNullOrWhiteSpace(sanPham.KieuKetNoi))
+            {
+                ModelState.AddModelError("KieuKetNoi", "Kiểu kết nối không được để trống.");
+            }
+
+            if (string.IsNullOrWhiteSpace(sanPham.KhoangCachKetNoi))
+            {
+                ModelState.AddModelError("KhoangCachKetNoi", "Khoảng cách kết nối không được để trống.");
+            }
+
+
+            // Kiểm tra nếu DungLuongPin <= 0 hoặc có giá trị trống
+            if (sanPham.DungLuongPin <= 0)
+            {
+                ModelState.AddModelError("DungLuongPin", "Dung lượng pin phải lớn hơn 0.");
+            }
+            else if (sanPham.DungLuongPin == null)
+            {
+                ModelState.AddModelError("DungLuongPin", "Dung lượng pin không được để trống.");
+            }
+
+
+            if (string.IsNullOrWhiteSpace(sanPham.HinhMinhHoa))
+            {
+                ModelState.AddModelError("HinhMinhHoa", "URL hình minh họa không được để trống.");
+            }
+
+            // Kiểm tra trùng mã sản phẩm
+            var existingSanPham = await _context.SanPhams
+                                                 .FirstOrDefaultAsync(sp => sp.MaSanPham == sanPham.MaSanPham);
+            if (existingSanPham != null)
+            {
+                ModelState.AddModelError("MaSanPham", "Mã sản phẩm này đã tồn tại.");
+            }
+
+            // Kiểm tra nếu tất cả các điều kiện hợp lệ
             if (ModelState.IsValid)
             {
+                // Thêm sản phẩm mới vào cơ sở dữ liệu
                 _context.Add(sanPham);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
+            // Nếu có lỗi, giữ lại các giá trị trong ViewData
             ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "MaHang", sanPham.MaHang);
             ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "MaKhuyenMai", sanPham.MaKhuyenMai);
             ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "MaMauSac", sanPham.MaMauSac);
@@ -228,51 +267,53 @@ namespace DuAn1.Controllers
 			return View(sanPham);
 		}
 
-		// POST: SanPhams/Edit/5
-		// To protect from overposting attacks, enable the specific properties you want to bind to.
-		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-		// POST: SanPhams/Edit/5
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Edit(string id, [Bind("MaSanPham,TenSanPham,KichCo,DonGia,SoLuongTonKho,TrangThai,MaKhuyenMai,MaHang,MaMauSac")] SanPham sanPham)
-{
-    if (id != sanPham.MaSanPham)
-    {
-        return NotFound();
-    }
-
-    if (ModelState.IsValid)
-    {
-        try
+        // POST: SanPhams/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: SanPhams/Edit/5
+        // POST: SanPhams/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("MaSanPham,TenSanPham,KichCo,DonGia,SoLuongTonKho,TrangThai,KieuKetNoi,KhoangCachKetNoi,DungLuongPin,MaKhuyenMai,MaHang,MaMauSac,HinhMinhHoa")] SanPham sanPham)
         {
-            // Cập nhật trường "Lần Sửa Gần Nhất" với thời gian hiện tại
-            sanPham.LanSuaGanNhat = DateTime.Now;
-
-            _context.Update(sanPham);
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!SanPhamExists(sanPham.MaSanPham))
+            if (id != sanPham.MaSanPham)
             {
                 return NotFound();
             }
-            else
+
+            if (ModelState.IsValid)
             {
-                throw;
+                try
+                {
+                    // Cập nhật thông tin sản phẩm
+                    // Nếu có thay đổi URL ảnh, thì giá trị HinhMinhHoa sẽ được cập nhật
+                    sanPham.LanSuaGanNhat = DateTime.Now;
+
+                    _context.Update(sanPham);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!SanPhamExists(sanPham.MaSanPham))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
             }
+
+            // Nếu có lỗi, giữ lại các giá trị trong ViewData
+            ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "MaHang", sanPham.MaHang);
+            ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "MaKhuyenMai", sanPham.MaKhuyenMai);
+            ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "MaMauSac", sanPham.MaMauSac);
+            return View(sanPham);
         }
-        return RedirectToAction(nameof(Index));
-    }
-
-    ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "MaHang", sanPham.MaHang);
-    ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "MaKhuyenMai", sanPham.MaKhuyenMai);
-    ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "MaMauSac", sanPham.MaMauSac);
-    return View(sanPham);
-}
-
-		// GET: SanPhams/Delete/5
-		public async Task<IActionResult> Delete(string id)
+        // GET: SanPhams/Delete/5
+        public async Task<IActionResult> Delete(string id)
 		{
 			if (id == null)
 			{

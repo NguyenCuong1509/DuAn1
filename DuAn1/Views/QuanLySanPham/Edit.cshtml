@@ -19,13 +19,32 @@
                 <span asp-validation-for="TenSanPham" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="HinhMinhHoa" class="control-label"></label>
+                <!-- Hiển thị ảnh hiện tại -->
+                @if (!string.IsNullOrEmpty(Model.HinhMinhHoa))
+                {
+                    <div>
+                        <img src="@Model.HinhMinhHoa" alt="Hình ảnh hiện tại" style="width: 200px; height: auto;" />
+                    </div>
+                }
+                <div>
+                    <label for="HinhMinhHoa">Nhập URL hình ảnh mới (nếu có):</label>
+                    <input type="text" name="HinhMinhHoa" class="form-control" placeholder="Nhập URL hình ảnh mới" value="@Model.HinhMinhHoa" />
+                </div>
+                <span asp-validation-for="HinhMinhHoa" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <label asp-for="KichCo" class="control-label"></label>
                 <input asp-for="KichCo" class="form-control" />
                 <span asp-validation-for="KichCo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="KieuKetNoi" class="control-label"></label>
-                <input asp-for="KieuKetNoi" class="form-control" />
+                <select asp-for="KieuKetNoi" class="form-control">
+                    <option value="Không dây">Không dây</option>
+                    <option value="Có dây">Có dây</option>
+                </select>
                 <span asp-validation-for="KieuKetNoi" class="text-danger"></span>
             </div>
             <div class="form-group">

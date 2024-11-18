@@ -39,7 +39,7 @@ public partial class SanPham
     [Display(Name = "Mã Khuyến Mãi")]
     public string? MaKhuyenMai { get; set; }
 
-    [Display(Name = "Mã Hàng")]
+    [Display(Name = "Mã Hãng")]
     public string? MaHang { get; set; }
 
     [Display(Name = "Mã Màu Sắc")]

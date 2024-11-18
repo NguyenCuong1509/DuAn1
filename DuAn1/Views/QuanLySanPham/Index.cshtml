@@ -94,10 +94,10 @@
             <th>@Html.DisplayNameFor(model => model.MaSanPham)</th>
             <th>@Html.DisplayNameFor(model => model.TenSanPham)</th>
             <th>@Html.DisplayNameFor(model => model.HinhMinhHoa)</th>
-         @*    <th>@Html.DisplayNameFor(model => model.KichCo)</th> *@
-         @*    <th>@Html.DisplayNameFor(model => model.KieuKetNoi)</th>
+            <th>@Html.DisplayNameFor(model => model.KichCo)</th>
+            <th>@Html.DisplayNameFor(model => model.KieuKetNoi)</th>
             <th>@Html.DisplayNameFor(model => model.KhoangCachKetNoi)</th>
-            <th>@Html.DisplayNameFor(model => model.DungLuongPin)</th> *@
+            <th>@Html.DisplayNameFor(model => model.DungLuongPin)</th>
             <th>@Html.DisplayNameFor(model => model.DonGia)</th>
             <th>@Html.DisplayNameFor(model => model.SoLuongTonKho)</th>
             <th>@Html.DisplayNameFor(model => model.TrangThai)</th>
@@ -124,16 +124,16 @@
                         <span>Không có hình ảnh</span>
                     }
                 </td>
-            @*     <td>@Html.DisplayFor(modelItem => item.KichCo)</td> *@
-          @*       <td>@Html.DisplayFor(modelItem => item.KieuKetNoi)</td>
+                <td>@Html.DisplayFor(modelItem => item.KichCo)</td> 
+                <td>@Html.DisplayFor(modelItem => item.KieuKetNoi)</td>
                 <td>@Html.DisplayFor(modelItem => item.KhoangCachKetNoi)</td>
-                <td>@Html.DisplayFor(modelItem => item.DungLuongPin)</td> *@
+                <td>@Html.DisplayFor(modelItem => item.DungLuongPin)</td>
                 <td>@Html.DisplayFor(modelItem => item.DonGia)</td>
                 <td>@Html.DisplayFor(modelItem => item.SoLuongTonKho)</td>
                 <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
-                <td>@Html.DisplayFor(modelItem => item.MaHangNavigation.MaHang)</td>
-                <td>@Html.DisplayFor(modelItem => item.MaKhuyenMaiNavigation.MaKhuyenMai)</td>
-                <td>@Html.DisplayFor(modelItem => item.MaMauSacNavigation.MaMauSac)</td>
+                <td>@Html.DisplayFor(modelItem => item.MaHangNavigation.TenHang)</td>
+                <td>@Html.DisplayFor(modelItem => item.MaKhuyenMaiNavigation.TenKhuyenMai)</td>
+                <td>@Html.DisplayFor(modelItem => item.MaMauSacNavigation.TenMauSac)</td>
                 <td>@Html.DisplayFor(modelItem => item.LanSuaGanNhat)</td>
                 <td class="btn-group-vertical">
                     <a asp-action="Edit" asp-route-id="@item.MaSanPham" class="btn btn-primary">Sửa</a>
