@@ -21,7 +21,5 @@ public partial class QuanLy
 
     public string? Password { get; set; }
 
-    public virtual ICollection<KhachHang> KhachHangs { get; set; } = new List<KhachHang>();
-
     public virtual ICollection<KhuyenMai> KhuyenMais { get; set; } = new List<KhuyenMai>();
 }
