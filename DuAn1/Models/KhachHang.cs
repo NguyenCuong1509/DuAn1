@@ -20,10 +20,6 @@ public partial class KhachHang
     public string? Username { get; set; }
 
     public string? Password { get; set; }
-
-    public string? MaQuanLy { get; set; }
-
     public virtual ICollection<GioHang> GioHangs { get; set; } = new List<GioHang>();
 
-    public virtual QuanLy? MaQuanLyNavigation { get; set; }
 }

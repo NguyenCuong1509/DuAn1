@@ -98,7 +98,7 @@
                 <dd class="col-sm-10">@Html.DisplayFor(model => model.TenSanPham)</dd>
                 
                 <dt class="col-sm-2">@Html.DisplayNameFor(model => model.DonGia)</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.DonGia)</dd>
+                <dd class="col-sm-10">@(@Model.DonGia.HasValue ? String.Format("{0:N0}", @Model.DonGia.Value) : "0")</dd>
                 <dt class="col-sm-2">@Html.DisplayNameFor(model => model.SoLuongTonKho)</dt>
                 <dd class="col-sm-10">@Html.DisplayFor(model => model.SoLuongTonKho)</dd>
                 <dt class="col-sm-2">@Html.DisplayNameFor(model => model.TrangThai)</dt>

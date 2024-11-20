@@ -121,17 +121,12 @@ public partial class Duan1Context : DbContext
             entity.Property(e => e.DiaChi).HasMaxLength(255);
             entity.Property(e => e.GioiTinh).HasMaxLength(10);
             entity.Property(e => e.HoTen).HasMaxLength(255);
-            entity.Property(e => e.MaQuanLy).HasMaxLength(10);
             entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Sdt)
                 .HasMaxLength(15)
                 .HasColumnName("SDT");
             entity.Property(e => e.TrangThai).HasMaxLength(50);
             entity.Property(e => e.Username).HasMaxLength(50);
-
-            entity.HasOne(d => d.MaQuanLyNavigation).WithMany(p => p.KhachHangs)
-                .HasForeignKey(d => d.MaQuanLy)
-                .HasConstraintName("FK__KhachHang__MaQua__4F7CD00D");
         });
 
         modelBuilder.Entity<KhuyenMai>(entity =>
