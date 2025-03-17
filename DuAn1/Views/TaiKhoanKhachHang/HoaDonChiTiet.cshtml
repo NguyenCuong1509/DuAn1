@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DuAn1.Models.HoaDonChiTiet>
+
+@{
+    ViewData["Title"] = "Chi tiết Hóa Đơn";
+    Layout = "~/Views/Shared/_chitiet.cshtml";
+
+}
+
+<h1>Chi tiết Hóa Đơn</h1>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Mã Sản Phẩm</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Số Lượng</th>
+            <th>Đơn Giá</th>
+            <th>Thành Tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.MaSanPham)</td>
+                <td>@item.MaSanPhamNavigation.TenSanPham</td> <!-- Truy cập trực tiếp -->
+                <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
+                <td>@Html.DisplayFor(modelItem => item.DonGia)</td>
+                <td>@(item.SoLuong * item.DonGia)</td> <!-- Tính toán trực tiếp -->
+            </tr>
+        }
+    </tbody>
+</table>

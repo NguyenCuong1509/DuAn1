@@ -1,60 +1,141 @@
 ﻿@model DuAn1.Models.KhachHang
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<style>
+    /* Định dạng chung */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+    /* Phần chi tiết khách hàng */
+    .dl-horizontal {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .dl-horizontal dt {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 0;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .table th, .table td {
+        padding: 12px 15px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Bảng Danh sách Hóa Đơn */
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    .table th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+
+    /* Nút chức năng */
+    .btn {
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+        border: none;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+    }
+
+    .btn-group-vertical .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+</style>
+
 
 <div>
-    <h4>KhachHang</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoTen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HoTen)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sdt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sdt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GioiTinh)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GioiTinh)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+
+    <dl class="row dl-horizontal">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HoTen)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.HoTen)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Sdt)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Sdt)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.DiaChi)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.DiaChi)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.GioiTinh)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.GioiTinh)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.TrangThai)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.TrangThai)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Username)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Username)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Password)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Password)</dd>
+        <!-- Hiển thị mã giỏ hàng của khách hàng -->
+        @if (Model.GioHang != null)
+        {
+            <dt class="col-sm-2">Mã Giỏ Hàng</dt>
+            <dd class="col-sm-10">@Model.GioHang.MaGioHang</dd>
+        }
+        else
+        {
+            <dt class="col-sm-2">Mã Giỏ Hàng</dt>
+            <dd class="col-sm-10">Chưa có giỏ hàng</dd>
+        }
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.MaKhachHang">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <h4>Danh sách hóa đơn</h4>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Mã Hóa Đơn</th>
+                <th>Ngày Tạo</th>
+                <th>Thành Tiền</th>
+                <th>Trạng Thái</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hoaDon in Model.HoaDons)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => hoaDon.MaHoaDon)</td>
+                    <td>@Html.DisplayFor(modelItem => hoaDon.NgayTao)</td>
+                    <td>@Html.DisplayFor(modelItem => hoaDon.ThanhTien)</td>
+                    <td>@Html.DisplayFor(modelItem => hoaDon.TrangThai)</td>
+                    <td class="btn-group-vertical col-2">
+                        <a asp-controller="QuanLyHoaDon" asp-action="Details" asp-route-id="@hoaDon.MaHoaDon" class="btn btn-info">Chi tiết</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

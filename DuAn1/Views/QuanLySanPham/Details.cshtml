@@ -26,7 +26,6 @@
             margin-top: 20px;
         }
 
-
         .product-info dt {
             font-weight: bold;
             color: #343a40;
@@ -60,7 +59,6 @@
             .action-links a {
                 margin-right: 10px;
             }
-
     </style>
 </head>
 <body>
@@ -86,50 +84,80 @@
         </ol>
     </div><!--/.row-->
     <div class="container">
-
         <div class="product-details">
             <hr />
-            <dl class="row product-info card">
-                <dt class="col-sm-2">Hình ảnh</dt>
-                <dd class="col-sm-10 product-image">
-                    <img src="@Model.HinhMinhHoa" alt="@Model.TenSanPham" />
-                </dd>
-                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.TenSanPham)</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.TenSanPham)</dd>
-                
-                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.DonGia)</dt>
-                <dd class="col-sm-10">@(@Model.DonGia.HasValue ? String.Format("{0:N0}", @Model.DonGia.Value) : "0")</dd>
-                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.SoLuongTonKho)</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.SoLuongTonKho)</dd>
-                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.TrangThai)</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.TrangThai)</dd>
-                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.MaHangNavigation)</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.MaHangNavigation.MaHang)</dd>
-                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.MaKhuyenMaiNavigation)</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.MaKhuyenMaiNavigation.MaKhuyenMai)</dd>
-                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.MaMauSacNavigation)</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.MaMauSacNavigation.MaMauSac)</dd>
-                <div class="col-md-12">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            Thêm thông tin
-                            <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span>
-                        </div>
-                        <div class="panel-body">
-                            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.KichCo)</dt>
-                            <dd class="col-sm-10">@Html.DisplayFor(model => model.KichCo)</dd>
-                            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.KieuKetNoi)</dt>
-                            <dd class="col-sm-10">@Html.DisplayFor(model => model.KieuKetNoi)</dd>
-                            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.KhoangCachKetNoi)</dt>
-                            <dd class="col-sm-10">@Html.DisplayFor(model => model.KhoangCachKetNoi)</dd>
-                            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.DungLuongPin)</dt>
-                            <dd class="col-sm-10">@Html.DisplayFor(model => model.DungLuongPin)</dd>
-                            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LanSuaGanNhat)</dt>
-                            <dd class="col-sm-10">@Html.DisplayFor(model => model.LanSuaGanNhat)</dd>
-                        </div>
-                    </div>
+            <div class="row">
+                <!-- Hình ảnh chiếm 6 cột -->
+                <div class="col-sm-6">
+                    <dt>Hình ảnh</dt>
+                    <dd class="product-image">
+                        <img src="@Model.HinhMinhHoa" alt="@Model.TenSanPham" />
+                    </dd>
                 </div>
-            </dl>
+                <!-- Thông tin sản phẩm chiếm 6 cột -->
+                <div class="col-sm-6">
+                    <dl class="row">
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.TenSanPham)</dt>
+                        <dd class="col-sm-8" style=" line-height: 30px; ">@Html.DisplayFor(model => model.TenSanPham)</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.DonGia)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">@(@Model.DonGia.HasValue ? String.Format("{0:C0}", @Model.DonGia.Value) : "0")</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.SoLuongTonKho)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.SoLuongTonKho)</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.KieuKetNoi)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.KieuKetNoi)</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.KichCo)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.KichCo)</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.DungLuongPin)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.DungLuongPin)</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.KhoangCachKetNoi)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.KhoangCachKetNoi)</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.TrangThai)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.TrangThai)</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.MaHangNavigation)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.MaHangNavigation.TenHang)</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.MaKhuyenMaiNavigation)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">
+                            @if (Model.MaKhuyenMaiNavigation != null)
+                            {
+                                @Html.DisplayFor(model => model.MaKhuyenMaiNavigation.TenKhuyenMai)
+                            }
+                            else
+                            {
+                                <span>Không có mã khuyến mãi</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.MaMauSacNavigation)</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.MaMauSacNavigation.TenMauSac)</dd>
+
+                        <dt class="col-sm-4" style="line-height: 30px; ">Chọn mã khuyến mãi</dt>
+                        <dd class="col-sm-8" style="line-height: 30px; ">
+                            <form method="post" asp-action="ApplyPromoCode">
+                                <div class="form-group">
+                                    <select class="form-control" name="MaKhuyenMai">
+                                        <option value="">Chọn mã khuyến mãi</option>
+                                        @foreach (var khuyenMai in ViewData["KhuyenMais"] as SelectList)
+                                        {
+                                            <option value="@khuyenMai.Value">@khuyenMai.Text</option>
+                                        }
+                                    </select>
+                                    <button type="submit" class="btn btn-success" style="margin-top: 10px;">Áp dụng</button>
+                                </div>
+                                <input type="hidden" name="MaSanPham" value="@Model.MaSanPham" />
+                            </form>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
         </div>
 
         <div class="action-links">

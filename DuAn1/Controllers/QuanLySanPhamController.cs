@@ -15,7 +15,7 @@ namespace DuAn1.Controllers
 		}
 
         // GET: SanPhams
-        public async Task<IActionResult> Index(string? searchString, string? trangThai, decimal? priceFrom, decimal? priceTo, string? productCode, string? size, string? connectionDistance, int? batteryCapacity, int? stockQuantity, string? brandCode, string? color, int page = 1,int pageSize = 5)
+        public async Task<IActionResult> Index(string? searchString, string? trangThai, decimal? priceFrom, decimal? priceTo, string? productCode, string? size, string? connectionDistance, int? batteryCapacity, int? stockQuantity, string? brandCode, string? color, int page = 1, int pageSize = 10)
         {
             var productsQuery = _context.SanPhams.AsQueryable();
 
@@ -24,6 +24,7 @@ namespace DuAn1.Controllers
             {
                 productsQuery = productsQuery.Where(p => p.TenSanPham.Contains(searchString));
             }
+
 
             // Các bộ lọc mới
             if (!string.IsNullOrEmpty(productCode))
@@ -71,46 +72,150 @@ namespace DuAn1.Controllers
                 productsQuery = productsQuery.Where(p => p.DonGia <= priceTo.Value);
             }
 
-            // Thực hiện query và lấy danh sách sản phẩm
+            // Tính toán tổng số sản phẩm
+            var totalProducts = await productsQuery.CountAsync();
+
+            // Lấy danh sách sản phẩm theo trang
             var sanPhams = await productsQuery
                 .Include(s => s.MaHangNavigation)
                 .Include(s => s.MaKhuyenMaiNavigation)
                 .Include(s => s.MaMauSacNavigation)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
+
+            sanPhams = sanPhams
+     .OrderByDescending(k =>
+     {
+         if (k.MaSanPham != null && k.MaSanPham.StartsWith("KH"))
+         {
+             var partNumber = k.MaSanPham.Substring(2);
+             return int.TryParse(partNumber, out var result) ? result : 0;
+         }
+         return 0;
+     })
+     .ToList();
+            // Tạo ViewModel cho phân trang
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / pageSize);
+            ViewBag.CurrentPage = page;
+
+            ViewBag.Brands = await _context.Hangs.ToListAsync();
+            ViewBag.Colors = await _context.MauSacs.ToListAsync();
 
             return View(sanPhams);
         }
 
-
         // GET: SanPhams/Details/5
         public async Task<IActionResult> Details(string id)
-		{
-			if (id == null)
-			{
-				return NotFound();
-			}
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-			var sanPham = await _context.SanPhams
-				.Include(s => s.MaHangNavigation)
-				.Include(s => s.MaKhuyenMaiNavigation)
-				.Include(s => s.MaMauSacNavigation)
-				.FirstOrDefaultAsync(m => m.MaSanPham == id);
-			if (sanPham == null)
-			{
-				return NotFound();
-			}
+            var sanPham = await _context.SanPhams
+                .Include(s => s.MaHangNavigation)
+                .Include(s => s.MaKhuyenMaiNavigation)
+                .Include(s => s.MaMauSacNavigation)
+                .FirstOrDefaultAsync(m => m.MaSanPham == id);
 
-			return View(sanPham);
-		}
+            if (sanPham == null)
+            {
+                return NotFound();
+            }
 
-		// GET: SanPhams/Create
-		public IActionResult Create()
-		{
-			ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "MaHang");
-			ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "MaKhuyenMai");
-			ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "MaMauSac");
-			return View();
-		}
+            // Lấy danh sách mã khuyến mãi đang và sắp hoạt động
+            var khuyenMais = await _context.KhuyenMais
+        .Where(k => (k.NgayBatDau <= DateTime.Now && k.NgayKetThuc >= DateTime.Now) || k.NgayBatDau > DateTime.Now)
+        .ToListAsync();
+
+            // Gửi dữ liệu cho View
+            ViewData["KhuyenMais"] = new SelectList(khuyenMais, "MaKhuyenMai", "MaKhuyenMai");
+
+            return View(sanPham);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ApplyPromoCode(string MaSanPham, string MaKhuyenMai)
+        {
+            // Kiểm tra xem mã sản phẩm và mã khuyến mãi có hợp lệ không
+            if (string.IsNullOrEmpty(MaSanPham) || string.IsNullOrEmpty(MaKhuyenMai))
+            {
+                return BadRequest("Mã sản phẩm hoặc mã khuyến mãi không hợp lệ.");
+            }
+
+            var sanPham = await _context.SanPhams.FindAsync(MaSanPham);
+            if (sanPham == null)
+            {
+                return NotFound("Sản phẩm không tồn tại.");
+            }
+
+            var khuyenMai = await _context.KhuyenMais.FindAsync(MaKhuyenMai);
+            if (khuyenMai == null)
+            {
+                return NotFound("Khuyến mãi không tồn tại.");
+            }
+
+            // Tạo chi tiết khuyến mãi
+            var chiTietKhuyenMai = new ChiTietKhuyenMai
+            {
+                MaKhuyenMai = MaKhuyenMai,
+                MaSanPham = MaSanPham,
+                NgayBatDau = khuyenMai.NgayBatDau,
+                NgayKetThuc = khuyenMai.NgayKetThuc,
+                TrangThai = khuyenMai.TrangThai // Giả sử bạn muốn lấy trạng thái từ khuyến mãi
+            };
+
+            // Thêm chi tiết khuyến mãi vào cơ sở dữ liệu
+            _context.ChiTietKhuyenMais.Add(chiTietKhuyenMai);
+            await _context.SaveChangesAsync();
+
+            // Cập nhật mã khuyến mãi cho sản phẩm
+            sanPham.MaKhuyenMai = MaKhuyenMai;
+            _context.Update(sanPham);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Details), new { id = MaSanPham });
+        }
+
+
+        public IActionResult Create()
+        {
+            // Lấy tổng số sản phẩm hiện tại
+            int totalSanPham = _context.SanPhams.Count();
+
+            // Tạo mã sản phẩm tiếp theo, giả sử mã sản phẩm có dạng "SP0001", "SP0002", ...
+            string newMaSanPham = "SP" + (totalSanPham + 1).ToString("D2");
+
+            // Lọc các mã khuyến mãi có trạng thái "Sắp bắt đầu" hoặc "Đang hoạt động"
+            var khuyenMais = _context.KhuyenMais
+                                     .Where(km => km.TrangThai == "Sắp bắt đầu" || km.TrangThai == "Đang hoạt động")
+                                     .ToList();
+
+            // Lọc các hãng có trạng thái "Đang hợp tác"
+            var hangs = _context.Hangs
+                                .Where(h => h.TrangThai == "Đang hợp tác")
+                                .ToList();
+
+            // Thêm lựa chọn "Không có mã khuyến mãi" vào danh sách mã khuyến mãi
+            khuyenMais.Insert(0, new KhuyenMai { MaKhuyenMai = "", TenKhuyenMai = "Không có mã khuyến mãi" });
+
+            // Gửi danh sách khuyến mãi vào ViewBag để sử dụng trong View
+            ViewData["MaKhuyenMai"] = new SelectList(khuyenMais, "MaKhuyenMai", "TenKhuyenMai");
+
+            // Gửi mã sản phẩm mới vào ViewData để có thể sử dụng trong View
+            ViewData["NewMaSanPham"] = newMaSanPham;
+
+            // Gửi danh sách hãng vào ViewData
+            ViewData["MaHang"] = new SelectList(hangs, "MaHang", "TenHang");
+
+            // Gửi danh sách màu sắc vào ViewData
+            ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "TenMauSac");
+
+            return View();
+        }
+
 
         // POST: SanPhams/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -247,30 +352,43 @@ namespace DuAn1.Controllers
             return Json(new { success = true });
         }
 
-
         // GET: SanPhams/Edit/5
         public async Task<IActionResult> Edit(string id)
-		{
-			if (id == null)
-			{
-				return NotFound();
-			}
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-			var sanPham = await _context.SanPhams.FindAsync(id);
-			if (sanPham == null)
-			{
-				return NotFound();
-			}
-			ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "MaHang", sanPham.MaHang);
-			ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "MaKhuyenMai", sanPham.MaKhuyenMai);
-			ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "MaMauSac", sanPham.MaMauSac);
-			return View(sanPham);
-		}
+            var sanPham = await _context.SanPhams.FindAsync(id);
+            if (sanPham == null)
+            {
+                return NotFound();
+            }
 
-        // POST: SanPhams/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // POST: SanPhams/Edit/5
+            // Lọc các mã khuyến mãi có trạng thái "Sắp bắt đầu" hoặc "Đang hoạt động"
+            var khuyenMais = _context.KhuyenMais
+                                     .Where(km => km.TrangThai == "Sắp bắt đầu" || km.TrangThai == "Đang hoạt động")
+                                     .ToList();
+
+            // Thêm lựa chọn "Không có mã khuyến mãi"
+            khuyenMais.Insert(0, new KhuyenMai { MaKhuyenMai = "", TenKhuyenMai = "Không có mã khuyến mãi" });
+
+            // Lọc các hãng có trạng thái "Đang hợp tác"
+            var hangs = _context.Hangs
+                                .Where(h => h.TrangThai == "Đang hợp tác")
+                                .ToList();
+
+            // Gửi danh sách khuyến mãi vào ViewData để sử dụng trong View
+            ViewData["MaKhuyenMai"] = new SelectList(khuyenMais, "MaKhuyenMai", "TenKhuyenMai", sanPham.MaKhuyenMai);
+
+            // Gửi các danh sách khác như mã hàng, mã màu sắc vào ViewData
+            ViewData["MaHang"] = new SelectList(hangs, "MaHang", "TenHang", sanPham.MaHang);
+            ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "TenMauSac", sanPham.MaMauSac);
+
+            return View(sanPham);
+        }
+
         // POST: SanPhams/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -286,7 +404,6 @@ namespace DuAn1.Controllers
                 try
                 {
                     // Cập nhật thông tin sản phẩm
-                    // Nếu có thay đổi URL ảnh, thì giá trị HinhMinhHoa sẽ được cập nhật
                     sanPham.LanSuaGanNhat = DateTime.Now;
 
                     _context.Update(sanPham);
@@ -307,48 +424,13 @@ namespace DuAn1.Controllers
             }
 
             // Nếu có lỗi, giữ lại các giá trị trong ViewData
-            ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "MaHang", sanPham.MaHang);
-            ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "MaKhuyenMai", sanPham.MaKhuyenMai);
-            ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "MaMauSac", sanPham.MaMauSac);
+            ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "TenHang", sanPham.MaHang);
+            ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "TenKhuyenMai", sanPham.MaKhuyenMai);
+            ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "TenMauSac", sanPham.MaMauSac);
             return View(sanPham);
         }
-        // GET: SanPhams/Delete/5
-        public async Task<IActionResult> Delete(string id)
-		{
-			if (id == null)
-			{
-				return NotFound();
-			}
 
-			var sanPham = await _context.SanPhams
-				.Include(s => s.MaHangNavigation)
-				.Include(s => s.MaKhuyenMaiNavigation)
-				.Include(s => s.MaMauSacNavigation)
-				.FirstOrDefaultAsync(m => m.MaSanPham == id);
-			if (sanPham == null)
-			{
-				return NotFound();
-			}
-
-			return View(sanPham);
-		}
-
-		// POST: SanPhams/Delete/5
-		[HttpPost, ActionName("Delete")]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> DeleteConfirmed(string id)
-		{
-			var sanPham = await _context.SanPhams.FindAsync(id);
-			if (sanPham != null)
-			{
-				_context.SanPhams.Remove(sanPham);
-			}
-
-			await _context.SaveChangesAsync();
-			return RedirectToAction(nameof(Index));
-		}
-
-		private bool SanPhamExists(string id)
+        private bool SanPhamExists(string id)
 		{
 			return _context.SanPhams.Any(e => e.MaSanPham == id);
 		}

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DuAn1.Models.SanPham>
+
+@{
+    ViewData["Title"] = "Tạo Chi Tiết Khuyến Mãi";
+    var products = ViewData["Products"] as List<DuAn1.Models.SanPham>;
+    var activePromotions = ViewData["ActivePromotions"] as SelectList;
+}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Màu nền sáng */
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #343a40; /* Màu chữ tiêu đề */
+        text-align: center;
+    }
+
+    form {
+        background-color: #ffffff; /* Màu nền của form */
+        border: 1px solid #ced4da; /* Viền của form */
+        border-radius: 5px; /* Bo tròn góc */
+        padding: 20px; /* Khoảng cách bên trong */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+        max-width: 600px; /* Chiều rộng tối đa của form */
+        margin: auto; /* Căn giữa form */
+    }
+
+    label {
+        display: block; /* Hiển thị label như một khối */
+        margin-bottom: 5px; /* Khoảng cách dưới label */
+        font-weight: bold; /* Đậm chữ */
+    }
+
+    select {
+        width: 100%; /* Chiều rộng 100% */
+        padding: 10px; /* Khoảng cách bên trong */
+        margin-bottom: 15px; /* Khoảng cách dưới select */
+        border: 1px solid #ced4da; /* Viền của select */
+        border-radius: 5px; /* Bo tròn góc */
+        background-color: #f8f9fa; /* Màu nền của select */
+    }
+
+    button {
+        background-color: #007bff; /* Màu nền nút */
+        color: white; /* Màu chữ nút */
+        border: none; /* Không viền */
+        padding: 10px 15px; /* Khoảng cách bên trong nút */
+        border-radius: 5px; /* Bo tròn góc */
+        cursor: pointer; /* Con trỏ khi di chuột qua nút */
+        font-size: 16px; /* Kích thước chữ */
+        transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+    }
+
+        button:hover {
+            background-color: #0056b3; /* Màu nền khi hover */
+        }
+</style>
+
+<h2>Tạo Chi Tiết Khuyến Mãi</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Sản phẩm chưa có khuyến mãi đang hoạt động hoặc sắp bắt đầu:</label>
+        <select multiple="multiple" name="selectedProducts">
+            @foreach (var product in products)
+            {
+                <option value="@product.MaSanPham">@product.TenSanPham</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Chọn Khuyến Mãi Đang Hoạt Động hoặc sắp bắt đầu:</label>
+        <select name="selectedPromotion">
+            @foreach (var promotion in activePromotions)
+            {
+                <option value="@promotion.Value">@promotion.Text</option>
+            }
+        </select>
+    </div>
+    <button type="submit">Tạo</button>
+</form>

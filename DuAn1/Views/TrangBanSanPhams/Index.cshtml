@@ -1,0 +1,180 @@
+﻿@{
+    Layout = "~/Views/Shared/_chitiet.cshtml";
+}
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .categories__item {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+            .categories__item img {
+                object-fit: cover;
+            }
+
+        .product-img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .product-img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Categories Section Begin -->
+    <section class="categories">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    <div class="categories__item categories__large__item set-bg"
+                         data-setbg="https://img.freepik.com/premium-photo/girl-with-headphones-colorful-background_662214-64312.jpg?w=900">
+                        <div class="categories__text">
+                            <h1>Women’s headphone</h1>
+                            <p>
+                                Khám phá thế giới âm thanh tuyệt vời với tai nghe nữ của chúng tôi.
+                                Được thiết kế tinh tế, tai nghe này không chỉ mang lại âm thanh chất lượng cao mà còn đảm bảo sự thoải mái khi sử dụng.
+                                Với công nghệ tiên tiến, bạn sẽ trải nghiệm từng nốt nhạc rõ nét và sống động.
+                            </p>
+                            <a asp-controller="TrangBanSanPhams" asp-action="CuaHang" style="text-decoration: none;">Cửa hàng</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="https://png.pngtree.com/thumb_back/fw800/background/20230610/pngtree-the-character-wearing-headphones-with-an-ear-piercing-in-his-head-image_2919756.jpg">
+                                <div class="categories__text">
+                                    <h4>Men’s headphone</h4>
+                            <a asp-controller="TrangBanSanPhams" asp-action="CuaHang" style="text-decoration: none;">Cửa hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="https://png.pngtree.com/thumb_back/fw800/background/20230516/pngtree-man-wearing-headphones-with-a-picture-of-a-person-with-headphones-image_2563734.jpg">
+                                <div class="categories__text">
+                                    <h4>Kid’s headphone</h4>
+                            <a asp-controller="TrangBanSanPhams" asp-action="CuaHang" style="text-decoration: none;">Cửa hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="https://png.pngtree.com/thumb_back/fw800/background/20240331/pngtree-beautiful-women-at-sunset-city-listening-music-with-headphone-image_15699607.jpg">
+                                <div class="categories__text">
+                                    <h4>Beautiful</h4>
+                            <a asp-controller="TrangBanSanPhams" asp-action="CuaHang" style="text-decoration: none;">Cửa hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="https://img.pikbest.com/origin/10/03/27/75npIkbEsTeuQ.jpg!w700wp">
+                                <div class="categories__text">
+                                    <h4>Headphone</h4>
+                            <a asp-controller="TrangBanSanPhams" asp-action="CuaHang" style="text-decoration: none;">Cửa hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 my-3 mx-3 card" style="max-width: 30%;">
+                    <div class="product-card">
+                        <div class="img">
+                            <img src="@item.HinhMinhHoa" alt="@item.TenSanPham" class="product-img" style="height: 200px;">
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">@item.TenSanPham</h5>
+                            <p class="product-price">
+                                @if (item.DonGia != null && item.MaKhuyenMaiNavigation != null && item.MaKhuyenMaiNavigation.PhanTramGiam != null)
+                                {
+                                    if (item.MaKhuyenMaiNavigation.TrangThai == "Đang hoạt động")
+                                    {
+                                        // Tính giá sau khuyến mãi nếu trạng thái mã khuyến mãi là "Đang hoạt động"
+                                        var discountedPrice = item.DonGia * (1 - (item.MaKhuyenMaiNavigation.PhanTramGiam / 100));
+                                        @String.Format("{0:C0}", discountedPrice)
+                                        // Hiển thị giá sau khuyến mãi
+                                        <span style="text-decoration: line-through; color: red;">@String.Format("{0:C0}", item.DonGia)</span>
+                                        // Hiển thị giá gốc
+                                    }
+                                    else if (item.MaKhuyenMaiNavigation.TrangThai == "Sắp bắt đầu")
+                                    {
+                                        // Thêm chú thích nếu trạng thái mã khuyến mãi là "Sắp bắt đầu"
+                                        @String.Format("{0:C0}", item.DonGia)
+                                        <br />
+                                        <span style="color: orange;">
+                                            (Khuyến mãi sẽ vào: @item.MaKhuyenMaiNavigation.NgayBatDau.ToString("dd/MM/yyyy HH:mm:ss"))
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        // Nếu trạng thái không phải "Đang hoạt động" hoặc "Sắp bắt đầu", hiển thị giá gốc
+                                        @String.Format("{0:C0}", item.DonGia)
+                                    }
+                                }
+                                else
+                                {
+                                    @String.Format("{0:C0}", item.DonGia)
+                                }
+                            </p>
+
+
+                            <div class="product-actions btn-group" role="group">
+                                <form asp-action="AddToCart" method="post">
+                                    <input type="hidden" name="MaSanPham" value="@item.MaSanPham" />
+                                        <input type="number" name="SoLuong" value="1" min="1" max="@item.SoLuongTonKho"  oninput="this.value = this.value || 1"  class="form-control" />
+                                    <button type="submit" class="btn btn-primary">Thêm vào giỏ</button>
+                                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MaSanPham">Chi tiết</a>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+    <div class="pagination">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <a class="btn @(ViewBag.CurrentPage == i ? "btn-primary" : "btn-secondary")" href="@Url.Action("Index", new { page = i})">
+                @i
+            </a>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

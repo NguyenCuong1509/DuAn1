@@ -19,9 +19,11 @@ public partial class SanPham
     public string? KichCo { get; set; }
 
     [Display(Name = "Đơn Giá")]
+    [Range(0, double.MaxValue, ErrorMessage = "Đơn giá không được âm.")]
     public decimal? DonGia { get; set; }
 
     [Display(Name = "Tồn Kho")]
+    [Range(0, int.MaxValue, ErrorMessage = "Số lượng tồn kho không được âm.")]
     public int? SoLuongTonKho { get; set; }
 
     [Display(Name = "Trạng Thái")]
@@ -34,6 +36,7 @@ public partial class SanPham
     public string? KhoangCachKetNoi { get; set; }
 
     [Display(Name = "Pin")]
+    [Range(0, int.MaxValue, ErrorMessage = "Dung lượng pin không được âm.")]
     public int? DungLuongPin { get; set; }
 
     [Display(Name = "Mã Khuyến Mãi")]
@@ -47,8 +50,9 @@ public partial class SanPham
 
     [Display(Name = "Lần Sửa Gần Nhất")]
     public DateTime? LanSuaGanNhat { get; set; }
+    public virtual ICollection<ChiTietKhuyenMai> ChiTietKhuyenMais { get; set; } = new List<ChiTietKhuyenMai>();
 
-    public virtual ICollection<GioHang> GioHangs { get; set; } = new List<GioHang>();
+    public virtual ICollection<SanPhamGioHang> SanPhamGioHangs { get; set; } = new List<SanPhamGioHang>();
 
     public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; } = new List<HoaDonChiTiet>();
 

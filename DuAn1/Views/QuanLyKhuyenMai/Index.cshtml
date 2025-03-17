@@ -1,211 +1,166 @@
-﻿<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Khuyến Mãi</title>
-    <link href="~/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/css/datepicker3.css" rel="stylesheet">
-    <link href="~/css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    <!-- Thêm một số kiểu tùy chỉnh để làm cho giao diện đẹp và phù hợp với màn hình nhỏ -->
-    <style>
-        body {
-            padding-top: 20px;
-            padding-bottom:60px;
-        }
+﻿@model IEnumerable<DuAn1.Models.KhuyenMai>
 
-        .container {
-            max-width: 800px;
-        }
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin-top: 20px;
+}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+/* Page title */
+.page-title {
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+/* Button styles */
+.btn {
+    font-size: 14px;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+}
 
-        .form-control {
-            width: 100%;
-        }
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
 
-        .modal-content {
-            padding: 20px;
-        }
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
 
-        .modal .close {
-            font-size: 1.5rem;
-        }
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
 
-        .table th, .table td {
-            vertical-align: middle;
-        }
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
 
-        .btn {
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-    <div class="row">
-        <ol class="breadcrumb">
-            <li>
-                <a href="#">
-                    <em class="fa fa-home"></em>
-                </a>
-            </li>
-            <li class="active">Quản lý khuyến mãi</li>
-        </ol>
-    </div><!--/.row-->
-    <div class="container">
-        <h1>Quản Lý Khuyến Mãi</h1>
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
 
-        <!-- Form nhập khuyến mãi -->
-        <form id="khuyenMaiForm">
-            <div class="form-group">
-                <label for="maKhuyenMai">Mã Khuyến Mãi:</label>
-                <input type="text" class="form-control" id="maKhuyenMai" name="maKhuyenMai" required>
-            </div>
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
 
-            <div class="form-group">
-                <label for="tenKhuyenMai">Tên Khuyến Mãi:</label>
-                <input type="text" class="form-control" id="tenKhuyenMai" name="tenKhuyenMai" required>
-            </div>
+/* Table styles */
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-            <div class="form-group">
-                <label for="phanTramGiam">Phần Trăm Giảm:</label>
-                <input type="number" class="form-control" id="phanTramGiam" name="phanTramGiam" step="0.01" required>
-            </div>
+.table th, .table td {
+    padding: 15px 20px;
+    text-align: left;
+    border: 1px solid #dee2e6;
+    vertical-align: middle;
+}
 
-            <div class="form-group">
-                <label for="ngayBatDau">Ngày Bắt Đầu:</label>
-                <input type="date" class="form-control" id="ngayBatDau" name="ngayBatDau" required>
-            </div>
+.table th {
+    background-color: #007bff;
+    color: #fff;
+    text-transform: uppercase;
+}
 
-            <div class="form-group">
-                <label for="ngayKetThuc">Ngày Kết Thúc:</label>
-                <input type="date" class="form-control" id="ngayKetThuc" name="ngayKetThuc" required>
-            </div>
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
 
-            <div class="form-group">
-                <label for="trangThai">Trạng Thái:</label>
-                <select class="form-control" id="trangThai" name="trangThai">
-                    <option value="Sắp bắt đầu">Sắp bắt đầu</option>
-                    <option value="Đang hoạt động">Đang hoạt động</option>
-                    <option value="Ngừng hoạt động">Ngừng hoạt động</option>
-                </select>
-            </div>
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
 
-            <button type="submit" class="btn btn-primary">Lưu Khuyến Mãi</button>
-            <button type="button" id="clearForm" class="btn btn-secondary">Xóa Form</button>
-        </form>
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+    .btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
 
-        <!-- Danh sách khuyến mãi -->
-        <div class="khuyenMaiList mt-4">
-            <h2>Danh Sách Khuyến Mãi</h2>
-            <div class="form-group">
-                <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm khuyến mãi...">
-            </div>
-            <button id="searchButton" class="btn btn-info">Tìm Kiếm</button>
+</style>
+<h1>Danh sách khuyến mãi</h1>
 
-            <table class="table table-bordered mt-3">
-                <thead>
-                    <tr>
-                        <th>Mã Khuyến Mãi</th>
-                        <th>Tên Khuyến Mãi</th>
-                        <th>Phần Trăm Giảm</th>
-                        <th>Ngày Bắt Đầu</th>
-                        <th>Ngày Kết Thúc</th>
-                        <th>Trạng Thái</th>
-                        <th>Hành Động</th>
-                    </tr>
-                </thead>
-                <tbody id="khuyenMaiTableBody">
-                    <!-- Các dòng dữ liệu khuyến mãi sẽ được thêm vào đây -->
-                    <tr>
-                        <td>KM001</td>
-                        <td>Giảm Giá Mùa Hè</td>
-                        <td>20.00</td>
-                        <td>2024-06-01</td>
-                        <td>2024-06-30</td>
-                        <td>Đang hoạt động</td>
-                        <td>
-                            <button class="btn btn-warning editButton">Sửa</button>
-                            <button class="btn btn-danger deleteButton">Xóa</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>KM002</td>
-                        <td>Giảm Giá Cuối Năm</td>
-                        <td>30.00</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-31</td>
-                        <td>Đang hoạt động</td>
-                        <td>
-                            <button class="btn btn-warning editButton">Sửa</button>
-                            <button class="btn btn-danger deleteButton">Xóa</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Modal cho sửa khuyến mãi -->
-    <div id="editModal" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Sửa Khuyến Mãi</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="editKhuyenMaiForm">
-                        <div class="form-group">
-                            <label for="editMaKhuyenMai">Mã Khuyến Mãi:</label>
-                            <input type="text" class="form-control" id="editMaKhuyenMai" name="editMaKhuyenMai" required readonly>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="editTenKhuyenMai">Tên Khuyến Mãi:</label>
-                            <input type="text" class="form-control" id="editTenKhuyenMai" name="editTenKhuyenMai" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="editPhanTramGiam">Phần Trăm Giảm:</label>
-                            <input type="number" class="form-control" id="editPhanTramGiam" name="editPhanTramGiam" step="0.01" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="editNgayBatDau">Ngày Bắt Đầu:</label>
-                            <input type="date" class="form-control" id="editNgayBatDau" name="editNgayBatDau" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="editNgayKetThuc">Ngày Kết Thúc:</label>
-                            <input type="date" class="form-control" id="editNgayKetThuc" name="editNgayKetThuc" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="editTrangThai">Trạng Thái:</label>
-                            <select class="form-control" id="editTrangThai" name="editTrangThai">
-                                <option value="Sắp bắt đầu">Sắp bắt đầu</option>
-                                <option value="Đang hoạt động">Đang hoạt động</option>
-                                <option value="Ngừng hoạt động">Ngừng hoạt động</option>
-                            </select>
-                        </div>
-
-                        <button type="submit" class="btn btn-success">Cập Nhật</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    </body>
-    </html>
+<p>
+    <a asp-action="Create" class="btn btn-info">Tạo khuyến mãi mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaKhuyenMai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenKhuyenMai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhanTramGiam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayBatDau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayKetThuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaQuanLyNavigation)
+            </th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKhuyenMai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKhuyenMai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhanTramGiam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayBatDau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayKetThuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaQuanLyNavigation.MaQuanLy)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaKhuyenMai" class="btn btn-info">Sửa </a>
+                <a asp-action="Details" asp-route-id="@item.MaKhuyenMai" class="btn btn-warning">Chi Tiết</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

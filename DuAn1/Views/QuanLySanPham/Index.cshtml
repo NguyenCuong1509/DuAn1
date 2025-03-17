@@ -4,7 +4,42 @@
     ViewData["Title"] = "Danh sách sản phẩm";
     var isSearching = !string.IsNullOrEmpty(Context.Request.Query["searchString"]);
 }
+<style>
+  <style>
+    #advancedSearch {
+        margin-top: 15px;
+    }
 
+    #toggleSearch {
+        margin-left: 10px;
+    }
+
+    .advanced-search-form .form-group {
+        margin-bottom: 15px;
+    }
+
+    .advanced-search-form .form-group label {
+        width: 100%;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .advanced-search-form .form-control {
+        width: 100%;
+    }
+
+    /* Optional: Set a max-width for the form groups */
+    .advanced-search-form .form-group {
+        max-width: 300px; /* You can adjust this as needed */
+    }
+
+    /* Style for the submit button */
+    .advanced-search-form .btn {
+        width: 100%;
+    }
+</style>
+
+</style>
 <div class="row">
     <ol class="breadcrumb">
         <li>
@@ -41,48 +76,67 @@
         </span>
     </div>
 </form>
-<h2>Tìm kiếm nâng cao</h2>
-<form method="get" class="form-inline mb-3" >
-    <div class="form-group me-2 col-md-3">
-        <label for="productCode">Mã sản phẩm:</label>
-        <input type="text" class="form-control" id="productCode" name="productCode" placeholder="Nhập mã sản phẩm" />
-    </div>
-    <div class="form-group me-2 col-md-3">
-        <label for="size">Kích cỡ:</label>
-        <input type="text" class="form-control" id="size" name="size" placeholder="Nhập kích cỡ" />
-    </div>
-    <div class="form-group me-2 col-md-3">
-        <label for="connectionDistance">Khoảng cách kết nối:</label>
-        <input type="text" class="form-control" id="connectionDistance" name="connectionDistance" placeholder="Nhập khoảng cách" />
-    </div>
-    <div class="form-group me-2 col-md-3">
-        <label for="batteryCapacity">Dung lượng pin:</label>
-        <input type="number" class="form-control" id="batteryCapacity" name="batteryCapacity" placeholder="Nhập dung lượng pin" />
-    </div>
-    <div class="form-group me-2 col-md-3">
-        <label for="stockQuantity">Số lượng tồn:</label>
-        <input type="number" class="form-control" id="stockQuantity" name="stockQuantity" placeholder="Nhập số lượng tồn" />
-    </div>
-    <div class="form-group me-2 col-md-3">
-        <label for="brandCode">Mã Hãng:</label>
-        <input type="text" class="form-control" id="brandCode" name="brandCode" placeholder="Nhập mã hãng" />
-    </div>
-    <div class="form-group me-2 col-md-3">
-        <label for="color">Màu sắc:</label>
-        <input type="text" class="form-control" id="color" name="color" placeholder="Nhập màu sắc" />
-    </div>
-    <div class="form-group me-2 col-md-6">
-        <label for="priceFrom">Giá từ:</label>
-        <input type="number" class="form-control" id="priceFrom" name="priceFrom" step="0.01" placeholder="Từ" />
-    </div>
-    <div class="form-group me-2 col-md-6">
-        <label for="priceTo">Giá đến:</label>
-        <input type="number" class="form-control" id="priceTo" name="priceTo" step="0.01" placeholder="Đến" />
-    </div>
-    <div class="col-md-12">
-        <button type="submit" class="btn btn-primary col-12">Lọc</button>
-    </div>
-</form>
+<h2>
+    Tìm kiếm nâng cao
+    <button id="toggleSearch" class="btn btn-secondary btn-sm">Ẩn</button>
+</h2>
+<div id="advancedSearch" style="display: none;">
+    <form method="get" class="form-inline mb-3 advanced-search-form">
+        <div class="form-group me-2 col-md-3">
+            <label for="productCode">Mã sản phẩm:</label>
+            <input type="text" class="form-control" id="productCode" name="productCode" placeholder="Nhập mã sản phẩm" />
+        </div>
+        <div class="form-group me-2 col-md-3">
+            <label for="size">Kích cỡ:</label>
+            <input type="text" class="form-control" id="size" name="size" placeholder="Nhập kích cỡ" />
+        </div>
+        <div class="form-group me-2 col-md-3">
+            <label for="connectionDistance">Khoảng cách kết nối:</label>
+            <input type="text" class="form-control" id="connectionDistance" name="connectionDistance" placeholder="Nhập khoảng cách" />
+        </div>
+        <div class="form-group me-2 col-md-3">
+            <label for="batteryCapacity">Dung lượng pin:</label>
+            <input type="number" class="form-control" id="batteryCapacity" name="batteryCapacity" placeholder="Nhập dung lượng pin" />
+        </div>
+        <div class="form-group me-2 col-md-3">
+            <label for="stockQuantity">Số lượng tồn:</label>
+            <input type="number" class="form-control" id="stockQuantity" name="stockQuantity" placeholder="Nhập số lượng tồn" />
+        </div>
+        <div class="form-group me-2 col-md-3">
+            <label for="brandCode">Mã Hãng:</label>
+            <select class="form-control" id="brandCode" name="brandCode">
+                <option value="">Chọn hãng</option>
+                @foreach (var brand in ViewBag.Brands)
+                {
+                    <option value="@brand.MaHang">@brand.TenHang</option>
+                }
+            </select>
+        </div>
+        <div class="form-group me-2 col-md-3">
+            <label for="color">Màu sắc:</label>
+            <select class="form-control" id="color" name="color">
+                <option value="">Chọn màu sắc</option>
+                @foreach (var color in ViewBag.Colors)
+                {
+                    <option value="@color.MaMauSac">@color.TenMauSac</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group me-2 col-md-6">
+            <label for="priceFrom">Giá từ:</label>
+            <input type="number" class="form-control" id="priceFrom" name="priceFrom" step="0.01" placeholder="Từ" />
+        </div>
+        <div class="form-group me-2 col-md-6">
+            <label for="priceTo">Giá đến:</label>
+            <input type="number" class="form-control" id="priceTo" name="priceTo" step="0.01" placeholder="Đến" />
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary col-12">Lọc</button>
+        </div>
+    </form>
+</div>
+
 
 <p class="col-md-12">
     <a asp-action="Create" class="btn btn-success">Tạo mới</a>
@@ -91,18 +145,13 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.MaSanPham)</th>
             <th>@Html.DisplayNameFor(model => model.TenSanPham)</th>
             <th>@Html.DisplayNameFor(model => model.HinhMinhHoa)</th>
-            <th>@Html.DisplayNameFor(model => model.KichCo)</th>
-            <th>@Html.DisplayNameFor(model => model.KieuKetNoi)</th>
-            <th>@Html.DisplayNameFor(model => model.KhoangCachKetNoi)</th>
-            <th>@Html.DisplayNameFor(model => model.DungLuongPin)</th>
             <th>@Html.DisplayNameFor(model => model.DonGia)</th>
+            <th>Đơn Giá Sau Giảm</th> <!-- Cột mới -->
             <th>@Html.DisplayNameFor(model => model.SoLuongTonKho)</th>
             <th>@Html.DisplayNameFor(model => model.TrangThai)</th>
             <th>@Html.DisplayNameFor(model => model.MaHangNavigation)</th>
-            <th>@Html.DisplayNameFor(model => model.MaKhuyenMaiNavigation)</th>
             <th>@Html.DisplayNameFor(model => model.MaMauSacNavigation)</th>
             <th>@Html.DisplayNameFor(model => model.LanSuaGanNhat)</th>
             <th></th>
@@ -112,7 +161,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.MaSanPham)</td>
                 <td>@Html.DisplayFor(modelItem => item.TenSanPham)</td>
                 <td>
                     @if (!string.IsNullOrEmpty(item.HinhMinhHoa))
@@ -124,39 +172,67 @@
                         <span>Không có hình ảnh</span>
                     }
                 </td>
-                <td>@Html.DisplayFor(modelItem => item.KichCo)</td> 
-                <td>@Html.DisplayFor(modelItem => item.KieuKetNoi)</td>
-                <td>@Html.DisplayFor(modelItem => item.KhoangCachKetNoi)</td>
-                <td>@Html.DisplayFor(modelItem => item.DungLuongPin)</td>
-                <td>@(item.DonGia.HasValue ? String.Format("{0:N0}", item.DonGia.Value) : "0")</td>
+                <td>@String.Format("{0:C0}", item.DonGia)</td>
+                <td>
+                    @if (item.MaKhuyenMaiNavigation != null)
+                    {
+                        if (item.MaKhuyenMaiNavigation.TrangThai == "Đang hoạt động")
+                        {
+                            var discountedPrice = item.DonGia.Value - (item.DonGia.Value * item.MaKhuyenMaiNavigation.PhanTramGiam.Value / 100);
+                            <strong>Đơn giá sau giảm:</strong> @String.Format("{0:C0}", discountedPrice)
+                        }
+                        else if (item.MaKhuyenMaiNavigation.TrangThai == "Sắp bắt đầu")
+                        {
+                             var discountedPrice = item.DonGia.Value - (item.DonGia.Value * item.MaKhuyenMaiNavigation.PhanTramGiam.Value / 100);
+                            <p><strong>Đơn giá sau giảm:</strong> @String.Format("{0:C0}", discountedPrice)</p>
+                            <span>Sắp bắt đầu</span>
+                        }
+                        else
+                        {
+                            <span>Không có mã khuyến mãi áp dụng</span>
+                        }
+                    }
+                    else
+                    {
+                        <span>Không có mã khuyến mãi</span>
+                    }
+                </td>
+
                 <td>@Html.DisplayFor(modelItem => item.SoLuongTonKho)</td>
                 <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
                 <td>@Html.DisplayFor(modelItem => item.MaHangNavigation.TenHang)</td>
-                <td>@Html.DisplayFor(modelItem => item.MaKhuyenMaiNavigation.TenKhuyenMai)</td>
                 <td>@Html.DisplayFor(modelItem => item.MaMauSacNavigation.TenMauSac)</td>
                 <td>@Html.DisplayFor(modelItem => item.LanSuaGanNhat)</td>
+
                 <td class="btn-group-vertical">
                     <a asp-action="Edit" asp-route-id="@item.MaSanPham" class="btn btn-primary">Sửa</a>
                     <a asp-action="Details" asp-route-id="@item.MaSanPham" class="btn btn-info">Chi tiết</a>
-
-                    <!-- Chỉ hiển thị nút Ngừng kinh doanh khi trạng thái là Đang kinh doanh -->
+                    <!-- Các nút hành động khác -->
                     @if (item.TrangThai == "Đang kinh doanh")
                     {
-                        <button onclick="updateStatus('@item.MaSanPham')" class="btn btn-warning">Dừng kinh doanh</button>
+                        <button onclick="updateStatus('@item.MaSanPham')" class="btn btn-warning">Dừng</button>
                     }
 
                     <!-- Chỉ hiển thị nút Đang kinh doanh khi trạng thái là Ngừng kinh doanh -->
                     @if (item.TrangThai == "Ngừng kinh doanh")
                     {
-                        <button onclick="updateTrangthai('@item.MaSanPham')" class="btn btn-primary"> Đang kinh doanh</button>
+                        <button onclick="updateTrangthai('@item.MaSanPham')" class="btn btn-success"> Tiếp</button>
                     }
 
-                    <a asp-action="Delete" asp-route-id="@item.MaSanPham" class="btn btn-danger">Xóa</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<div class="pagination">
+    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    {
+        <a class="btn @(ViewBag.CurrentPage == i ? "btn-primary" : "btn-secondary")" href="@Url.Action("Index", new { page = i, searchString = Context.Request.Query["searchString"], trangThai = Context.Request.Query["trangThai"] })">
+            @i
+        </a>
+    }
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -193,4 +269,14 @@
             }
         });
     }
+    document.getElementById('toggleSearch').addEventListener('click', function () {
+        var searchDiv = document.getElementById('advancedSearch');
+        if (searchDiv.style.display === 'none') {
+            searchDiv.style.display = 'block';
+            this.textContent = 'Ẩn'; // Thay đổi nội dung nút
+        } else {
+            searchDiv.style.display = 'none';
+            this.textContent = 'Hiện'; // Thay đổi nội dung nút
+        }
+    });
 </script>

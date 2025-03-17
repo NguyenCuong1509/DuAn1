@@ -6,10 +6,8 @@
     <title>Quản Lý Thống Kê</title>
     <link href="~/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/css/datepicker3.css" rel="stylesheet">
     <link href="~/css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
     <style>
         body {
             padding-top: 20px;
@@ -38,17 +36,39 @@
             width: 22%;
         }
 
-        .stat h3 {
-            margin: 0;
+            .stat h3 {
+                margin: 0;
+            }
+
+            .stat p {
+                font-size: 14px;
+                color: #888;
+            }
+
+        .stat1 {
+            text-align: left;
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin: 10px 0;
         }
 
-        .stat p {
-            font-size: 14px;
-            color: #888;
+            .stat1 h3 {
+                margin: 0;
+            }
+
+        .custom-range {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .chart-container {
-            position: relative;
+        #salesChart {
+            width: 100%;
             height: 400px;
         }
     </style>
@@ -66,58 +86,142 @@
     </div><!--/.row-->
     <!-- Main content -->
     <div class="container">
-
-        <!-- Dòng thống kê thu chi và hàng nhập xuất -->
-        <div class="row">
-            <!-- Thống kê thu chi -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Thống Kê Thu Chi</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="thuChiChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Thống kê hàng nhập xuất -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Thống Kê Hàng Nhập Xuất</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="hangNhapXuatChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Thống kê theo ngày, tuần, tháng, năm -->
         <div class="statistics">
             <div class="stat">
-                <h3>Ngày</h3>
-                <p>Thống kê theo ngày</p>
+                <h3>@ViewBag.DailySales.ToString("C")</h3>
+                <p>Doanh thu ngày qua</p>
             </div>
             <div class="stat">
-                <h3>Tuần</h3>
-                <p>Thống kê theo tuần</p>
+                <h3>@ViewBag.WeeklySales.ToString("C")</h3>
+                <p>Doanh thu tuần qua</p>
             </div>
             <div class="stat">
-                <h3>Tháng</h3>
-                <p>Thống kê theo tháng</p>
+                <h3>@ViewBag.MonthlySales.ToString("C")</h3>
+                <p>Doanh thu tháng qua</p>
             </div>
             <div class="stat">
-                <h3>Năm</h3>
-                <p>Thống kê theo năm</p>
+                <h3>@ViewBag.YearlySales.ToString("C")</h3>
+                <p>Doanh thu năm qua</p>
             </div>
         </div>
 
+        <!-- Thống kê theo khoảng thời gian -->
+        <div class="custom-range">
+            <h4><strong>Thống kê theo khoảng thời gian</strong></h4>
+            <form method="post" asp-action="Index">
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="startDate">Từ ngày:</label>
+                        <input type="date" id="startDate" name="startDate" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="endDate">Đến ngày:</label>
+                        <input type="date" id="endDate" name="endDate" class="form-control" required />
+                    </div>
+                </div>
+                <input type="hidden" name="period" value="custom" />
+                <button type="submit" class="btn btn-primary">Xem Thống Kê</button>
+            </form>
+            @if (ViewBag.CustomRangeSales > 0)
+            {
+                <p>Doanh thu từ @ViewBag.StartDate.ToShortDateString() đến @ViewBag.EndDate.ToShortDateString(): @ViewBag.CustomRangeSales.ToString("C")</p>
+            }
+            else
+            {
+                <p>Không có doanh thu trong khoảng thời gian này.</p>
+            }
+        </div>
+        <div class="stat1">
+            <h4><strong>Thống kê theo khách hàng</strong></h4>
+            <h3>Tổng số khách hàng: @ViewBag.TotalCustomers</h3>
+            <h3>Khách hàng nam: @ViewBag.Nam</h3>
+            <h3>Khách hàng nữ: @ViewBag.Nu</h3>
+            <h3>Khách hàng đang hoạt động: @ViewBag.ActiveCustomers</h3>
+        </div>
+        <div class="stat1">   
+            <h4><strong>Thống kê số lượng bán theo sản phẩm</strong></h4>
+            <canvas id="salesChart"></canvas>
+        </div> 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('salesChart').getContext('2d');
+        var productSales = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.ProductSales));
+
+        var labels = productSales.map(function (item) {
+            return item.TenSanPham;
+        });
+
+        var quantityData = productSales.map(function (item) {
+            return item.SoLuong;
+        });
+
+        var revenueData = productSales.map(function (item) {
+            return item.DoanhThu; // Doanh thu
+        });
+
+        var salesChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Số lượng bán',
+                    data: quantityData,
+                    backgroundColor: 'purple',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y1' // Gán dataset này cho trục y bên phải
+                },
+                {
+                    label: 'Doanh thu',
+                    data: revenueData,
+                    backgroundColor: 'green', // Màu sắc khác cho doanh thu/-strong/-heart:>:o:-((:-h borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y2' // Gán dataset này cho trục y bên trái
+                }]
+            },
+            options: {
+                scales: {
+                    y1: {
+                        type: 'linear',
+                        position: 'left', // Đặt yAxisID này bên trái
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Số lượng bán',
+                            font: {
+                                weight: 'bold' // Đặt chữ in đậm cho tiêu đề
+                            }
+                        },
+                        grid: {
+                            drawOnChartArea: false // Không vẽ lưới cho trục y bên trái
+                        }
+                    },
+                    y2: {
+                        type: 'linear',
+                        position: 'right', // Đặt yAxisID này bên phải
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Doanh thu',
+                            font: {
+                                weight: 'bold' // Đặt chữ in đậm cho tiêu đề
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Sản phẩm',
+                            font: {
+                                weight: 'bold' // Đặt chữ in đậm cho tiêu đề
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

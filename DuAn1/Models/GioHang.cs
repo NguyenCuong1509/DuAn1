@@ -7,11 +7,9 @@ public partial class GioHang
 {
     public string MaGioHang { get; set; } = null!;
 
-    public int? SoLuong { get; set; }
+    public int? SoLoaiSanPham { get; set; }
 
     public DateTime? NgayThem { get; set; }
-
-    public string? MaSanPham { get; set; }
 
     public string? MaKhachHang { get; set; }
 
@@ -19,5 +17,6 @@ public partial class GioHang
 
     public virtual KhachHang? MaKhachHangNavigation { get; set; }
 
-    public virtual SanPham? MaSanPhamNavigation { get; set; }
+    public virtual ICollection<SanPhamGioHang> SanPhamGioHangs { get; set; } = new List<SanPhamGioHang>();
 }
+

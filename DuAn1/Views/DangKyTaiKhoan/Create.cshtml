@@ -1,0 +1,137 @@
+﻿@model DuAn1.Models.KhachHang
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_chitiet.cshtml";
+}
+<style>
+    /* Đặt chiều rộng tối đa cho form */
+    .login-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Các form group có margin bottom để tạo khoảng cách giữa các trường */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Điều chỉnh padding và border cho input và select */
+    .form-control {
+        border-radius: 4px;
+        padding: 10px;
+        width:430px;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Nút Submit */
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+        font-size: 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    /* Đảm bảo các label có khoảng cách tốt */
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    /* Đảm bảo text-danger có màu sắc hợp lý */
+    .text-danger {
+        font-size: 0.875rem;
+        color: #dc3545;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20230612/pngtree-pair-of-headphones-on-the-water-at-nighttime-image_2931863.jpg');
+        background-size: cover; /* Để hình ảnh phủ kín toàn bộ */
+        background-position: center; /* Để hình ảnh nằm giữa */
+    }
+</style>
+<div class="row login-container my-5">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group hidden">
+                <label asp-for="MaKhachHang" class="control-label"></label>
+                <input asp-for="MaKhachHang" class="form-control" readonly />
+                <span asp-validation-for="MaKhachHang" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="HoTen" class="control-label"></label>
+                <input asp-for="HoTen" class="form-control" />
+                <span asp-validation-for="HoTen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sdt" class="control-label"></label>
+                <input asp-for="Sdt" class="form-control" />
+                <span asp-validation-for="Sdt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaChi" class="control-label"></label>
+                <input asp-for="DiaChi" class="form-control" placeholder="Số nhà - xã - huyện - thành phố" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GioiTinh" class="control-label"></label>
+                <select asp-for="GioiTinh" class="form-control">
+                    <option value="">-- Chọn giới tính --</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+                <span asp-validation-for="GioiTinh" class="text-danger"></span>
+            </div>
+            <div class="form-group hidden">
+                <label asp-for="TrangThai" class="control-label"></label>
+                <input asp-for="TrangThai" class="form-control" readonly />
+                <span asp-validation-for="TrangThai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        <a href="/DangNhap/DangNhap" style="text-decoration: none; " class="btn btn-primary">Quay Lại Đăng Nhập</a>
+    </div>
+</div>
+
+<div>   
+</div>
+

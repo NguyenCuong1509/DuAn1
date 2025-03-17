@@ -5,6 +5,66 @@
       "PackagePath": "staticwebassets\\DuAn1.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\Source2\\Magnific-Popup-master.zip",
+      "PackagePath": "staticwebassets\\Source2\\Magnific-Popup-master.zip"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\Source2\\OwlCarousel2-2.3.4.zip",
+      "PackagePath": "staticwebassets\\Source2\\OwlCarousel2-2.3.4.zip"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\Source2\\SlickNav-master.zip",
+      "PackagePath": "staticwebassets\\Source2\\SlickNav-master.zip"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\Source2\\barfiller-master.zip",
+      "PackagePath": "staticwebassets\\Source2\\barfiller-master.zip"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\Source2\\bootstrap-4.2.1-dist.zip",
+      "PackagePath": "staticwebassets\\Source2\\bootstrap-4.2.1-dist.zip"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\Source2\\font-awesome-4.7.0.zip",
+      "PackagePath": "staticwebassets\\Source2\\font-awesome-4.7.0.zip"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\Source2\\jQuery.countdown-master.zip",
+      "PackagePath": "staticwebassets\\Source2\\jQuery.countdown-master.zip"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\css2\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css2\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\css2\\elegant-icons.css",
+      "PackagePath": "staticwebassets\\css2\\elegant-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\css2\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\css2\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\css2\\jquery-ui.min.css",
+      "PackagePath": "staticwebassets\\css2\\jquery-ui.min.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\css2\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\css2\\magnific-popup.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\css2\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\css2\\owl.carousel.min.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\css2\\slicknav.min.css",
+      "PackagePath": "staticwebassets\\css2\\slicknav.min.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\css2\\style.css",
+      "PackagePath": "staticwebassets\\css2\\style.css"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\css\\bootstrap-table.css",
       "PackagePath": "staticwebassets\\css\\bootstrap-table.css"
     },
@@ -65,6 +125,46 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\ElegantIcons.eot",
+      "PackagePath": "staticwebassets\\fonts2\\ElegantIcons.eot"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\ElegantIcons.svg",
+      "PackagePath": "staticwebassets\\fonts2\\ElegantIcons.svg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\ElegantIcons.ttf",
+      "PackagePath": "staticwebassets\\fonts2\\ElegantIcons.ttf"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\ElegantIcons.woff",
+      "PackagePath": "staticwebassets\\fonts2\\ElegantIcons.woff"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\fonts2\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\fonts2\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\fonts2\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\fonts2\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\fonts2\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts2\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\fonts2\\fontawesome-webfont.woff2"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts\\FontAwesome.otf",
       "PackagePath": "staticwebassets\\fonts\\FontAwesome.otf"
     },
@@ -107,6 +207,374 @@
     {
       "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\fonts\\glyphicons-halflings-regular.woff2",
       "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\banner\\banner-1.jpg",
+      "PackagePath": "staticwebassets\\img\\banner\\banner-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\banner\\banner-2.jpg",
+      "PackagePath": "staticwebassets\\img\\banner\\banner-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\banner\\banner-3.jpg",
+      "PackagePath": "staticwebassets\\img\\banner\\banner-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-10.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-4.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-5.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-6.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-7.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-8.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\blog-9.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\details\\blog-details.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\details\\blog-details.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\details\\comment-1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\details\\comment-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\details\\comment-2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\details\\comment-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\details\\comment-3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\details\\comment-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\sidebar\\fp-1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\sidebar\\fp-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\sidebar\\fp-2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\sidebar\\fp-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\blog\\sidebar\\fp-3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\sidebar\\fp-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\categories\\category-1.jpg",
+      "PackagePath": "staticwebassets\\img\\categories\\category-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\categories\\category-2.jpg",
+      "PackagePath": "staticwebassets\\img\\categories\\category-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\categories\\category-3.jpg",
+      "PackagePath": "staticwebassets\\img\\categories\\category-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\categories\\category-4.jpg",
+      "PackagePath": "staticwebassets\\img\\categories\\category-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\categories\\category-5.jpg",
+      "PackagePath": "staticwebassets\\img\\categories\\category-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\category-1.jpg",
+      "PackagePath": "staticwebassets\\img\\category-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\discount.jpg",
+      "PackagePath": "staticwebassets\\img\\discount.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\instagram\\insta-1.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\insta-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\instagram\\insta-2.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\insta-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\instagram\\insta-3.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\insta-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\instagram\\insta-4.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\insta-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\instagram\\insta-5.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\insta-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\instagram\\insta-6.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\insta-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\payment\\payment-1.png",
+      "PackagePath": "staticwebassets\\img\\payment\\payment-1.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\payment\\payment-2.png",
+      "PackagePath": "staticwebassets\\img\\payment\\payment-2.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\payment\\payment-3.png",
+      "PackagePath": "staticwebassets\\img\\payment\\payment-3.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\payment\\payment-4.png",
+      "PackagePath": "staticwebassets\\img\\payment\\payment-4.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\payment\\payment-5.png",
+      "PackagePath": "staticwebassets\\img\\payment\\payment-5.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\details\\product-1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\details\\product-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\details\\product-2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\details\\product-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\details\\product-3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\details\\product-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\details\\product-4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\details\\product-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\details\\thumb-1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\details\\thumb-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\details\\thumb-2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\details\\thumb-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\details\\thumb-3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\details\\thumb-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\details\\thumb-4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\details\\thumb-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\product-1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\product-2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\product-3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\product-4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\product-5.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\product-6.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\product-7.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\product-8.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\related\\rp-1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\related\\rp-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\related\\rp-2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\related\\rp-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\related\\rp-3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\related\\rp-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\product\\related\\rp-4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\related\\rp-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop-cart\\cp-1.jpg",
+      "PackagePath": "staticwebassets\\img\\shop-cart\\cp-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop-cart\\cp-2.jpg",
+      "PackagePath": "staticwebassets\\img\\shop-cart\\cp-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop-cart\\cp-3.jpg",
+      "PackagePath": "staticwebassets\\img\\shop-cart\\cp-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop-cart\\cp-4.jpg",
+      "PackagePath": "staticwebassets\\img\\shop-cart\\cp-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop\\shop-1.jpg",
+      "PackagePath": "staticwebassets\\img\\shop\\shop-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop\\shop-2.jpg",
+      "PackagePath": "staticwebassets\\img\\shop\\shop-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop\\shop-3.jpg",
+      "PackagePath": "staticwebassets\\img\\shop\\shop-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop\\shop-4.jpg",
+      "PackagePath": "staticwebassets\\img\\shop\\shop-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop\\shop-5.jpg",
+      "PackagePath": "staticwebassets\\img\\shop\\shop-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop\\shop-6.jpg",
+      "PackagePath": "staticwebassets\\img\\shop\\shop-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop\\shop-7.jpg",
+      "PackagePath": "staticwebassets\\img\\shop\\shop-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop\\shop-8.jpg",
+      "PackagePath": "staticwebassets\\img\\shop\\shop-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\shop\\shop-9.jpg",
+      "PackagePath": "staticwebassets\\img\\shop\\shop-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\bs-1.jpg",
+      "PackagePath": "staticwebassets\\img\\trend\\bs-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\bs-2.jpg",
+      "PackagePath": "staticwebassets\\img\\trend\\bs-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\bs-3.jpg",
+      "PackagePath": "staticwebassets\\img\\trend\\bs-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\f-1.jpg",
+      "PackagePath": "staticwebassets\\img\\trend\\f-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\f-2.jpg",
+      "PackagePath": "staticwebassets\\img\\trend\\f-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\f-3.jpg",
+      "PackagePath": "staticwebassets\\img\\trend\\f-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\ht-1.jpg",
+      "PackagePath": "staticwebassets\\img\\trend\\ht-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\ht-2.jpg",
+      "PackagePath": "staticwebassets\\img\\trend\\ht-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\ht-3.jpg",
+      "PackagePath": "staticwebassets\\img\\trend\\ht-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\img\\trend\\logo.png",
+      "PackagePath": "staticwebassets\\img\\trend\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js2\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\jquery-3.3.1.min.js",
+      "PackagePath": "staticwebassets\\js2\\jquery-3.3.1.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\jquery-ui.min.js",
+      "PackagePath": "staticwebassets\\js2\\jquery-ui.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\jquery.countdown.min.js",
+      "PackagePath": "staticwebassets\\js2\\jquery.countdown.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\jquery.magnific-popup.min.js",
+      "PackagePath": "staticwebassets\\js2\\jquery.magnific-popup.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\jquery.nicescroll.min.js",
+      "PackagePath": "staticwebassets\\js2\\jquery.nicescroll.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\jquery.slicknav.js",
+      "PackagePath": "staticwebassets\\js2\\jquery.slicknav.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\main.js",
+      "PackagePath": "staticwebassets\\js2\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\mixitup.min.js",
+      "PackagePath": "staticwebassets\\js2\\mixitup.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js2\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\js2\\owl.carousel.min.js"
     },
     {
       "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\js\\bootstrap-datepicker.js",
@@ -447,6 +915,82 @@
     {
       "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_base.scss",
+      "PackagePath": "staticwebassets\\sass2\\_base.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_blog-details.scss",
+      "PackagePath": "staticwebassets\\sass2\\_blog-details.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_blog-sidebar.scss",
+      "PackagePath": "staticwebassets\\sass2\\_blog-sidebar.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_blog.scss",
+      "PackagePath": "staticwebassets\\sass2\\_blog.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_breadcrumb.scss",
+      "PackagePath": "staticwebassets\\sass2\\_breadcrumb.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_categories.scss",
+      "PackagePath": "staticwebassets\\sass2\\_categories.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_checkout.scss",
+      "PackagePath": "staticwebassets\\sass2\\_checkout.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_contact.scss",
+      "PackagePath": "staticwebassets\\sass2\\_contact.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_footer.scss",
+      "PackagePath": "staticwebassets\\sass2\\_footer.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_header.scss",
+      "PackagePath": "staticwebassets\\sass2\\_header.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_home-page.scss",
+      "PackagePath": "staticwebassets\\sass2\\_home-page.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_mixins.scss",
+      "PackagePath": "staticwebassets\\sass2\\_mixins.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_product-details.scss",
+      "PackagePath": "staticwebassets\\sass2\\_product-details.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_product.scss",
+      "PackagePath": "staticwebassets\\sass2\\_product.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_responsive.scss",
+      "PackagePath": "staticwebassets\\sass2\\_responsive.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_shop-cart.scss",
+      "PackagePath": "staticwebassets\\sass2\\_shop-cart.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_shop.scss",
+      "PackagePath": "staticwebassets\\sass2\\_shop.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\_variable.scss",
+      "PackagePath": "staticwebassets\\sass2\\_variable.scss"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass2\\style.scss",
+      "PackagePath": "staticwebassets\\sass2\\style.scss"
     },
     {
       "Id": "C:\\Users\\ADMIN\\Desktop\\DuAn1\\DuAn1\\wwwroot\\sass\\styles.scss",

@@ -1,0 +1,68 @@
+﻿@model DuAn1.Models.KhachHang
+
+@{
+    ViewData["Title"] = "Edit Customer";
+    Layout = "~/Views/Shared/_chitiet.cshtml";
+
+}
+<style>
+    .hidden{
+        display:none;
+    }
+</style>
+
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label for="MaKhachHang">Mã Khách Hàng</label>
+        <input asp-for="MaKhachHang" class="form-control" readonly />
+        <span asp-validation-for="MaKhachHang" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="HoTen">Họ và tên</label>
+        <input asp-for="HoTen" class="form-control" />
+        <span asp-validation-for="HoTen" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Sdt">Số điện thoại</label>
+        <input asp-for="Sdt" class="form-control" />
+        <span asp-validation-for="Sdt" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="DiaChi">Địa chỉ</label>
+        <input asp-for="DiaChi" class="form-control" />
+        <span asp-validation-for="DiaChi" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="GioiTinh">Giới tính</label>
+        <select asp-for="GioiTinh" class="form-control">
+            <option value="Nam" >Nam</option>
+            <option value="Nữ">Nữ</option>
+        </select>
+        <span asp-validation-for="GioiTinh" class="text-danger"></span>
+    </div>
+
+    <div class="form-group hidden">
+        <label for="TrangThai">Trạng thái</label>
+        <input asp-for="TrangThai" class="form-control" />
+        <span asp-validation-for="TrangThai" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Username">Tên đăng nhập</label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Password">Mật khẩu</label>
+        <input asp-for="Password" class="form-control" type="password" value="@Model.Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Details" asp-route-id="@Model.MaKhachHang" class="btn btn-secondary">Cancel</a>
+</form>

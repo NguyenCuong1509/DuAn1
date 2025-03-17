@@ -26,12 +26,60 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\ADMIN\Desktop\DuAn1\DuAn1
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/DangKy/DangKy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5XERhbmdLeS5jc2h0bWw=
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/ChiTietKhuyenMais/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hpVGlldEtodXllbk1haXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/ChiTietKhuyenMais/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hpVGlldEtodXllbk1haXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/DangKyTaiKhoan/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5VGFpS2hvYW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/DangKyTaiKhoan/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5VGFpS2hvYW5cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/DangKyTaiKhoan/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5VGFpS2hvYW5cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/DangKyTaiKhoan/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5VGFpS2hvYW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/DangKyTaiKhoan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5VGFpS2hvYW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/DangNhap/DangNhap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ05oYXBcRGFuZ05oYXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/GioHang/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lvSGFuZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/GioHang/XemHoaDon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lvSGFuZ1xYZW1Ib2FEb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/Hangs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFuZ3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/Hangs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFuZ3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/Hangs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFuZ3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/Hangs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFuZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/Home/Index.cshtml]
@@ -46,28 +94,52 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hhY2hIYW5nc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/KhachHangs/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hhY2hIYW5nc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/KhachHangs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hhY2hIYW5nc1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/KhachHangs/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hhY2hIYW5nc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/KhachHangs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hhY2hIYW5nc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/MauSacs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF1U2Fjc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/MauSacs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF1U2Fjc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/MauSacs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF1U2Fjc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/MauSacs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF1U2Fjc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QMK/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUU1LXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLyHoaDon/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5SG9hRG9uXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLyHoaDon/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5SG9hRG9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLyKhuyenMai/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5S2h1eWVuTWFpXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLyKhuyenMai/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5S2h1eWVuTWFpXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLyKhuyenMai/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5S2h1eWVuTWFpXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLyKhuyenMai/Index.cshtml]
@@ -76,10 +148,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLySanPham/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5U2FuUGhhbVxDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLySanPham/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5U2FuUGhhbVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLySanPham/Details.cshtml]
@@ -94,16 +162,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5U2FuUGhhbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLyTaiKhoan/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5VGFpS2hvYW5cSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLyThongKe/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5VGhvbmdLZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLy/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5XEluZGV4LmNzaHRtbA==
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLy/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLy/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/QuanLy/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbkx5XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/Shared/Error.cshtml]
@@ -114,12 +186,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE5ld0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/Shared/_banhang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9iYW5oYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/Shared/_chitiet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9jaGl0aWV0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/TrangChuBanHang/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbmdDaHVCYW5IYW5nXEluZGV4LmNzaHRtbA==
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/TaiKhoanKhachHang/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFpS2hvYW5LaGFjaEhhbmdcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/TaiKhoanKhachHang/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFpS2hvYW5LaGFjaEhhbmdcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/TaiKhoanKhachHang/HoaDonChiTiet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFpS2hvYW5LaGFjaEhhbmdcSG9hRG9uQ2hpVGlldC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/TrangBanSanPhams/CuaHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbmdCYW5TYW5QaGFtc1xDdWFIYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/TrangBanSanPhams/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbmdCYW5TYW5QaGFtc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/TrangBanSanPhams/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbmdCYW5TYW5QaGFtc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/TrangBanSanPhams/LienHe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbmdCYW5TYW5QaGFtc1xMaWVuSGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/Desktop/DuAn1/DuAn1/Views/_ViewImports.cshtml]

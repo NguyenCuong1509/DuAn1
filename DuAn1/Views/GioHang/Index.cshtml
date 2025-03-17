@@ -1,0 +1,68 @@
+﻿@model DuAn1.Models.GioHang
+
+@{
+    Layout = "~/Views/Shared/_chitiet.cshtml";
+}
+
+<div class="container mt-5">
+    <h2>Giỏ Hàng</h2>
+    @if (Model != null && Model.SanPhamGioHangs.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Tổng </th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SanPhamGioHangs)
+                {
+                    var product = item.MaSanPhamNavigation;
+                    <tr>
+                        <td><img src="@product.HinhMinhHoa" alt="@product.TenSanPham" width="50" /></td>
+                        <td>@product.TenSanPham</td>
+                        <td>
+                            <form asp-action="UpdateQuantity" method="post">
+                                <input type="hidden" name="MaSanPham" value="@product.MaSanPham" />
+                                <!-- Đặt min="1" để không cho phép nhập số âm hoặc số 0 -->
+                                <input type="number" name="SoLuong" value="@item.SoLuong" min="1" max="@item.MaSanPhamNavigation.SoLuongTonKho" oninput="this.value = this.value || 1" />
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                            </form>
+                        </td>
+                        <td>@(product.DonGia?.ToString("C0") ?? "Liên hệ")</td>  <!-- Hiển thị giá sản phẩm -->
+                        <td>@(product.DonGia.HasValue ? product.DonGia.Value.ToString("C0") : "Liên hệ")</td>  <!-- Hiển thị giá sản phẩm -->
+
+                        <td>
+                            <form asp-action="RemoveFromCart" method="post">
+                                <input type="hidden" name="MaSanPham" value="@product.MaSanPham" />
+                                <button type="submit" class="btn btn-danger">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                @* Tính tổng tiền giỏ hàng *@
+                @{
+                    var totalAmount = Model.SanPhamGioHangs.Sum(item => item.SoLuong * (item.MaSanPhamNavigation.DonGia ?? 0));
+                    decimal totalAmountDecimal = (decimal)totalAmount; // Ép kiểu về decimal
+                }
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between mt-4">
+            <h4>Tổng tiền: @totalAmountDecimal.ToString("C0")</h4>  <!-- Hiển thị tổng tiền không có phần thập phân -->
+            <form asp-action="ThanhToan" method="post">
+                <button type="submit" class="btn btn-success">Đặt hàng</button>
+            </form>
+        </div>
+
+    }
+    else
+    {
+        <p>Giỏ hàng của bạn đang trống.</p>
+    }
+</div>

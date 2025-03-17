@@ -1,0 +1,137 @@
+﻿@model DuAn1.Models.KhuyenMai
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+   
+    /* Heading Styling */
+    h1 {
+        font-size: 2.5rem;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-size: 1.8rem;
+        color: #495057;
+        margin-bottom: 15px;
+    }
+
+    /* Description List (dl) Styling */
+    dl.row {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+    }
+
+    /* Table Styling */
+    table.table-bordered {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+        table.table-bordered th, table.table-bordered td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+
+        table.table-bordered th {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+
+        table.table-bordered tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+    /* Links Styling */
+    a {
+        color: #007bff;
+        font-size: 1rem;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+</style>
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenKhuyenMai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenKhuyenMai)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhanTramGiam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhanTramGiam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayBatDau)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayBatDau)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayKetThuc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayKetThuc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaQuanLyNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaQuanLyNavigation.MaQuanLy)
+        </dd>
+    </dl>
+</div>
+<h1>Chi tiết Khuyến Mãi</h1>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Mã Khuyến Mãi</th>
+                <th>Mã Sản Phẩm</th>
+                <th>Trạng Thái</th>
+                <th>Tên khuyến mãi</th>
+                <th>Tên sản phẩm</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ChiTietKhuyenMais)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.MaKhuyenMai)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MaSanPham)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MaKhuyenMaiNavigation.TenKhuyenMai)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MaSanPhamNavigation.TenSanPham)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.MaKhuyenMai">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

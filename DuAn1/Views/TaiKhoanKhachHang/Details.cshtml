@@ -1,0 +1,91 @@
+﻿@model DuAn1.Models.KhachHang
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_chitiet.cshtml";
+}
+<style>
+    .hidden{
+        display:none;
+    }
+</style>
+
+<div>
+
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sdt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sdt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+        <dt class = "col-sm-2 hidden">
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+        <dd class = "col-sm-10 hidden">
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+    </dl>
+    <a href="@Url.Action("Edit", "TaiKhoanKhachHang", new { id = Model.MaKhachHang })" class="btn btn-primary">Sửa</a>
+
+    <div>
+        <h4>Danh sách hóa đơn</h4>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Mã Hóa Đơn</th>
+                    <th>Ngày Tạo</th>
+                    <th>Thành Tiền</th>
+                    <th>Trạng Thái</th>
+                    <th>Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var hoaDon in Model.HoaDons)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => hoaDon.MaHoaDon)</td>
+                        <td>@Html.DisplayFor(modelItem => hoaDon.NgayTao)</td>
+                        <td>@Html.DisplayFor(modelItem => hoaDon.ThanhTien)</td>
+                        <td>@Html.DisplayFor(modelItem => hoaDon.TrangThai)</td>
+                        <td>
+                            <a asp-controller="GioHang" asp-action="XemHoaDon" asp-route-maHoaDon="@hoaDon.MaHoaDon" class="btn btn-info">Xem Chi Tiết</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

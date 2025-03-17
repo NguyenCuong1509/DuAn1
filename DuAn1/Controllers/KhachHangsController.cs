@@ -19,11 +19,34 @@ namespace DuAn1.Controllers
         }
 
         // GET: KhachHangs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? searchString, int page = 1, int pageSize = 10)
         {
-            return View(await _context.KhachHangs.ToListAsync());
-        }
+            var khachHangsQuery = _context.KhachHangs.AsQueryable();
 
+            // Áp dụng bộ lọc tìm kiếm theo tên hoặc số điện thoại
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                khachHangsQuery = khachHangsQuery.Where(k => k.HoTen.Contains(searchString) || k.Sdt.Contains(searchString));
+            }
+
+            // Sắp xếp khách hàng theo tên
+            khachHangsQuery = khachHangsQuery.OrderByDescending(k => Convert.ToInt32(k.MaKhachHang.Substring(2))); ; // Tách phần số và sắp xếp
+
+            // Thực hiện query và lấy danh sách khách hàng với phân trang
+            var totalRecords = await khachHangsQuery.CountAsync();
+            var khachHangs = await khachHangsQuery
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            // Đặt thông tin phân trang vào ViewBag
+            ViewBag.TotalRecords = totalRecords;
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+
+            // Trả về view với danh sách khách hàng đã phân trang
+            return View(khachHangs);
+        }
         // GET: KhachHangs/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -32,125 +55,91 @@ namespace DuAn1.Controllers
                 return NotFound();
             }
 
+            // Lấy thông tin khách hàng cùng với danh sách hóa đơn
             var khachHang = await _context.KhachHangs
+                .Include(k => k.GioHang)
+                .Include(k => k.HoaDons) // Bao gồm hóa đơn liên quan
                 .FirstOrDefaultAsync(m => m.MaKhachHang == id);
+
             if (khachHang == null)
             {
                 return NotFound();
             }
 
-            return View(khachHang);
+            return View(khachHang); // Trả về thông tin khách hàng
         }
 
         // GET: KhachHangs/Create
         public IActionResult Create()
         {
-            return View();
+            var count = _context.KhachHangs.Count();
+            var maKhachHang = $"KH{count + 1}";  // Auto-generate MaKhachHang
+
+            // Create a new KhachHang object with MaKhachHang populated
+            var khachHang = new KhachHang
+            {
+                MaKhachHang = maKhachHang,
+                TrangThai = "Đang hoạt động"
+            };
+
+            // Pass the khachHang object to the view
+            return View(khachHang);
         }
 
         // POST: KhachHangs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaKhachHang,HoTen,Sdt,DiaChi,GioiTinh,TrangThai,Username,Password")] KhachHang khachHang)
+        public async Task<IActionResult> Create([Bind("MaKhachHang,HoTen,Sdt,DiaChi,GioiTinh,TrangThai,Username,Password,ConfirmPassword")] KhachHang khachHang)
         {
+            // Kiểm tra Username có bị trùng không
+            var existingCustomer = await _context.KhachHangs
+                .FirstOrDefaultAsync(k => k.Username == khachHang.Username);
+
+            if (existingCustomer != null)
+            {
+                ModelState.AddModelError("Username", "Username đã tồn tại. Vui lòng chọn Username khác.");
+            }
+
             if (ModelState.IsValid)
             {
+                // Thêm khách hàng vào cơ sở dữ liệu
                 _context.Add(khachHang);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); // Chuyển hướng về trang danh sách khách hàng
             }
-            return View(khachHang);
+            return View(khachHang); // Nếu model không hợp lệ, hiển thị lại form
         }
 
-        // GET: KhachHangs/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var khachHang = await _context.KhachHangs.FindAsync(id);
-            if (khachHang == null)
-            {
-                return NotFound();
-            }
-            return View(khachHang);
-        }
-
-        // POST: KhachHangs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        // POST: KhachHangs/Deactivate/5
+        [HttpPost, ActionName("Deactivate")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaKhachHang,HoTen,Sdt,DiaChi,GioiTinh,TrangThai,Username,Password")] KhachHang khachHang)
-        {
-            if (id != khachHang.MaKhachHang)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(khachHang);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!KhachHangExists(khachHang.MaKhachHang))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(khachHang);
-        }
-
-        // GET: KhachHangs/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var khachHang = await _context.KhachHangs
-                .FirstOrDefaultAsync(m => m.MaKhachHang == id);
-            if (khachHang == null)
-            {
-                return NotFound();
-            }
-
-            return View(khachHang);
-        }
-
-        // POST: KhachHangs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> Deactivate(string id)
         {
             var khachHang = await _context.KhachHangs.FindAsync(id);
             if (khachHang != null)
             {
-                _context.KhachHangs.Remove(khachHang);
+                khachHang.TrangThai = "Ngừng hoạt động"; // Hoặc giá trị tương ứng
+                _context.Update(khachHang);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KhachHangExists(string id)
+        // POST: KhachHangs/Deactivate/5
+        [HttpPost, ActionName("Activate")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Activate(string id)
         {
-            return _context.KhachHangs.Any(e => e.MaKhachHang == id);
+            var khachHang = await _context.KhachHangs.FindAsync(id);
+            if (khachHang != null)
+            {
+                khachHang.TrangThai = "Đang hoạt động"; // Hoặc giá trị tương ứng
+                _context.Update(khachHang);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
         }
+
     }
 }

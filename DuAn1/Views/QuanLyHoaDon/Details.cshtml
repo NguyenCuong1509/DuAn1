@@ -1,0 +1,163 @@
+﻿@model DuAn1.Models.HoaDon
+
+@{
+    ViewData["Title"] = "Chi tiết hóa đơn";
+}
+<style>
+    /* styles.css */
+
+    /* Định dạng chung cho trang */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+    /* Tiêu đề chính */
+    h4 {
+        color: #007bff;
+    }
+
+    /* Định dạng cho trạng thái */
+    #current-status {
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    /* Định dạng cho các nút */
+    button {
+        margin-right: 10px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+    }
+
+        button[type="submit"] {
+            background-color: #007bff;
+        }
+
+            button[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+    /* Định dạng cho bảng */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .table-bordered th {
+            background-color: #f1f1f1;
+        }
+
+    /* Định dạng cho liên kết */
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+</style>
+<div>
+    <h4>Trạng thái hiện tại: <span id="current-status">@Html.DisplayFor(model => model.TrangThai)</span></h4>
+    <hr />
+
+    @if (Model.TrangThai == "Chờ xác nhận")
+    {
+        <form asp-action="ChangeStatus" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="@Model.MaHoaDon" />
+            <input type="hidden" name="newStatus" value="Bắt đầu giao" />
+            <button type="submit">Bắt đầu giao</button>
+        </form>
+        <form asp-action="ChangeStatus" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="@Model.MaHoaDon" />
+            <input type="hidden" name="newStatus" value="Hủy" />
+            <button type="submit">Hủy</button>
+        </form>
+    }
+    else if (Model.TrangThai == "Bắt đầu giao")
+    {
+        <form asp-action="ChangeStatus" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="@Model.MaHoaDon" />
+            <input type="hidden" name="newStatus" value="Giao thành công" />
+            <button type="submit">Giao thành công</button>
+        </form>
+        <form asp-action="ChangeStatus" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="@Model.MaHoaDon" />
+            <input type="hidden" name="newStatus" value="Hủy" />
+            <button type="submit">Hủy</button>
+        </form>
+    }
+    else if (Model.TrangThai == "Giao thành công")
+    {
+        <form asp-action="ChangeStatus" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="@Model.MaHoaDon" />
+            <input type="hidden" name="newStatus" value="Hủy" />
+            <button type="submit">Hủy</button>
+        </form>
+    }
+</div>
+
+<div>
+    <h4>Thông tin hóa đơn</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.MaHoaDon)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.MaHoaDon)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.NgayTao)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NgayTao)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.ThanhTien)</dt>
+        <dd class="col-sm-10">@String.Format("{0:C0}", Model.ThanhTien)</dd>
+        <dt class="col-sm-2">Mã giỏ hàng</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.MaGioHangNavigation.MaGioHang)</dd>
+        <dt class="col-sm-2">Mã Khách Hàng</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.MaGioHangNavigation.MaKhachHang)</dd>
+        <dt class="col-sm-2">Tên Khách Hàng</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.MaKhachHangNavigation.HoTen)</dd>
+        <dt class="col-sm-2">Liên hệ</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.MaKhachHangNavigation.Sdt)</dd>
+    </dl>
+</div>
+
+<h4>Danh sách sản phẩm trong hóa đơn</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.HoaDonChiTiets)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.MaSanPhamNavigation.TenSanPham)</td>
+                <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
+                <td>@String.Format("{0:C0}", item.DonGia)</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Trở về danh sách</a>
+</div>

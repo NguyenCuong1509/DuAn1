@@ -1,0 +1,317 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    var sessionValue = Context.Session.GetString("Username");
+    var username = ViewData["Username"] as string;
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/css2/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css2/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css2/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/css2/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css2/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/css2/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css2/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css2/style.css" type="text/css">
+
+    <style>
+        .categories__text h1,
+        .categories__text h4,
+        .categories__text p,
+        .categories__text a {
+            color: white; /* Đặt màu văn bản thành trắng */
+        }
+        /* Chỉ hiển thị form tìm kiếm khi có lớp d-block */
+        #search-form.d-none {
+            display: none;
+        }
+
+        #search-form.d-block {
+            display: block;
+            position: absolute;
+            top: 50px; /* Điều chỉnh vị trí của form tìm kiếm */
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        /* Áp dụng cho tất cả ảnh trong các phần categories__item */
+
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <!-- Biểu tượng kính lúp -->
+            <li><i class="fa-solid fa-magnifying-glass" id="search-icon"></i></li>
+            <!-- Form tìm kiếm (ẩn khi chưa bấm vào biểu tượng) -->
+            <form method="get" asp-action="Index" id="search-form" class="d-none" style="margin-top: -13px;">
+                <div class="input-group">
+                    <input type="text" name="searchString" class="form-control" placeholder="Tìm kiếm theo tên sản phẩm" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+                    </span>
+                </div>
+            </form>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="~/img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a asp-controller="DangNhap" asp-action="DangNhap">Đăng nhập</a>
+            <a href="#">Đăng ký</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="~/img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Trang chủ</a></li>
+                            <li><a href="./shop.html">Cửa hàng</a></li>
+                            <li><a href="./blog.html">Thông tin</a></li>
+                            <li><a href="./contact.html">Liên hệ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        <div class="header__right__auth">
+                            <!-- Nếu người dùng đã đăng nhập -->
+                            @if (!string.IsNullOrEmpty(username))
+                            {
+        <div class="header__right__auth">
+            <span>Xin chào, @username</span> <!-- Hiển thị tên người dùng -->
+            <a href="/DangNhap/DangXuat">Đăng xuất</a> <!-- Cung cấp liên kết đăng xuất -->
+        </div>
+                            }
+                            else
+                            {
+        <!-- Nếu người dùng chưa đăng nhập -->
+        <div class="header__right__auth">
+            <a asp-controller="DangNhap" asp-action="DangNhap">Đăng nhập</a>
+            <a href="#">Đăng ký</a>
+        </div>
+                            }
+
+                        </div>
+                        <ul class="header__right__widget">
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Form tìm kiếm (ẩn khi chưa bấm vào biểu tượng) -->
+                        <form method="get" asp-action="Index" id="search-form" style="margin-top: 12px;">
+                            <div class="input-group">
+                                <input type="text" name="searchString" class="form-control" placeholder="Tìm kiếm theo tên sản phẩm" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <!-- Categories Section Begin -->
+    <section class="categories">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    <div class="categories__item categories__large__item set-bg"
+                         data-setbg="https://img.freepik.com/premium-photo/girl-with-headphones-colorful-background_662214-64312.jpg?w=900">
+                        <div class="categories__text">
+                            <h1>Women’s headphone</h1>
+                            <p>
+                                Khám phá thế giới âm thanh tuyệt vời với tai nghe nữ của chúng tôi.
+                                Được thiết kế tinh tế, tai nghe này không chỉ mang lại âm thanh chất lượng cao mà còn đảm bảo sự thoải mái khi sử dụng.
+                                Với công nghệ tiên tiến, bạn sẽ trải nghiệm từng nốt nhạc rõ nét và sống động.
+                            </p>
+                            <a href="#">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="https://png.pngtree.com/thumb_back/fw800/background/20230610/pngtree-the-character-wearing-headphones-with-an-ear-piercing-in-his-head-image_2919756.jpg">
+                                <div class="categories__text">
+                                    <h4>Men’s headphone</h4>
+                                    <a href="#">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="https://png.pngtree.com/thumb_back/fw800/background/20230516/pngtree-man-wearing-headphones-with-a-picture-of-a-person-with-headphones-image_2563734.jpg">
+                                <div class="categories__text">
+                                    <h4>Kid’s headphone</h4>
+                                    <a href="#">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="https://png.pngtree.com/thumb_back/fw800/background/20240331/pngtree-beautiful-women-at-sunset-city-listening-music-with-headphone-image_15699607.jpg">
+                                <div class="categories__text">
+                                    <h4>Beautiful</h4>
+                                    <a href="#">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="https://img.pikbest.com/origin/10/03/27/75npIkbEsTeuQ.jpg!w700wp">
+                                <div class="categories__text">
+                                    <h4>Headphone</h4>
+                                    <a href="#">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <div>
+        @RenderBody()  <!-- Khu vực nội dung sẽ được chèn vào -->
+    </div>
+
+    <!-- Footer Section Begin -->
+    <footer class="footer" style="position: static;background-color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="./index.html"><img src="~/img/logo.png" alt=""></a>
+                        </div>
+                        <p>Chào mừng bạn đến với <b>WEBSITE BÁN TAI NGHE ONLINE</b> - nơi mang đến cho bạn những sản phẩm chất lượng nhất với giá cả hợp lý, phục vụ nhu cầu mua sắm của bạn mọi lúc, mọi nơi</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-5">
+                    <div class="footer__widget">
+                        <h6>LIÊN KẾT NHANH</h6>
+                        <ul>
+                            <ul>
+                                <li><a href="./shop.html">Cửa hàng</a></li>
+                                <li><a href="./blog.html">Thông tin</a></li>
+                                <li><a href="./contact.html">Liên hệ</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <div class="footer__widget">
+                        <h6>Account</h6>
+                        <ul>
+                            <li><a href="#">Tài khoản của tôi</a></li>
+                            <li><a href="#">Theo dõi đơn hàng</a></li>
+                            <li><a href="#">Thanh toán</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8 col-sm-8">
+                    <div class="footer__newslatter">
+                        <div class="footer__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <div class="footer__copyright__text">
+                        <p>Năm <script>document.write(new Date().getFullYear());</script> |<b>WEBSITE BÁN TAI NGHE ONLINE</b> | Phát triển phần mềm <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Nhóm 8</a></p>
+                    </div>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+    <!-- Js Plugins -->
+    <script src="~/js2/jquery-3.3.1.min.js"></script>
+    <script src="~/js2/bootstrap.min.js"></script>
+    <script src="~/js2/jquery.magnific-popup.min.js"></script>
+    <script src="~/js2/jquery-ui.min.js"></script>
+    <script src="~/js2/mixitup.min.js"></script>
+    <script src="~/js2/jquery.countdown.min.js"></script>
+    <script src="~/js2/jquery.slicknav.js"></script>
+    <script src="~/js2/owl.carousel.min.js"></script>
+    <script src="~/js2/jquery.nicescroll.min.js"></script>
+    <script src="~/js2/main.js"></script>
+    <script>
+        document.getElementById('search-icon').addEventListener('click', function () {
+            var form = document.getElementById('search-form');
+            // Toggle form tìm kiếm
+            form.classList.toggle('d-none');
+            form.classList.toggle('d-block');
+        });
+    </script>
+
+</body>
+
+</html>
