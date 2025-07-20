@@ -1,53 +1,105 @@
 ﻿@model IEnumerable<DuAn1.Models.Hang>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách Hãng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<style>
+    .brand-container {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TenHang)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Website)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TinhNang)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrangThai)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenHang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Website)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TinhNang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrangThai)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MaHang">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaHang">Details</a> 
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    .brand-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .brand-header h1 {
+        font-size: 28px;
+        color: #333;
+    }
+
+    .create-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .create-button:hover {
+        background-color: #45a049;
+    }
+
+    table.table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table.table th, table.table td {
+        padding: 12px 15px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    table.table th {
+        background-color: #f2f2f2;
+        font-weight: 600;
+    }
+
+    table.table tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+
+    .action-links a {
+        margin-right: 10px;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .action-links a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="brand-container">
+    <div class="brand-header">
+        <h1>Danh sách Hãng</h1>
+        <a class="create-button" asp-action="Create">+ Thêm mới</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.TenHang)</th>
+                <th>@Html.DisplayNameFor(model => model.Website)</th>
+                <th>@Html.DisplayNameFor(model => model.TinhNang)</th>
+                <th>@Html.DisplayNameFor(model => model.TrangThai)</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.TenHang)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Website)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TinhNang)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
+                    <td class="action-links">
+                        <a asp-action="Edit" asp-route-id="@item.MaHang">Sửa</a>
+                        <a asp-action="Details" asp-route-id="@item.MaHang">Chi tiết</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

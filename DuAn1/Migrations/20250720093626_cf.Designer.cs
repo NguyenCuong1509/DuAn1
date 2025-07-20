@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAn1.Migrations
 {
     [DbContext(typeof(Duan1Context))]
-    [Migration("20250707020242_duan1")]
-    partial class duan1
+    [Migration("20250720093626_cf")]
+    partial class cf
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,28 +29,29 @@ namespace DuAn1.Migrations
                 {
                     b.Property<string>("MaKhuyenMai")
                         .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnOrder(0);
 
                     b.Property<string>("MaSanPham")
                         .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnOrder(1);
 
                     b.Property<DateTime?>("NgayBatDau")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("NgayKetThuc")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("TrangThai")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("MaKhuyenMai", "MaSanPham")
-                        .HasName("PK__ChiTietK__A0FAC7FF18C39CDD");
+                    b.HasKey("MaKhuyenMai", "MaSanPham");
 
                     b.HasIndex("MaSanPham");
 
-                    b.ToTable("ChiTietKhuyenMai", (string)null);
+                    b.ToTable("ChiTietKhuyenMais");
                 });
 
             modelBuilder.Entity("DuAn1.Models.GioHang", b =>
@@ -64,19 +65,18 @@ namespace DuAn1.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime?>("NgayThem")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("SoLoaiSanPham")
                         .HasColumnType("int");
 
-                    b.HasKey("MaGioHang")
-                        .HasName("PK__GioHang__F5001DA316F5CBA4");
+                    b.HasKey("MaGioHang");
 
-                    b.HasIndex(new[] { "MaKhachHang" }, "UQ__GioHang__88D2F0E406D6BABF")
+                    b.HasIndex("MaKhachHang")
                         .IsUnique()
                         .HasFilter("[MaKhachHang] IS NOT NULL");
 
-                    b.ToTable("GioHang", (string)null);
+                    b.ToTable("GioHangs");
                 });
 
             modelBuilder.Entity("DuAn1.Models.Hang", b =>
@@ -101,10 +101,9 @@ namespace DuAn1.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.HasKey("MaHang")
-                        .HasName("PK__Hang__19C0DB1DF8E2C2A8");
+                    b.HasKey("MaHang");
 
-                    b.ToTable("Hang", (string)null);
+                    b.ToTable("Hangs");
                 });
 
             modelBuilder.Entity("DuAn1.Models.HoaDon", b =>
@@ -122,10 +121,10 @@ namespace DuAn1.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime?>("NgaySuaChua")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("NgayTao")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal?>("ThanhTien")
                         .HasColumnType("decimal(10, 2)");
@@ -134,25 +133,26 @@ namespace DuAn1.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("MaHoaDon")
-                        .HasName("PK__HoaDon__835ED13B1892C1EB");
+                    b.HasKey("MaHoaDon");
 
                     b.HasIndex("MaGioHang");
 
                     b.HasIndex("MaKhachHang");
 
-                    b.ToTable("HoaDon", (string)null);
+                    b.ToTable("HoaDons");
                 });
 
             modelBuilder.Entity("DuAn1.Models.HoaDonChiTiet", b =>
                 {
                     b.Property<string>("MaHoaDon")
                         .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnOrder(0);
 
                     b.Property<string>("MaSanPham")
                         .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnOrder(1);
 
                     b.Property<decimal?>("DonGia")
                         .HasColumnType("decimal(10, 2)");
@@ -160,12 +160,11 @@ namespace DuAn1.Migrations
                     b.Property<int?>("SoLuong")
                         .HasColumnType("int");
 
-                    b.HasKey("MaHoaDon", "MaSanPham")
-                        .HasName("PK__HoaDonCh__4CF2A579A6E9C74D");
+                    b.HasKey("MaHoaDon", "MaSanPham");
 
                     b.HasIndex("MaSanPham");
 
-                    b.ToTable("HoaDonChiTiet", (string)null);
+                    b.ToTable("HoaDonChiTiets");
                 });
 
             modelBuilder.Entity("DuAn1.Models.KhachHang", b =>
@@ -186,33 +185,31 @@ namespace DuAn1.Migrations
 
                     b.Property<string>("HoTen")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Sdt")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)")
-                        .HasColumnName("SDT");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("TrangThai")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("MaKhachHang")
-                        .HasName("PK__KhachHan__88D2F0E5A0D6A4C0");
+                    b.HasKey("MaKhachHang");
 
-                    b.ToTable("KhachHang", (string)null);
+                    b.ToTable("KhachHangs");
                 });
 
             modelBuilder.Entity("DuAn1.Models.KhuyenMai", b =>
@@ -226,28 +223,28 @@ namespace DuAn1.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime?>("NgayBatDau")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("NgayKetThuc")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal?>("PhanTramGiam")
-                        .HasColumnType("decimal(5, 2)");
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("QuanLyMaQuanLy")
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("TenKhuyenMai")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TrangThai")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MaKhuyenMai")
-                        .HasName("PK__KhuyenMa__6F56B3BD6B7817BE");
+                    b.HasKey("MaKhuyenMai");
 
-                    b.HasIndex("MaQuanLy");
+                    b.HasIndex("QuanLyMaQuanLy");
 
-                    b.ToTable("KhuyenMai", (string)null);
+                    b.ToTable("KhuyenMais");
                 });
 
             modelBuilder.Entity("DuAn1.Models.MauSac", b =>
@@ -257,13 +254,12 @@ namespace DuAn1.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("TenMauSac")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("MaMauSac")
-                        .HasName("PK__MauSac__B9A911624FF7023E");
+                    b.HasKey("MaMauSac");
 
-                    b.ToTable("MauSac", (string)null);
+                    b.ToTable("MauSacs");
                 });
 
             modelBuilder.Entity("DuAn1.Models.QuanLy", b =>
@@ -273,36 +269,29 @@ namespace DuAn1.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("DiaChi")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GioiTinh")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateOnly?>("NgaySinh")
                         .HasColumnType("date");
 
                     b.Property<string>("Password")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenQuanLy")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TrangThai")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MaQuanLy")
-                        .HasName("PK__QuanLy__2AB9EAF8F4C5CFE8");
+                    b.HasKey("MaQuanLy");
 
-                    b.ToTable("QuanLy", (string)null);
+                    b.ToTable("QuanLies");
                 });
 
             modelBuilder.Entity("DuAn1.Models.SanPham", b =>
@@ -312,7 +301,7 @@ namespace DuAn1.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<decimal?>("DonGia")
-                        .HasColumnType("decimal(10, 2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int?>("DungLuongPin")
                         .HasColumnType("int");
@@ -322,19 +311,19 @@ namespace DuAn1.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("KhoangCachKetNoi")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("KichCo")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("KichCo")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("KieuKetNoi")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("LanSuaGanNhat")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("MaHang")
                         .HasMaxLength(10)
@@ -359,8 +348,7 @@ namespace DuAn1.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("MaSanPham")
-                        .HasName("PK__SanPham__FAC7442D116B707B");
+                    b.HasKey("MaSanPham");
 
                     b.HasIndex("MaHang");
 
@@ -368,28 +356,29 @@ namespace DuAn1.Migrations
 
                     b.HasIndex("MaMauSac");
 
-                    b.ToTable("SanPham", (string)null);
+                    b.ToTable("SanPhams");
                 });
 
             modelBuilder.Entity("DuAn1.Models.SanPhamGioHang", b =>
                 {
                     b.Property<string>("MaGioHang")
                         .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnOrder(0);
 
                     b.Property<string>("MaSanPham")
                         .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnOrder(1);
 
                     b.Property<int?>("SoLuong")
                         .HasColumnType("int");
 
-                    b.HasKey("MaGioHang", "MaSanPham")
-                        .HasName("PK__SanPhamG__3AAC69E1A4D8FB38");
+                    b.HasKey("MaGioHang", "MaSanPham");
 
                     b.HasIndex("MaSanPham");
 
-                    b.ToTable("SanPhamGioHang", (string)null);
+                    b.ToTable("SanPhamGioHangs");
                 });
 
             modelBuilder.Entity("DuAn1.Models.ChiTietKhuyenMai", b =>
@@ -397,14 +386,14 @@ namespace DuAn1.Migrations
                     b.HasOne("DuAn1.Models.KhuyenMai", "MaKhuyenMaiNavigation")
                         .WithMany("ChiTietKhuyenMais")
                         .HasForeignKey("MaKhuyenMai")
-                        .IsRequired()
-                        .HasConstraintName("FK__ChiTietKh__MaKhu__619B8048");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DuAn1.Models.SanPham", "MaSanPhamNavigation")
                         .WithMany("ChiTietKhuyenMais")
                         .HasForeignKey("MaSanPham")
-                        .IsRequired()
-                        .HasConstraintName("FK__ChiTietKh__MaSan__628FA481");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("MaKhuyenMaiNavigation");
 
@@ -415,8 +404,7 @@ namespace DuAn1.Migrations
                 {
                     b.HasOne("DuAn1.Models.KhachHang", "MaKhachHangNavigation")
                         .WithOne("GioHang")
-                        .HasForeignKey("DuAn1.Models.GioHang", "MaKhachHang")
-                        .HasConstraintName("FK__GioHang__MaKhach__66603565");
+                        .HasForeignKey("DuAn1.Models.GioHang", "MaKhachHang");
 
                     b.Navigation("MaKhachHangNavigation");
                 });
@@ -425,13 +413,11 @@ namespace DuAn1.Migrations
                 {
                     b.HasOne("DuAn1.Models.GioHang", "MaGioHangNavigation")
                         .WithMany("HoaDons")
-                        .HasForeignKey("MaGioHang")
-                        .HasConstraintName("FK__HoaDon__MaGioHan__6A30C649");
+                        .HasForeignKey("MaGioHang");
 
                     b.HasOne("DuAn1.Models.KhachHang", "MaKhachHangNavigation")
                         .WithMany("HoaDons")
-                        .HasForeignKey("MaKhachHang")
-                        .HasConstraintName("FK__HoaDon__MaKhachH__6B24EA82");
+                        .HasForeignKey("MaKhachHang");
 
                     b.Navigation("MaGioHangNavigation");
 
@@ -443,14 +429,14 @@ namespace DuAn1.Migrations
                     b.HasOne("DuAn1.Models.HoaDon", "MaHoaDonNavigation")
                         .WithMany("HoaDonChiTiets")
                         .HasForeignKey("MaHoaDon")
-                        .IsRequired()
-                        .HasConstraintName("FK__HoaDonChi__MaHoa__71D1E811");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DuAn1.Models.SanPham", "MaSanPhamNavigation")
                         .WithMany("HoaDonChiTiets")
                         .HasForeignKey("MaSanPham")
-                        .IsRequired()
-                        .HasConstraintName("FK__HoaDonChi__MaSan__72C60C4A");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("MaHoaDonNavigation");
 
@@ -459,30 +445,26 @@ namespace DuAn1.Migrations
 
             modelBuilder.Entity("DuAn1.Models.KhuyenMai", b =>
                 {
-                    b.HasOne("DuAn1.Models.QuanLy", "MaQuanLyNavigation")
+                    b.HasOne("DuAn1.Models.QuanLy", "QuanLy")
                         .WithMany("KhuyenMais")
-                        .HasForeignKey("MaQuanLy")
-                        .HasConstraintName("FK__KhuyenMai__MaQua__52593CB8");
+                        .HasForeignKey("QuanLyMaQuanLy");
 
-                    b.Navigation("MaQuanLyNavigation");
+                    b.Navigation("QuanLy");
                 });
 
             modelBuilder.Entity("DuAn1.Models.SanPham", b =>
                 {
                     b.HasOne("DuAn1.Models.Hang", "MaHangNavigation")
                         .WithMany("SanPhams")
-                        .HasForeignKey("MaHang")
-                        .HasConstraintName("FK__SanPham__MaHang__5CD6CB2B");
+                        .HasForeignKey("MaHang");
 
                     b.HasOne("DuAn1.Models.KhuyenMai", "MaKhuyenMaiNavigation")
                         .WithMany("SanPhams")
-                        .HasForeignKey("MaKhuyenMai")
-                        .HasConstraintName("FK__SanPham__MaKhuye__5DCAEF64");
+                        .HasForeignKey("MaKhuyenMai");
 
                     b.HasOne("DuAn1.Models.MauSac", "MaMauSacNavigation")
                         .WithMany("SanPhams")
-                        .HasForeignKey("MaMauSac")
-                        .HasConstraintName("FK__SanPham__MaMauSa__5BE2A6F2");
+                        .HasForeignKey("MaMauSac");
 
                     b.Navigation("MaHangNavigation");
 
@@ -496,14 +478,14 @@ namespace DuAn1.Migrations
                     b.HasOne("DuAn1.Models.GioHang", "MaGioHangNavigation")
                         .WithMany("SanPhamGioHangs")
                         .HasForeignKey("MaGioHang")
-                        .IsRequired()
-                        .HasConstraintName("FK__SanPhamGi__MaGio__6E01572D");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DuAn1.Models.SanPham", "MaSanPhamNavigation")
                         .WithMany("SanPhamGioHangs")
                         .HasForeignKey("MaSanPham")
-                        .IsRequired()
-                        .HasConstraintName("FK__SanPhamGi__MaSan__6EF57B66");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("MaGioHangNavigation");
 

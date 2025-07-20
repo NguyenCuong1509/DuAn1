@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace DuAn1.Models;
 
 public partial class QuanLy
 {
+    [Key]
+    [MaxLength(10)]
     [DisplayName("Mã Quản Lý")]
     public string MaQuanLy { get; set; } = null!;
 

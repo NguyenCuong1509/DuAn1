@@ -43,30 +43,30 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=TrangBanSanPhams}/{action=Index}/{id?}");
+// Tạo tài khoản admin gốc nếu chưa có
+//using (var scope = app.Services.CreateScope())
+//{
+//    var context = scope.ServiceProvider.GetRequiredService<Duan1Context>();
+
+//    // Kiểm tra xem đã có tài khoản admin chưa (tránh load cả bảng)
+//    var exists = context.QuanLies.Any(q => q.Username == "admin");
+//    if (!exists)
+//    {
+//        var admin = new QuanLy
+//        {
+//            MaQuanLy = "QL001",
+//            TenQuanLy = "Admin hệ thống",
+//            NgaySinh = new DateOnly(1980, 1, 1),
+//            DiaChi = "Hà Nội",
+//            GioiTinh = "Nam",
+//            TrangThai = "Hoạt động",
+//            Username = "admin",
+//            Password = "admin123" // Sau nên hash mật khẩu
+//        };
+
+//        context.QuanLies.Add(admin);
+//        context.SaveChanges();
+//    }
+//}
 
 app.Run();
-// Tạo tài khoản admin gốc nếu chưa có
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<Duan1Context>();
-
-    // Kiểm tra xem đã có tài khoản admin chưa (tránh load cả bảng)
-    var exists = context.QuanLies.Any(q => q.Username == "admin");
-    if (!exists)
-    {
-        var admin = new QuanLy
-        {
-            MaQuanLy = "QL001",
-            TenQuanLy = "Admin hệ thống",
-            NgaySinh = new DateOnly(1980, 1, 1),
-            DiaChi = "Hà Nội",
-            GioiTinh = "Nam",
-            TrangThai = "Hoạt động",
-            Username = "admin",
-            Password = "admin123" // Sau nên hash mật khẩu
-        };
-
-        context.QuanLies.Add(admin);
-        context.SaveChanges();
-    }
-}

@@ -26,7 +26,7 @@ namespace DuAn1.Controllers
 
             // Sắp xếp các khuyến mãi theo MaKhuyenMai từ cao xuống thấp
             var duan1Context = _context.KhuyenMais
-                                        .Include(k => k.MaQuanLyNavigation)
+                                        .Include(k => k.QuanLy)
                                         .OrderByDescending(k => Convert.ToInt32(k.MaKhuyenMai.Substring(2)));  // Loại bỏ phần "KM" và chuyển sang số
 
             return View(await duan1Context.ToListAsync());
@@ -46,7 +46,7 @@ namespace DuAn1.Controllers
             await UpdateKhuyenMaiStatus();
 
             var khuyenMai = await _context.KhuyenMais
-                .Include(k => k.MaQuanLyNavigation)
+                .Include(k => k.QuanLy)
                 .Include(k => k.ChiTietKhuyenMais) // Bao gồm ChiTietKhuyenMais
                 .ThenInclude(ct => ct.MaSanPhamNavigation) // Bao gồm thông tin sản phẩm
                 .FirstOrDefaultAsync(m => m.MaKhuyenMai == id);
