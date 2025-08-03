@@ -19,7 +19,6 @@ namespace DuAn1.Controllers
         }
 
         // GET: QuanLyKhuyenMai
-        // GET: QuanLyKhuyenMai
         public async Task<IActionResult> Index()
         {
             await UpdateKhuyenMaiStatus();
@@ -33,7 +32,6 @@ namespace DuAn1.Controllers
         }
 
 
-        // GET: QuanLyKhuyenMai/Details/5
         // GET: QuanLyKhuyenMai/Details/5
         public async Task<IActionResult> Details(string id)
         {

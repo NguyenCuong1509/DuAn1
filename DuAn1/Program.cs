@@ -43,7 +43,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=TrangBanSanPhams}/{action=Index}/{id?}");
-// Tạo tài khoản admin gốc nếu chưa có
+//// Tạo tài khoản admin gốc nếu chưa có
 //using (var scope = app.Services.CreateScope())
 //{
 //    var context = scope.ServiceProvider.GetRequiredService<Duan1Context>();

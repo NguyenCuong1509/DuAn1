@@ -68,14 +68,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFuZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/source/repos/DuAnBanTaiNghe/DuAn1/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ADMIN/source/repos/DuAnBanTaiNghe/DuAn1/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ADMIN/source/repos/DuAnBanTaiNghe/DuAn1/Views/KhachHangs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hhY2hIYW5nc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -90,10 +82,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ADMIN/source/repos/DuAnBanTaiNghe/DuAn1/Views/MauSacs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF1U2Fjc1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ADMIN/source/repos/DuAnBanTaiNghe/DuAn1/Views/MauSacs/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF1U2Fjc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/source/repos/DuAnBanTaiNghe/DuAn1/Views/MauSacs/Edit.cshtml]

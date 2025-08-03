@@ -59,11 +59,7 @@ namespace DuAn1.Controllers
             return View(khachHang);
         }
 
-        // POST: DangKyTaiKhoan/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaKhachHang,HoTen,Sdt,DiaChi,GioiTinh,TrangThai,Username,Password")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
@@ -84,9 +80,6 @@ namespace DuAn1.Controllers
                 // Thêm giỏ hàng vào cơ sở dữ liệu
                 _context.GioHangs.Add(gioHang);
                 await _context.SaveChangesAsync();  // Lưu giỏ hàng vào cơ sở dữ liệu
-
-                // Chuyển hướng đến trang chi tiết của khách hàng vừa tạo
-                // Chuyển hướng đến trang đăng nhập
                 return RedirectToAction("DangNhap", "DangNhap");
 
 
