@@ -69,7 +69,7 @@ namespace DuAn1.Controllers
             return View(khachHang); // Trả về thông tin khách hàng
         }
 
-        // GET: KhachHangs/Create
+        [HttpGet]
         public IActionResult Create()
         {
             var count = _context.KhachHangs.Count();
@@ -86,28 +86,36 @@ namespace DuAn1.Controllers
             return View(khachHang);
         }
 
-        // POST: KhachHangs/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaKhachHang,HoTen,Sdt,DiaChi,GioiTinh,TrangThai,Username,Password,ConfirmPassword")] KhachHang khachHang)
+        public async Task<IActionResult> Create([Bind("MaKhachHang,HoTen,Sdt,DiaChi,GioiTinh,TrangThai,Username,Password")] KhachHang khachHang)
         {
-            // Kiểm tra Username có bị trùng không
-            var existingCustomer = await _context.KhachHangs
-                .FirstOrDefaultAsync(k => k.Username == khachHang.Username);
-
-            if (existingCustomer != null)
-            {
-                ModelState.AddModelError("Username", "Username đã tồn tại. Vui lòng chọn Username khác.");
-            }
-
             if (ModelState.IsValid)
             {
-                // Thêm khách hàng vào cơ sở dữ liệu
+                // Thêm khách hàng
                 _context.Add(khachHang);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index)); // Chuyển hướng về trang danh sách khách hàng
+
+                // Tạo giỏ hàng tự động cho khách hàng vừa thêm
+                var gioHangCount = _context.GioHangs.Count();
+                var maGioHang = $"GH{gioHangCount + 1}";
+
+                var gioHang = new GioHang
+                {
+                    MaGioHang = maGioHang,
+                    MaKhachHang = khachHang.MaKhachHang,
+                    NgayThem = DateTime.Now,
+                    SoLoaiSanPham = 0
+                };
+
+                _context.GioHangs.Add(gioHang);
+                await _context.SaveChangesAsync();
+
+                // Chuyển hướng đến trang đăng nhập
+                return RedirectToAction("Index", "KhachHangs");
             }
-            return View(khachHang); // Nếu model không hợp lệ, hiển thị lại form
+
+            return View(khachHang);
         }
 
 

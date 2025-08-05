@@ -1,22 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DuAn1.Models;
-
-public partial class GioHang
+namespace DuAn1.Models
 {
-    public string MaGioHang { get; set; } = null!;
+    public class GioHang
+    {
+        [Key]
+        [MaxLength(10)]
+        public string MaGioHang { get; set; } = null!;
 
-    public int? SoLoaiSanPham { get; set; }
+        public int? SoLoaiSanPham { get; set; }
 
-    public DateTime? NgayThem { get; set; }
+        public DateTime? NgayThem { get; set; }
 
-    public string? MaKhachHang { get; set; }
+        [MaxLength(10)]
+        public string? MaKhachHang { get; set; }
 
-    public virtual ICollection<HoaDon> HoaDons { get; set; } = new List<HoaDon>();
+        [ForeignKey(nameof(MaKhachHang))]
+        public virtual KhachHang? MaKhachHangNavigation { get; set; }
 
-    public virtual KhachHang? MaKhachHangNavigation { get; set; }
+        public virtual ICollection<HoaDon> HoaDons { get; set; } = new List<HoaDon>();
 
-    public virtual ICollection<SanPhamGioHang> SanPhamGioHangs { get; set; } = new List<SanPhamGioHang>();
+        public virtual ICollection<SanPhamGioHang> SanPhamGioHangs { get; set; } = new List<SanPhamGioHang>();
+    }
 }
-

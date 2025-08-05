@@ -24,24 +24,6 @@ namespace DuAn1.Controllers
             return View(await _context.MauSacs.ToListAsync());
         }
 
-        // GET: MauSacs/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var mauSac = await _context.MauSacs
-                .FirstOrDefaultAsync(m => m.MaMauSac == id);
-            if (mauSac == null)
-            {
-                return NotFound();
-            }
-
-            return View(mauSac);
-        }
-
         // GET: MauSacs/Create
         public IActionResult Create()
         {

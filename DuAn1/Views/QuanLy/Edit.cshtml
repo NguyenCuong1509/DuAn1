@@ -1,113 +1,158 @@
 ﻿@model DuAn1.Models.QuanLy
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Chỉnh Sửa Thông Tin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <style>
-    /* styles.css */
-
     body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        color: #333;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f6f9;
     }
 
-    h1, h2, h3 {
-        color: #007bff;
+    .form-container {
+        max-width: 550px;
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .form-group {
-        margin-bottom: 15px;
-    }
+        .form-container h2 {
+            text-align: center;
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
 
-    .control-label {
-        font-weight: bold;
-        color: #495057;
+    .form-group label {
+        font-weight: 600;
+        color: #444;
     }
 
     .form-control {
-        border: 1px solid #ced4da;
-        border-radius: 5px;
+        border-radius: 8px;
         padding: 10px;
+        margin-top: 5px;
     }
 
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #28a745, #00c851);
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        margin-top: 10px;
+        transition: background 0.3s ease-in-out;
     }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #1f7a34, #009c3e);
         }
 
-    .btn-secondary {
-        background-color: #6c757d;
-        border-color: #6c757d;
+    .back-link {
+        display: inline-block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: 500;
     }
 
-        .btn-secondary:hover {
-            background-color: #5a6268;
-            border-color: #545b62;
+        .back-link:hover {
+            text-decoration: underline;
         }
 
+    .input-icon {
+        position: relative;
+    }
+
+        .input-icon i {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+
+        .input-icon input,
+        .input-icon select {
+            padding-left: 35px;
+        }
 </style>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="MaQuanLy" />
-            <div class="form-group">
-                <label asp-for="TenQuanLy" class="control-label"></label>
-                <input asp-for="TenQuanLy" class="form-control" />
-                <span asp-validation-for="TenQuanLy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NgaySinh" class="control-label"></label>
-                <input asp-for="NgaySinh" class="form-control" />
-                <span asp-validation-for="NgaySinh" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DiaChi" class="control-label"></label>
-                <input asp-for="DiaChi" class="form-control" />
-                <span asp-validation-for="DiaChi" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GioiTinh" class="control-label"></label>
-                <select asp-for="GioiTinh" class="form-control">
-                    <option value="Nam">Nam</option>
-                    <option value="Nữ">Nữ</option>
-                </select>
-                <span asp-validation-for="GioiTinh" class="text-danger"></span>
-            </div>
-            <div class="form-group" hidden>
-                <label asp-for="TrangThai" class="control-label"></label>
-                <input asp-for="TrangThai" class="form-control" />
-                <span asp-validation-for="TrangThai" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<div class="form-container">
+    <h2><i class="fas fa-user-edit"></i> Chỉnh Sửa Quản Lý</h2>
+    <hr />
 
-<div>
-    <a asp-action="Details" asp-route-id="@Model?.MaQuanLy" class="btn btn-secondary">Back</a>
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+        <input type="hidden" asp-for="MaQuanLy" />
+
+        <div class="form-group input-icon">
+            <label asp-for="TenQuanLy"></label>
+            <i class="fas fa-user"></i>
+            <input asp-for="TenQuanLy" class="form-control" placeholder="Nhập tên quản lý..." />
+            <span asp-validation-for="TenQuanLy" class="text-danger"></span>
+        </div>
+
+        <div class="form-group input-icon">
+            <label asp-for="NgaySinh"></label>
+            <i class="fas fa-calendar-alt"></i>
+            <input asp-for="NgaySinh" type="date" class="form-control" />
+            <span asp-validation-for="NgaySinh" class="text-danger"></span>
+        </div>
+
+        <div class="form-group input-icon">
+            <label asp-for="DiaChi"></label>
+            <i class="fas fa-map-marker-alt"></i>
+            <input asp-for="DiaChi" class="form-control" placeholder="Nhập địa chỉ..." />
+            <span asp-validation-for="DiaChi" class="text-danger"></span>
+        </div>
+
+        <div class="form-group input-icon">
+            <label asp-for="GioiTinh"></label>
+            <i class="fas fa-venus-mars"></i>
+            <select asp-for="GioiTinh" class="form-control" style="height: auto">
+                <option value="Nam" selected="@((Model.GioiTinh == "Nam") ? "selected" : null)">Nam</option>
+                <option value="Nữ" selected="@((Model.GioiTinh == "Nữ") ? "selected" : null)">Nữ</option>
+            </select>
+            <span asp-validation-for="GioiTinh" class="text-danger"></span>
+        </div>
+
+        <div class="form-group input-icon" hidden>
+            <label asp-for="TrangThai"></label>
+            <i class="fas fa-toggle-on"></i>
+            <input asp-for="TrangThai" class="form-control" />
+            <span asp-validation-for="TrangThai" class="text-danger"></span>
+        </div>
+
+        <div class="form-group input-icon">
+            <label asp-for="Username"></label>
+            <i class="fas fa-user-circle"></i>
+            <input asp-for="Username" class="form-control" placeholder="Tên đăng nhập..." />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group input-icon">
+            <label asp-for="Password"></label>
+            <i class="fas fa-lock"></i>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Mật khẩu..." />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn-submit"><i class="fas fa-save"></i> Lưu Thay Đổi</button>
+    </form>
+
+    <a asp-action="Details" asp-route-id="@Model?.MaQuanLy" class="back-link"><i class="fas fa-arrow-left"></i> Quay lại chi tiết</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

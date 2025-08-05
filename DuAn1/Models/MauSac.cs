@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DuAn1.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DuAn1.Models;
-
-public partial class MauSac
+namespace DuAn1.Models
 {
-    public string MaMauSac { get; set; } = null!;
+    public class MauSac
+    {
+        [Key]
+        [MaxLength(10)]
+        public string MaMauSac { get; set; } = null!;
 
-    public string? TenMauSac { get; set; }
+        [MaxLength(100)]
+        public string? TenMauSac { get; set; }
 
-    public virtual ICollection<SanPham> SanPhams { get; set; } = new List<SanPham>();
+        public virtual ICollection<SanPham> SanPhams { get; set; } = new List<SanPham>();
+    }
+
 }

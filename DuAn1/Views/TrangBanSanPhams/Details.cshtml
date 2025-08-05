@@ -1,124 +1,139 @@
 ﻿@model DuAn1.Models.SanPham
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/_chitiet.cshtml";
 }
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết sản phẩm</title>
+    <title>@ViewData["Title"]</title>
     <link href="~/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/css/styles.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
-            padding-top: 0px;
+            padding-top: 15px;
         }
 
         .product-details {
-            background-color: #ffffff;
+            background: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 350px;
+            background: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .product-image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         .product-info dt {
-            font-weight: bold;
-            color: #343a40;
+            font-weight: 600;
+            color: #333;
         }
 
         .product-info dd {
-            margin-bottom: 15px;
-            color: #495057;
+            margin-bottom: 10px;
+            color: #555;
         }
 
-        .product-image {
-            position: relative;
-            overflow: hidden;
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #e63946;
+        }
+
+        .stock {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .btn-addcart {
             width: 100%;
-            height: 300px;
+            padding: 10px;
+            font-size: 1.1rem;
+            margin-top: 15px;
         }
-
-            .product-image img {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: auto;
-                height: 100%;
-                transform: translate(-50%, -50%);
-            }
-
-        .action-links {
-            margin-top: 20px;
-        }
-
-            .action-links a {
-                margin-right: 10px;
-            }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="product-details">
+        <div class="product-details mt-3">
             <div class="row">
-                <!-- Hình ảnh (6 columns) -->
-                <div class="col-md-6">
-                    <div class="product-image">
-                        <img src="@Model.HinhMinhHoa" alt="@Model.TenSanPham" style="width: 100%; height: auto;" />
+                <!-- Hình ảnh -->
+                <div class="col-md-6 mb-3">
+                    <div class="product-image-container">
+                        <img src="@(string.IsNullOrEmpty(Model.HinhMinhHoa) ? "/images/no-image.png" : Model.HinhMinhHoa)" 
+                             alt="@(string.IsNullOrEmpty(Model.TenSanPham) ? "Không có" : Model.TenSanPham)" />
                     </div>
                 </div>
 
-                <!-- Thông tin sản phẩm (6 columns) -->
+                <!-- Thông tin sản phẩm -->
                 <div class="col-md-6">
+                    <h3>@(string.IsNullOrEmpty(Model.TenSanPham) ? "Không có" : Model.TenSanPham)</h3>
+                    <p class="price">@((Model.DonGia.HasValue && Model.DonGia.Value > 0) ? String.Format("{0:N0}", Model.DonGia.Value) : "Không có") đ</p>
+                    <p class="stock">Số lượng còn: @(Model.SoLuongTonKho > 0 ? Model.SoLuongTonKho : 0)</p>
+
                     <dl class="row product-info">
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TenSanPham)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.TenSanPham)</dd>
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.DonGia)</dt>
-                        <dd class="col-sm-8">@(@Model.DonGia.HasValue ? String.Format("{0:N0}", @Model.DonGia.Value) : "0") đ</dd>
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.SoLuongTonKho)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.SoLuongTonKho)</dd>
-                    @*     <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TrangThai)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.TrangThai)</dd> *@
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.MaHangNavigation)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.MaHangNavigation.MaHang)</dd>
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.MaKhuyenMaiNavigation)</dt>
-                        <dd class="col-sm-8">
-                            @if (Model.MaKhuyenMaiNavigation != null)
-                            {
-                                @Html.DisplayFor(model => model.MaKhuyenMaiNavigation.MaKhuyenMai)
-                            }
-                            else
-                            {
-                                <span>Không có</span>
-                            }
-                        </dd>
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.MaMauSacNavigation)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.MaMauSacNavigation.MaMauSac)</dd>
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.KichCo)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.KichCo)</dd>
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.KieuKetNoi)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.KieuKetNoi)</dd>
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.KhoangCachKetNoi)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.KhoangCachKetNoi)</dd>
-                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.DungLuongPin)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.DungLuongPin)</dd>
+                      
+                        <dt class="col-sm-4">Kích cỡ</dt>
+                        <dd class="col-sm-8">@(!string.IsNullOrEmpty(Model.KichCo) ? Model.KichCo : "Không có")</dd>
+
+                        <dt class="col-sm-4">Kết nối</dt>
+                        <dd class="col-sm-8">@(!string.IsNullOrEmpty(Model.KieuKetNoi) ? Model.KieuKetNoi : "Không có")</dd>
+
+                        <dt class="col-sm-4">Khoảng cách</dt>
+                        <dd class="col-sm-8">@(!string.IsNullOrEmpty(Model.KhoangCachKetNoi) ? Model.KhoangCachKetNoi : "Không có")</dd>
+
+                        <dt class="col-sm-4">Dung lượng pin</dt>
+                        <dd class="col-sm-8">@((Model.DungLuongPin.HasValue && Model.DungLuongPin.Value > 0) ? Model.DungLuongPin.Value.ToString() : "Không có")</dd>
+
+                        <dt class="col-sm-4">Hãng</dt>
+                        <dd class="col-sm-8">@(!string.IsNullOrEmpty(Model.MaHangNavigation?.MaHang) ? Model.MaHangNavigation.MaHang : "Không có")</dd>
+
+                        <dt class="col-sm-4">Khuyến mãi</dt>
+                        <dd class="col-sm-8">@((Model.MaKhuyenMaiNavigation != null && !string.IsNullOrEmpty(Model.MaKhuyenMaiNavigation.MaKhuyenMai)) ? Model.MaKhuyenMaiNavigation.MaKhuyenMai : "Không có")</dd>
+
+                        <dt class="col-sm-4">Màu sắc</dt>
+                        <dd class="col-sm-8">@(!string.IsNullOrEmpty(Model.MaMauSacNavigation?.MaMauSac) ? Model.MaMauSacNavigation.MaMauSac : "Không có")</dd>
+
                     </dl>
+
                     <form method="post" action="@Url.Action("AddToCart", "TrangBanSanPhams")">
                         <input type="hidden" name="MaSanPham" value="@Model.MaSanPham" />
                         <div class="form-group">
                             <label for="SoLuong">Số lượng</label>
-                            <input type="number" name="SoLuong" id="SoLuong" class="form-control" value="1" min="1" max="@Model.SoLuongTonKho" />
+                            <input type="number" name="SoLuong" id="SoLuong" class="form-control"
+                                   value="1" min="1" max="@(Model.SoLuongTonKho > 0 ? Model.SoLuongTonKho : 1)" />
                         </div>
-                        <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                        <button type="submit" class="btn btn-primary btn-addcart">
+                            <i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng
+                        </button>
+                       
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <a href="@Url.Action("Index", "TrangBanSanPhams")" style="text-align: center" class="btn btn-secondary">
+        <i class="fa fa-arrow-left"></i> Quay lại
+    </a>
 </body>
 </html>

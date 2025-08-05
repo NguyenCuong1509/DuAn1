@@ -127,7 +127,7 @@ body {
                 @Html.DisplayNameFor(model => model.TrangThai)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaQuanLyNavigation)
+                @Html.DisplayNameFor(model => model.QuanLy)
             </th>
             <th>Chức năng</th>
         </tr>
@@ -154,7 +154,7 @@ body {
                 @Html.DisplayFor(modelItem => item.TrangThai)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaQuanLyNavigation.MaQuanLy)
+                @Html.DisplayFor(modelItem => item.QuanLy.MaQuanLy)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.MaKhuyenMai" class="btn btn-info">Sửa </a>

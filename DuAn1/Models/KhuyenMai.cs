@@ -6,6 +6,8 @@ namespace DuAn1.Models
 {
     public partial class KhuyenMai
     {
+        [Key]
+        [MaxLength(10)]
         [DisplayName("Mã Khuyến Mãi")]
         public string MaKhuyenMai { get; set; } = null!;
 
@@ -26,10 +28,11 @@ namespace DuAn1.Models
         public string? TrangThai { get; set; }
 
         [DisplayName("Mã Quản Lý")]
+        [MaxLength(10)]
         public string? MaQuanLy { get; set; }
         [DisplayName("Mã Quản Lý")]
 
-        public virtual QuanLy? MaQuanLyNavigation { get; set; }
+        public virtual QuanLy? QuanLy { get; set; }
 
         public virtual ICollection<SanPham> SanPhams { get; set; } = new List<SanPham>();
 
