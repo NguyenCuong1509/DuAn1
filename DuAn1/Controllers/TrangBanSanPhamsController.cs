@@ -28,46 +28,88 @@ namespace DuAn1.Controllers
             .Where(s => s.TrangThai == "Đang kinh doanh")
             .AsQueryable();
 
-        public async Task<IActionResult> Index(int page = 1, int pageSize = 9)
+        // ✅ Hiển thị 9 sản phẩm bán chạy nhất (hoặc tất cả nếu < 9)
+        public async Task<IActionResult> Index()
+        {
+            try
+            {
+                var query = BaseQuery();
+
+                // Nếu có cột SoLuongDaBan, ưu tiên sắp xếp theo bán chạy nhất
+                var sanPhams = await query
+                    .OrderByDescending(x => x.SoLuongTonKho) // Nếu chưa có cột này, thay bằng DonGia hoặc SoLuongTonKho
+                    .Take(9) // Lấy tối đa 9 sản phẩm
+                    .ToListAsync();
+
+                // Trả ra view, không phân trang
+                ViewBag.TotalPages = 1;
+                ViewBag.CurrentPage = 1;
+
+                return View(sanPhams);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi truy vấn sản phẩm: " + ex.Message);
+                ViewBag.ErrorMessage = "Không thể tải danh sách sản phẩm.";
+                return View(new List<SanPham>());
+            }
+        }
+
+        // ✅ Trang cửa hàng - tìm kiếm sản phẩm
+        public async Task<IActionResult> CuaHang(
+            string? searchString,
+            string? trangThai,
+            decimal? priceFrom,
+            decimal? priceTo,
+            string? productCode,
+            string? size,
+            string? connectionDistance,
+            int? batteryCapacity,
+            int? stockQuantity,
+            string? brandCode,
+            string? color)
         {
             var query = BaseQuery();
-            var total = await query.CountAsync();
-            var sanPhams = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
-            ViewBag.TotalPages = (int)Math.Ceiling((double)total / pageSize);
-            ViewBag.CurrentPage = page;
+            // Điều kiện lọc
+            if (!string.IsNullOrEmpty(searchString))
+                query = query.Where(p => p.TenSanPham.Contains(searchString));
+            if (!string.IsNullOrEmpty(productCode))
+                query = query.Where(p => p.MaSanPham.Contains(productCode));
+            if (!string.IsNullOrEmpty(size))
+                query = query.Where(p => p.KichCo.Contains(size));
+            if (!string.IsNullOrEmpty(connectionDistance))
+                query = query.Where(p => p.KhoangCachKetNoi.Contains(connectionDistance));
+            if (batteryCapacity.HasValue)
+                query = query.Where(p => p.DungLuongPin == batteryCapacity);
+            if (stockQuantity.HasValue)
+                query = query.Where(p => p.SoLuongTonKho == stockQuantity);
+            if (!string.IsNullOrEmpty(brandCode))
+                query = query.Where(p => p.MaHang.Contains(brandCode));
+            if (!string.IsNullOrEmpty(color))
+                query = query.Where(p => p.MaMauSac.Contains(color));
+            if (!string.IsNullOrEmpty(trangThai))
+                query = query.Where(p => p.TrangThai == trangThai);
+            if (priceFrom.HasValue)
+                query = query.Where(p => p.DonGia >= priceFrom);
+            if (priceTo.HasValue)
+                query = query.Where(p => p.DonGia <= priceTo);
+
+            // Nếu < 9 sản phẩm thì trả hết, nếu > 9 thì chỉ lấy 9 sản phẩm bán chạy nhất
+            var total = await query.CountAsync();
+            var sanPhams = await query
+                .OrderByDescending(p => p.SoLuongTonKho)
+                .Take(9)
+                .ToListAsync();
+
+            // Dữ liệu lọc bổ sung (Brand, Color)
+            ViewBag.Brands = await _context.Hangs.AsNoTracking().ToListAsync();
+            ViewBag.Colors = await _context.MauSacs.AsNoTracking().ToListAsync();
+            ViewBag.TotalFound = total;
 
             return View(sanPhams);
         }
 
-        public async Task<IActionResult> CuaHang(string? searchString, string? trangThai, decimal? priceFrom, decimal? priceTo,
-            string? productCode, string? size, string? connectionDistance, int? batteryCapacity,
-            int? stockQuantity, string? brandCode, string? color, int page = 1, int pageSize = 9)
-        {
-            var query = BaseQuery();
-
-            if (!string.IsNullOrEmpty(searchString)) query = query.Where(p => p.TenSanPham.Contains(searchString));
-            if (!string.IsNullOrEmpty(productCode)) query = query.Where(p => p.MaSanPham.Contains(productCode));
-            if (!string.IsNullOrEmpty(size)) query = query.Where(p => p.KichCo.Contains(size));
-            if (!string.IsNullOrEmpty(connectionDistance)) query = query.Where(p => p.KhoangCachKetNoi.Contains(connectionDistance));
-            if (batteryCapacity.HasValue) query = query.Where(p => p.DungLuongPin == batteryCapacity);
-            if (stockQuantity.HasValue) query = query.Where(p => p.SoLuongTonKho == stockQuantity);
-            if (!string.IsNullOrEmpty(brandCode)) query = query.Where(p => p.MaHang.Contains(brandCode));
-            if (!string.IsNullOrEmpty(color)) query = query.Where(p => p.MaMauSac.Contains(color));
-            if (!string.IsNullOrEmpty(trangThai)) query = query.Where(p => p.TrangThai == trangThai);
-            if (priceFrom.HasValue) query = query.Where(p => p.DonGia >= priceFrom);
-            if (priceTo.HasValue) query = query.Where(p => p.DonGia <= priceTo);
-
-            var total = await query.CountAsync();
-            var sanPhams = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-
-            ViewBag.TotalPages = (int)Math.Ceiling((double)total / pageSize);
-            ViewBag.CurrentPage = page;
-            ViewBag.Brands = await _context.Hangs.ToListAsync();
-            ViewBag.Colors = await _context.MauSacs.ToListAsync();
-
-            return View(sanPhams);
-        }
 
         public async Task<IActionResult> Details(string id)
         {
