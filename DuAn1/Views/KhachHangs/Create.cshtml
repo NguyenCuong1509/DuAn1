@@ -1,131 +1,90 @@
 ﻿@model DuAn1.Models.KhachHang
-
 @{
     ViewData["Title"] = "Thêm khách hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Thêm khách hàng</h1>
 
 <form asp-action="Create" method="post">
-    <div class="form-group" hidden>
-        <label asp-for="MaKhachHang" class="control-label"></label>
-        <input asp-for="MaKhachHang" class="form-control" readonly />
-        <span asp-validation-for="MaKhachHang" class="text-danger"></span>
-    </div>
-
+    <input asp-for="MaKhachHang" type="hidden" />
     <div class="form-group">
-        <label asp-for="HoTen" class="control-label"></label>
+        <label asp-for="HoTen"></label>
         <input asp-for="HoTen" class="form-control" />
         <span asp-validation-for="HoTen" class="text-danger"></span>
     </div>
-
     <div class="form-group">
-        <label asp-for="Sdt" class="control-label"></label>
+        <label asp-for="Sdt"></label>
         <input asp-for="Sdt" class="form-control" />
         <span asp-validation-for="Sdt" class="text-danger"></span>
     </div>
-
     <div class="form-group">
-        <label asp-for="DiaChi" class="control-label"></label>
+        <label asp-for="DiaChi"></label>
         <input asp-for="DiaChi" class="form-control" />
         <span asp-validation-for="DiaChi" class="text-danger"></span>
     </div>
-
     <div class="form-group">
-        <label asp-for="GioiTinh" class="control-label"></label>
+        <label asp-for="GioiTinh"></label>
         <select asp-for="GioiTinh" class="form-control">
             <option value="Nam">Nam</option>
             <option value="Nữ">Nữ</option>
         </select>
         <span asp-validation-for="GioiTinh" class="text-danger"></span>
     </div>
-
     <div class="form-group">
-        <label asp-for="TrangThai" class="control-label"></label>
+        <label asp-for="TrangThai"></label>
         <select asp-for="TrangThai" class="form-control">
             <option value="Đang hoạt động">Đang hoạt động</option>
             <option value="Ngừng hoạt động">Ngừng hoạt động</option>
         </select>
         <span asp-validation-for="TrangThai" class="text-danger"></span>
     </div>
-
     <div class="form-group">
-        <label asp-for="Username" class="control-label"></label>
+        <label asp-for="Username"></label>
         <input asp-for="Username" class="form-control" />
         <span asp-validation-for="Username" class="text-danger"></span>
     </div>
-
     <div class="form-group">
-        <label asp-for="Password" class="control-label"></label>
+        <label asp-for="Password"></label>
         <input asp-for="Password" type="password" class="form-control" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Thêm khách hàng</button>
-        <a href="@Url.Action("Index", "KhachHangs")" class="btn btn-secondary">Hủy</a>
+        <button type="submit" class="btn btn-primary">Thêm</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
     </div>
 </form>
 
-    <style>
-       
-        /* Cải thiện giao diện form */
-        .form-group {
-            margin-bottom: 15px;
-        }
+<style>
+    .form-group {
+        margin-bottom: 12px;
+    }
 
-        .form-control {
-            border-radius: 5px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-            transition: box-shadow 0.2s ease-in-out;
-        }
+    .form-control {
+        padding: 6px;
+        font-size: 14px;
+    }
 
-            .form-control:focus {
-                border-color: #007bff;
-                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-            }
+    .btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
 
-        .btn {
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-        }
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
 
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-            border: none;
-        }
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
 
-            .btn-primary:hover {
-                background-color: #0056b3;
-                color: white;
-            }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-            border: none;
-        }
-
-            .btn-secondary:hover {
-                background-color: #5a6268;
-            }
-
-        .text-danger {
-            font-size: 0.9rem;
-        }
-
-        /* Các input readonly */
-        .form-control[readonly] {
-            background-color: #f5f5f5;
-            cursor: not-allowed;
-        }
-    </style>
+    .text-danger {
+        font-size: 0.85rem;
+    }
+</style>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    <partial name="_ValidationScriptsPartial" />
 }

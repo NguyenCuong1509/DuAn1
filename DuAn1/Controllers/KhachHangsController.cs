@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DuAn1.Models;
 
@@ -12,6 +10,8 @@ namespace DuAn1.Controllers
     public class KhachHangsController : Controller
     {
         private readonly Duan1Context _context;
+        private const string ActiveStatus = "Đang hoạt động";
+        private const string InactiveStatus = "Ngừng hoạt động";
 
         public KhachHangsController(Duan1Context context)
         {
@@ -19,46 +19,81 @@ namespace DuAn1.Controllers
         }
 
         // GET: KhachHangs
-        public async Task<IActionResult> Index(string? searchString, int page = 1, int pageSize = 10)
+        public async Task<IActionResult> Index(string searchString, int page = 1, int pageSize = 10)
         {
-            var khachHangsQuery = _context.KhachHangs.AsQueryable();
+            // Ensure page and pageSize are valid
+            page = Math.Max(1, page);
+            pageSize = Math.Max(1, Math.Min(pageSize, 50)); // Cap pageSize to avoid abuse
 
-            // Áp dụng bộ lọc tìm kiếm theo tên hoặc số điện thoại
+            // Build query with AsNoTracking for read-only
+            var khachHangsQuery = _context.KhachHangs
+                .AsNoTracking()
+                .Select(k => new KhachHang
+                {
+                    MaKhachHang = k.MaKhachHang,
+                    HoTen = k.HoTen,
+                    Sdt = k.Sdt,
+                    DiaChi = k.DiaChi,
+                    GioiTinh = k.GioiTinh,
+                    TrangThai = k.TrangThai
+                });
+
+            // Apply search filter
             if (!string.IsNullOrEmpty(searchString))
             {
-                khachHangsQuery = khachHangsQuery.Where(k => k.HoTen.Contains(searchString) || k.Sdt.Contains(searchString));
+                searchString = searchString.Trim().ToLower();
+                khachHangsQuery = khachHangsQuery.Where(k => k.HoTen.ToLower().Contains(searchString) || k.Sdt.Contains(searchString));
             }
 
-            // Sắp xếp khách hàng theo tên
-            khachHangsQuery = khachHangsQuery.OrderByDescending(k => Convert.ToInt32(k.MaKhachHang.Substring(2))); ; // Tách phần số và sắp xếp
+            // Sort by MaKhachHang (assuming it's an integer-like string, e.g., "KH123")
+            khachHangsQuery = khachHangsQuery.OrderByDescending(k => k.MaKhachHang);
 
-            // Thực hiện query và lấy danh sách khách hàng với phân trang
-            var totalRecords = await khachHangsQuery.CountAsync();
+            // Get total count for pagination
+            int totalRecords = await khachHangsQuery.CountAsync();
+
+            // Fetch paginated data
             var khachHangs = await khachHangsQuery
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
-            // Đặt thông tin phân trang vào ViewBag
+            // Pass pagination data to view
             ViewBag.TotalRecords = totalRecords;
             ViewBag.CurrentPage = page;
             ViewBag.PageSize = pageSize;
 
-            // Trả về view với danh sách khách hàng đã phân trang
             return View(khachHangs);
         }
+
         // GET: KhachHangs/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null)
+            if (string.IsNullOrEmpty(id))
             {
                 return NotFound();
             }
 
-            // Lấy thông tin khách hàng cùng với danh sách hóa đơn
+            // Fetch only required fields with AsNoTracking
             var khachHang = await _context.KhachHangs
-                .Include(k => k.GioHang)
-                .Include(k => k.HoaDons) // Bao gồm hóa đơn liên quan
+                .AsNoTracking()
+                .Select(k => new KhachHang
+                {
+                    MaKhachHang = k.MaKhachHang,
+                    HoTen = k.HoTen,
+                    Sdt = k.Sdt,
+                    DiaChi = k.DiaChi,
+                    GioiTinh = k.GioiTinh,
+                    TrangThai = k.TrangThai,
+                    Username = k.Username,
+                    GioHang = k.GioHang,
+                    HoaDons = k.HoaDons.Select(h => new HoaDon
+                    {
+                        MaHoaDon = h.MaHoaDon,
+                        NgayTao = h.NgayTao,
+                        ThanhTien = h.ThanhTien,
+                        TrangThai = h.TrangThai
+                    }).ToList()
+                })
                 .FirstOrDefaultAsync(m => m.MaKhachHang == id);
 
             if (khachHang == null)
@@ -66,88 +101,108 @@ namespace DuAn1.Controllers
                 return NotFound();
             }
 
-            return View(khachHang); // Trả về thông tin khách hàng
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-            var count = _context.KhachHangs.Count();
-            var maKhachHang = $"KH{count + 1}";  // Auto-generate MaKhachHang
-
-            // Create a new KhachHang object with MaKhachHang populated
-            var khachHang = new KhachHang
-            {
-                MaKhachHang = maKhachHang,
-                TrangThai = "Đang hoạt động"
-            };
-
-            // Pass the khachHang object to the view
             return View(khachHang);
         }
 
+        // GET: KhachHangs/Create
+        public IActionResult Create()
+        {
+            // Generate MaKhachHang in the database using a stored procedure or trigger (recommended)
+            // For simplicity, we'll keep the logic here, but consider moving to DB
+            var count = _context.KhachHangs.Count() + 1;
+            var khachHang = new KhachHang
+            {
+                MaKhachHang = $"KH{count}",
+                TrangThai = ActiveStatus
+            };
+
+            return View(khachHang);
+        }
+
+        // POST: KhachHangs/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaKhachHang,HoTen,Sdt,DiaChi,GioiTinh,TrangThai,Username,Password")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
-                // Thêm khách hàng
-                _context.Add(khachHang);
-                await _context.SaveChangesAsync();
+                // Hash password before saving (basic example, use proper hashing like BCrypt in production)
+                khachHang.Password = HashPassword(khachHang.Password);
 
-                // Tạo giỏ hàng tự động cho khách hàng vừa thêm
-                var gioHangCount = _context.GioHangs.Count();
-                var maGioHang = $"GH{gioHangCount + 1}";
-
-                var gioHang = new GioHang
+                await _context.Database.BeginTransactionAsync();
+                try
                 {
-                    MaGioHang = maGioHang,
-                    MaKhachHang = khachHang.MaKhachHang,
-                    NgayThem = DateTime.Now,
-                    SoLoaiSanPham = 0
-                };
+                    // Add customer
+                    _context.Add(khachHang);
+                    await _context.SaveChangesAsync();
 
-                _context.GioHangs.Add(gioHang);
-                await _context.SaveChangesAsync();
+                    // Create cart
+                    var gioHang = new GioHang
+                    {
+                        MaGioHang = $"GH{_context.GioHangs.Count() + 1}",
+                        MaKhachHang = khachHang.MaKhachHang,
+                        NgayThem = DateTime.UtcNow,
+                        SoLoaiSanPham = 0
+                    };
+                    _context.GioHangs.Add(gioHang);
+                    await _context.SaveChangesAsync();
 
-                // Chuyển hướng đến trang đăng nhập
-                return RedirectToAction("Index", "KhachHangs");
+                    await _context.Database.CommitTransactionAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    await _context.Database.RollbackTransactionAsync();
+                    ModelState.AddModelError("", "Đã xảy ra lỗi khi tạo khách hàng.");
+                }
             }
 
             return View(khachHang);
         }
-
 
         // POST: KhachHangs/Deactivate/5
         [HttpPost, ActionName("Deactivate")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Deactivate(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
             var khachHang = await _context.KhachHangs.FindAsync(id);
             if (khachHang != null)
             {
-                khachHang.TrangThai = "Ngừng hoạt động"; // Hoặc giá trị tương ứng
-                _context.Update(khachHang);
+                khachHang.TrangThai = InactiveStatus;
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: KhachHangs/Deactivate/5
+        // POST: KhachHangs/Activate/5
         [HttpPost, ActionName("Activate")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Activate(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
             var khachHang = await _context.KhachHangs.FindAsync(id);
             if (khachHang != null)
             {
-                khachHang.TrangThai = "Đang hoạt động"; // Hoặc giá trị tương ứng
-                _context.Update(khachHang);
+                khachHang.TrangThai = ActiveStatus;
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(Index));
         }
 
+        // Placeholder for password hashing (implement with proper library in production)
+        private string HashPassword(string password)
+        {
+            // Use BCrypt or ASP.NET Identity's PasswordHasher in production
+            return password; // Temporary placeholder
+        }
     }
 }
