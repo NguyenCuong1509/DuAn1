@@ -1,91 +1,276 @@
 ﻿@model DuAn1.Models.KhachHang
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Thông tin cá nhân";
     Layout = "~/Views/Shared/_chitiet.cshtml";
 }
-<style>
-    .hidden{
-        display:none;
-    }
-</style>
 
-<div>
-
+<div class="customer-details">
+    <h1>Thông tin cá nhân</h1>
 
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoTen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HoTen)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sdt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sdt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GioiTinh)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GioiTinh)
-        </dd>
-        <dt class = "col-sm-2 hidden">
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
-        <dd class = "col-sm-10 hidden">
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.HoTen)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.HoTen)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.Sdt)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.Sdt)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.DiaChi)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.DiaChi)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.GioiTinh)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.GioiTinh)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.Username)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.Username)</dd>
     </dl>
-    <a href="@Url.Action("Edit", "TaiKhoanKhachHang", new { id = Model.MaKhachHang })" class="btn btn-primary">Sửa</a>
 
-    <div>
-        <h4>Danh sách hóa đơn</h4>
-        <table class="table table-bordered table-hover">
-            <thead>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
+            data-id="@Model.MaKhachHang"
+            data-ten="@Model.HoTen"
+            data-sdt="@Model.Sdt"
+            data-diachi="@Model.DiaChi"
+            data-gioitinh="@Model.GioiTinh"
+            data-username="@Model.Username"
+            data-password="@Model.Password">
+        Cập nhật thông tin
+    </button>
+
+    <h4>Lịch sử mua hàng</h4>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Mã Hóa Đơn</th>
+                <th>Ngày Tạo</th>
+                <th>Thành Tiền</th>
+                <th>Trạng Thái</th>
+                <th>Chi tiết</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hoaDon in Model.HoaDons)
+            {
                 <tr>
-                    <th>Mã Hóa Đơn</th>
-                    <th>Ngày Tạo</th>
-                    <th>Thành Tiền</th>
-                    <th>Trạng Thái</th>
-                    <th>Chức năng</th>
+                    <td>@hoaDon.MaHoaDon</td>
+                    <td>@hoaDon.NgayTao?.ToString("dd/MM/yyyy")</td>
+                    <td>@string.Format("{0:N0} ₫", hoaDon.ThanhTien)</td>
+                    <td>@hoaDon.TrangThai</td>
+                    <td>
+                        <a asp-controller="GioHang" asp-action="XemHoaDon" asp-route-maHoaDon="@hoaDon.MaHoaDon" class="btn btn-info">Xem chi tiết</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var hoaDon in Model.HoaDons)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => hoaDon.MaHoaDon)</td>
-                        <td>@Html.DisplayFor(modelItem => hoaDon.NgayTao)</td>
-                        <td>@Html.DisplayFor(modelItem => hoaDon.ThanhTien)</td>
-                        <td>@Html.DisplayFor(modelItem => hoaDon.TrangThai)</td>
-                        <td>
-                            <a asp-controller="GioHang" asp-action="XemHoaDon" asp-route-maHoaDon="@hoaDon.MaHoaDon" class="btn btn-info">Xem Chi Tiết</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
+            }
+        </tbody>
+    </table>
 </div>
+
+<!-- Modal chỉnh sửa thông tin khách hàng -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form id="editForm" asp-action="Edit" asp-controller="TaiKhoanKhachHang" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" id="khachHangId" name="MaKhachHang" />
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="tenKhachHang" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" id="tenKhachHang" name="HoTen" required />
+                        <span class="text-danger" asp-validation-for="HoTen"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="soDienThoai" class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" id="soDienThoai" name="Sdt" required />
+                        <span class="text-danger" asp-validation-for="Sdt"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="diaChi" class="form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" id="diaChi" name="DiaChi" required />
+                        <span class="text-danger" asp-validation-for="DiaChi"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gioiTinh" class="form-label">Giới tính</label>
+                        <select class="form-control" id="gioiTinh" name="GioiTinh" required>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="GioiTinh"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Tên đăng nhập</label>
+                        <input type="text" class="form-control" id="username" name="Username" required />
+                        <span class="text-danger" asp-validation-for="Username"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mật khẩu</label>
+                        <input type="password" class="form-control" id="password" name="Password" required />
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Điền dữ liệu vào modal
+    const editModal = document.getElementById('editModal');
+    editModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const id = button.getAttribute('data-id');
+        const ten = button.getAttribute('data-ten');
+        const sdt = button.getAttribute('data-sdt');
+        const diachi = button.getAttribute('data-diachi');
+        const gioitinh = button.getAttribute('data-gioitinh');
+        const username = button.getAttribute('data-username');
+        const password = button.getAttribute('data-password');
+
+        if (!id) {
+            console.error('data-id is missing or null');
+            alert('Lỗi: Không tìm thấy mã khách hàng.');
+            return;
+        }
+
+        document.getElementById('khachHangId').value = id;
+        document.getElementById('tenKhachHang').value = ten || '';
+        document.getElementById('soDienThoai').value = sdt || '';
+        document.getElementById('diaChi').value = diachi || '';
+        document.getElementById('gioiTinh').value = gioitinh || 'Nam';
+        document.getElementById('username').value = username || '';
+        document.getElementById('password').value = password || '';
+    });
+
+    // Xử lý submit form qua AJAX
+    document.getElementById('editForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const form = e.target;
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const formData = new FormData(form);
+        const id = document.getElementById('khachHangId').value;
+
+        const response = await fetch(`${form.action}/${id}`, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+            }
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            window.location.href = result.redirectUrl;
+        } else {
+            alert(result.message);
+        }
+    });
+</script>
+
+<style>
+    .customer-details {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9fb;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        .customer-details h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .customer-details h4 {
+            font-size: 1.5rem;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .customer-details .row {
+            margin-bottom: 12px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+            .customer-details .row:hover {
+                background-color: #e8f4f8;
+            }
+
+        .customer-details .col-sm-2 {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+
+        .customer-details .col-sm-10 {
+            color: #34495e;
+            font-size: 1rem;
+        }
+
+        .customer-details .table {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+            .customer-details .table th {
+                background-color: #3498db;
+                color: white;
+                padding: 12px;
+                font-weight: 600;
+                text-align: center;
+            }
+
+            .customer-details .table td {
+                padding: 12px;
+                text-align: center;
+                color: #34495e;
+            }
+
+            .customer-details .table tbody tr:hover {
+                background-color: #e8f4f8;
+            }
+
+        .customer-details .btn-primary {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+            .customer-details .btn-primary:hover {
+                background-color: #2980b9;
+            }
+
+        .customer-details .btn-info {
+            background-color: #17a2b8;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+            .customer-details .btn-info:hover {
+                background-color: #138496;
+            }
+</style>

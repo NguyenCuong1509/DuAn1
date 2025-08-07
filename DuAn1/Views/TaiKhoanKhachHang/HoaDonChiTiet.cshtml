@@ -3,31 +3,88 @@
 @{
     ViewData["Title"] = "Chi tiết Hóa Đơn";
     Layout = "~/Views/Shared/_chitiet.cshtml";
-
 }
 
-<h1>Chi tiết Hóa Đơn</h1>
+<div class="invoice-detail-container">
+    <h1>Chi tiết Hóa Đơn</h1>
 
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Mã Sản Phẩm</th>
-            <th>Tên Sản Phẩm</th>
-            <th>Số Lượng</th>
-            <th>Đơn Giá</th>
-            <th>Thành Tiền</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-bordered table-hover custom-table">
+        <thead>
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.MaSanPham)</td>
-                <td>@item.MaSanPhamNavigation.TenSanPham</td> <!-- Truy cập trực tiếp -->
-                <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
-                <td>@Html.DisplayFor(modelItem => item.DonGia)</td>
-                <td>@(item.SoLuong * item.DonGia)</td> <!-- Tính toán trực tiếp -->
+                <th>Mã Sản Phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Số Lượng</th>
+                <th>Đơn Giá</th>
+                <th>Thành Tiền</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.MaSanPham)</td>
+                    <td>@item.MaSanPhamNavigation.TenSanPham</td>
+                    <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
+                    <td>@String.Format("{0:N0}₫", item.DonGia)</td>
+                    <td class="font-weight-bold text-danger">@String.Format("{0:N0}₫", item.SoLuong * item.DonGia)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .invoice-detail-container {
+        max-width: 960px;
+        margin: 30px auto;
+        padding: 25px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+        .invoice-detail-container h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
         }
-    </tbody>
-</table>
+
+    .custom-table {
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    }
+
+        .custom-table thead th {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: 600;
+            padding: 14px;
+        }
+
+        .custom-table tbody td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 12px;
+            color: #34495e;
+            font-size: 0.95rem;
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #f1f9ff;
+        }
+
+    .text-danger {
+        color: #e74c3c !important;
+    }
+
+    .font-weight-bold {
+        font-weight: 600;
+    }
+</style>

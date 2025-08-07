@@ -37,7 +37,7 @@ namespace DuAn1.Controllers
 
             return View(khachHang);
         }
-        // GET: TaiKhoanKhachHang/Edit/5
+        // GET: TaiKhoanKhachHang/Edit/5 (Tùy chọn, có thể bỏ nếu chỉ dùng modal)
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -50,42 +50,60 @@ namespace DuAn1.Controllers
             {
                 return NotFound();
             }
-            return View(khachHang);
+            return Json(khachHang); // Trả về JSON thay vì View nếu cần
         }
 
-        // POST: TaiKhoanKhachHang/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaKhachHang,HoTen,Sdt,DiaChi,GioiTinh,TrangThai,Username,Password")] KhachHang khachHang)
+        public async Task<IActionResult> Edit(string id, [Bind("MaKhachHang,HoTen,Sdt,DiaChi,GioiTinh,Username,Password")] KhachHang updatedKhachHang)
         {
-            if (id != khachHang.MaKhachHang)
+            System.Diagnostics.Debug.WriteLine($"Edit POST called with id: {id}, MaKhachHang: {updatedKhachHang.MaKhachHang}");
+            if (string.IsNullOrEmpty(id) || id != updatedKhachHang.MaKhachHang)
             {
-                return NotFound();
+                return Json(new { success = false, message = $"ID không khớp: id={id}, MaKhachHang={updatedKhachHang.MaKhachHang}" });
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
+                    var khachHang = await _context.KhachHangs.FindAsync(id);
+                    if (khachHang == null)
+                    {
+                        return Json(new { success = false, message = "Không tìm thấy khách hàng" });
+                    }
+
+                    // Cập nhật các trường từ form, bao gồm Username và Password
+                    khachHang.HoTen = updatedKhachHang.HoTen;
+                    khachHang.Sdt = updatedKhachHang.Sdt;
+                    khachHang.DiaChi = updatedKhachHang.DiaChi;
+                    khachHang.GioiTinh = updatedKhachHang.GioiTinh;
+                    khachHang.Username = updatedKhachHang.Username;
+                    khachHang.Password = updatedKhachHang.Password; // Lưu ý: Có thể cần mã hóa password trước khi lưu
+
                     _context.Update(khachHang);
                     await _context.SaveChangesAsync();
+                    return Json(new { success = true, redirectUrl = Url.Action(nameof(Details), new { id = khachHang.MaKhachHang }) });
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.KhachHangs.Any(e => e.MaKhachHang == khachHang.MaKhachHang))
+                    if (!_context.KhachHangs.Any(e => e.MaKhachHang == updatedKhachHang.MaKhachHang))
                     {
-                        return NotFound();
+                        return Json(new { success = false, message = "Không tìm thấy khách hàng" });
                     }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
-                return RedirectToAction(nameof(Details), new { id = khachHang.MaKhachHang });
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                    return Json(new { success = false, message = $"Lỗi: {ex.Message}" });
+                }
             }
-            return View(khachHang);
-        }
 
+            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+            System.Diagnostics.Debug.WriteLine($"ModelState Errors: {string.Join(", ", errors)}");
+            return Json(new { success = false, message = string.Join(", ", errors) });
+        }
         // GET: TaiKhoanKhachHang/HoaDonChiTiet/5
         public async Task<IActionResult> HoaDonChiTiet(string maHoaDon)
         {

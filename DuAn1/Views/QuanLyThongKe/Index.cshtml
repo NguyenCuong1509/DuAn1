@@ -11,63 +11,108 @@
     <style>
         body {
             padding-top: 20px;
+            background: #f5f7fa;
+            font-family: 'Segoe UI', sans-serif;
         }
 
-        .navbar a {
-            color: white;
-        }
-
-        .card {
-            margin-bottom: 20px;
+        .breadcrumb {
+            background: none;
+            font-size: 18px;
+            font-weight: 500;
         }
 
         .statistics {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
+            gap: 20px;
         }
 
         .stat {
+            flex: 1;
             text-align: center;
-            background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 22%;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: white;
+            transition: transform 0.3s ease;
         }
 
-            .stat h3 {
-                margin: 0;
+            .stat:hover {
+                transform: translateY(-6px);
+            }
+
+            .stat i {
+                font-size: 40px;
+                margin-bottom: 10px;
             }
 
             .stat p {
-                font-size: 14px;
-                color: #888;
+                margin-top: 8px;
+                font-size: 15px;
             }
 
-        .stat1 {
-            text-align: left;
-            background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            margin: 10px 0;
+        .stat-1 {
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
         }
 
-            .stat1 h3 {
-                margin: 0;
-            }
+        .stat-2 {
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+        }
 
-        .custom-range {
-            margin-top: 40px;
+        .stat-3 {
+            background: linear-gradient(135deg, #56ab2f, #a8e063);
+        }
+
+        .stat-4 {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #333;
+        }
+
+        .custom-range, .stat1 {
+            background: white;
             padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 25px;
         }
 
-        #salesChart {
+        .btn-primary {
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+            .btn-primary:hover {
+                background: linear-gradient(135deg, #5b86e5, #36d1dc);
+            }
+
+        .counter {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .chart-tabs {
+            margin-top: 20px;
+        }
+
+            .chart-tabs button {
+                margin-right: 10px;
+                border: none;
+                padding: 8px 15px;
+                background: #5b86e5;
+                color: white;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+
+                .chart-tabs button.active {
+                    background: #36d1dc;
+                }
+
+        canvas {
             width: 100%;
             height: 400px;
         }
@@ -76,32 +121,32 @@
 <body>
     <div class="row">
         <ol class="breadcrumb">
-            <li>
-                <a href="#">
-                    <em class="fa fa-home"></em>
-                </a>
-            </li>
+            <li><a href="#"><em class="fa fa-home"></em></a></li>
             <li class="active">Thống kê</li>
         </ol>
-    </div><!--/.row-->
-    <!-- Main content -->
+    </div>
+
     <div class="container">
-        <!-- Thống kê theo ngày, tuần, tháng, năm -->
+        <!-- Thống kê nhanh -->
         <div class="statistics">
-            <div class="stat">
-                <h3>@ViewBag.DailySales.ToString("C")</h3>
+            <div class="stat stat-1">
+                <i class="fa fa-calendar-day"></i>
+                <h3 class="counter" data-target="@ViewBag.DailySales">@ViewBag.DailySales.ToString("C")</h3>
                 <p>Doanh thu ngày qua</p>
             </div>
-            <div class="stat">
-                <h3>@ViewBag.WeeklySales.ToString("C")</h3>
+            <div class="stat stat-2">
+                <i class="fa fa-calendar-week"></i>
+                <h3 class="counter" data-target="@ViewBag.WeeklySales">@ViewBag.WeeklySales.ToString("C")</h3>
                 <p>Doanh thu tuần qua</p>
             </div>
-            <div class="stat">
-                <h3>@ViewBag.MonthlySales.ToString("C")</h3>
+            <div class="stat stat-3">
+                <i class="fa fa-calendar-alt"></i>
+                <h3 class="counter" data-target="@ViewBag.MonthlySales">@ViewBag.MonthlySales.ToString("C")</h3>
                 <p>Doanh thu tháng qua</p>
             </div>
-            <div class="stat">
-                <h3>@ViewBag.YearlySales.ToString("C")</h3>
+            <div class="stat stat-4">
+                <i class="fa fa-chart-line"></i>
+                <h3 class="counter" data-target="@ViewBag.YearlySales">@ViewBag.YearlySales.ToString("C")</h3>
                 <p>Doanh thu năm qua</p>
             </div>
         </div>
@@ -132,92 +177,137 @@
                 <p>Không có doanh thu trong khoảng thời gian này.</p>
             }
         </div>
+
         <div class="stat1">
-            <h4><strong>Thống kê theo khách hàng</strong></h4>
-            <h3>Tổng số khách hàng: @ViewBag.TotalCustomers</h3>
-            <h3>Khách hàng nam: @ViewBag.Nam</h3>
-            <h3>Khách hàng nữ: @ViewBag.Nu</h3>
-            <h3>Khách hàng đang hoạt động: @ViewBag.ActiveCustomers</h3>
+            <h4><strong>Thống kê khách hàng</strong></h4>
+
+            <!-- Cards mini thống kê -->
+            <div class="row text-center mb-3">
+                <div class="col-md-3">
+                    <div class="p-3 rounded shadow-sm bg-light">
+                        <i class="fa fa-users fa-2x text-primary"></i>
+                        <h5 class="mt-2">Tổng KH</h5>
+                        <h4 class="text-dark">@ViewBag.TotalCustomers</h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded shadow-sm bg-light">
+                        <i class="fa fa-male fa-2x text-info"></i>
+                        <h5 class="mt-2">Khách Nam</h5>
+                        <h4 class="text-dark">@ViewBag.Nam</h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded shadow-sm bg-light">
+                        <i class="fa fa-female fa-2x text-danger"></i>
+                        <h5 class="mt-2">Khách Nữ</h5>
+                        <h4 class="text-dark">@ViewBag.Nu</h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded shadow-sm bg-light">
+                        <i class="fa fa-user-check fa-2x text-success"></i>
+                        <h5 class="mt-2">Đang hoạt động</h5>
+                        <h4 class="text-dark">@ViewBag.ActiveCustomers</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Biểu đồ tròn -->
+            <canvas id="customerChart" style="max-height: 300px;"></canvas>
         </div>
-        <div class="stat1">   
-            <h4><strong>Thống kê số lượng bán theo sản phẩm</strong></h4>
-            <canvas id="salesChart"></canvas>
-        </div> 
+
+
+        <!-- Tabs biểu đồ -->
+        <div class="stat1">
+            <h4><strong>Biểu đồ thống kê bán hàng</strong></h4>
+            <div class="chart-tabs">
+                <button class="tab-btn active" data-chart="barChart">Biểu đồ Cột</button>
+                <button class="tab-btn" data-chart="pieChart">Biểu đồ Tròn</button>
+                <button class="tab-btn" data-chart="lineChart">Biểu đồ Đường</button>
+            </div>
+            <canvas id="barChart"></canvas>
+            <canvas id="pieChart" style="display:none;"></canvas>
+            <canvas id="lineChart" style="display:none;"></canvas>
+        </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        var ctx = document.getElementById('salesChart').getContext('2d');
         var productSales = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.ProductSales));
+        var labels = productSales.map(i => i.TenSanPham);
+        var quantityData = productSales.map(i => i.SoLuong);
+        var revenueData = productSales.map(i => i.DoanhThu);
 
-        var labels = productSales.map(function (item) {
-            return item.TenSanPham;
-        });
-
-        var quantityData = productSales.map(function (item) {
-            return item.SoLuong;
-        });
-
-        var revenueData = productSales.map(function (item) {
-            return item.DoanhThu; // Doanh thu
-        });
-
-        var salesChart = new Chart(ctx, {
+        // Biểu đồ Cột
+        new Chart(document.getElementById('barChart'), {
             type: 'bar',
             data: {
                 labels: labels,
+                datasets: [
+                    { label: 'Số lượng', data: quantityData, backgroundColor: '#5b86e5', yAxisID: 'y1' },
+                    { label: 'Doanh thu (VNĐ)', data: revenueData, backgroundColor: '#56ab2f', yAxisID: 'y2' }
+                ]
+            },
+            options: { scales: { y1: { position: 'left', beginAtZero: true }, y2: { position: 'right', beginAtZero: true } } }
+        });
+
+        // Biểu đồ Tròn
+        new Chart(document.getElementById('pieChart'), {
+            type: 'doughnut',
+            data: { labels: labels, datasets: [{ data: revenueData, backgroundColor: ['#5b86e5','#ff5e62','#56ab2f','#f7971e','#9b59b6','#e67e22'] }] },
+            options: { plugins: { legend: { position: 'right' } } }
+        });
+
+        // Biểu đồ Đường
+        new Chart(document.getElementById('lineChart'), {
+            type: 'line',
+            data: { labels: labels, datasets: [{ label: 'Doanh thu', data: revenueData, borderColor: '#36d1dc', backgroundColor: 'rgba(54,209,220,0.2)', fill: true }] },
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+
+        // Chuyển đổi giữa các biểu đồ
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('canvas').forEach(c => c.style.display = 'none');
+                document.getElementById(this.dataset.chart).style.display = 'block';
+            });
+        });
+
+        // Hiệu ứng đếm số
+        document.querySelectorAll('.counter').forEach(counter => {
+            let target = parseFloat(counter.getAttribute('data-target'));
+            let count = 0;
+            let step = target / 100;
+            function updateCounter() {
+                if (count < target) {
+                    count += step;
+                    counter.innerText = count.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.innerText = target.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+                }
+            }
+            updateCounter();
+        });
+          var ctxCus = document.getElementById('customerChart').getContext('2d');
+        var customerChart = new Chart(ctxCus, {
+            type: 'doughnut',
+            data: {
+                labels: ['Nam', 'Nữ', 'Khác / Chưa xác định'],
                 datasets: [{
-                    label: 'Số lượng bán',
-                    data: quantityData,
-                    backgroundColor: 'purple',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1,
-                    yAxisID: 'y1' // Gán dataset này cho trục y bên phải
-                },
-                {
-                    label: 'Doanh thu',
-                    data: revenueData,
-                    backgroundColor: 'green', // Màu sắc khác cho doanh thu/-strong/-heart:>:o:-((:-h borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1,
-                    yAxisID: 'y2' // Gán dataset này cho trục y bên trái
+                    data: [@ViewBag.Nam, @ViewBag.Nu, @ViewBag.TotalCustomers - (@ViewBag.Nam + @ViewBag.Nu)],
+                    backgroundColor: ['#36a2eb', '#ff6384', '#cccccc'],
+                    borderWidth: 1
                 }]
             },
             options: {
-                scales: {
-                    y1: {
-                        type: 'linear',
-                        position: 'left', // Đặt yAxisID này bên trái
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Số lượng bán',
-                            font: {
-                                weight: 'bold' // Đặt chữ in đậm cho tiêu đề
-                            }
-                        },
-                        grid: {
-                            drawOnChartArea: false // Không vẽ lưới cho trục y bên trái
-                        }
-                    },
-                    y2: {
-                        type: 'linear',
-                        position: 'right', // Đặt yAxisID này bên phải
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Doanh thu',
-                            font: {
-                                weight: 'bold' // Đặt chữ in đậm cho tiêu đề
-                            }
-                        }
-                    },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Sản phẩm',
-                            font: {
-                                weight: 'bold' // Đặt chữ in đậm cho tiêu đề
-                            }
-                        }
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { font: { size: 14 } }
                     }
                 }
             }

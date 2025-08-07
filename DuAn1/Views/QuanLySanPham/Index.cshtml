@@ -179,7 +179,7 @@
                         if (item.MaKhuyenMaiNavigation.TrangThai == "Đang hoạt động")
                         {
                             var discountedPrice = item.DonGia.Value - (item.DonGia.Value * item.MaKhuyenMaiNavigation.PhanTramGiam.Value / 100);
-                            <strong>Đơn giá sau giảm:</strong> @String.Format("{0:C0}", discountedPrice)
+                            @String.Format("{0:C0}", discountedPrice)
                         }
                         else if (item.MaKhuyenMaiNavigation.TrangThai == "Sắp bắt đầu")
                         {
@@ -200,9 +200,10 @@
 
                 <td>@Html.DisplayFor(modelItem => item.SoLuongTonKho)</td>
                 <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
-                <td>@Html.DisplayFor(modelItem => item.MaHangNavigation.TenHang)</td>
-                <td>@Html.DisplayFor(modelItem => item.MaMauSacNavigation.TenMauSac)</td>
-                <td>@Html.DisplayFor(modelItem => item.LanSuaGanNhat)</td>
+
+                <td>@(item.MaHangNavigation != null ? item.MaHangNavigation.TenHang : "Không có")</td>
+                <td>@(item.MaMauSacNavigation != null ? item.MaMauSacNavigation.TenMauSac : "Không có")</td>
+                <td>@(item.LanSuaGanNhat.HasValue? item.LanSuaGanNhat.Value.ToString("dd/MM/yyyy") : "Không có")</td>
 
                 <td class="btn-group-vertical">
                     <a asp-action="Edit" asp-route-id="@item.MaSanPham" class="btn btn-primary">Sửa</a>
