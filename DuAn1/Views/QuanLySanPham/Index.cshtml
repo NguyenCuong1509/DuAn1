@@ -5,9 +5,47 @@
     var isSearching = !string.IsNullOrEmpty(Context.Request.Query["searchString"]);
 }
 <style>
-  <style>
+    /* Căn chỉnh tổng thể */
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    h1, h2 {
+        margin-top: 20px;
+        font-weight: 600;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        background-color: transparent;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    /* Tìm kiếm đơn giản */
+    .input-group.mb-3 {
+        margin-bottom: 20px;
+    }
+
+    .input-group .form-control {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .input-group .btn {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    /* Tìm kiếm nâng cao */
     #advancedSearch {
         margin-top: 15px;
+        background-color: #ffffff;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
     }
 
     #toggleSearch {
@@ -15,31 +53,72 @@
     }
 
     .advanced-search-form .form-group {
-        margin-bottom: 15px;
-    }
-
-    .advanced-search-form .form-group label {
-        width: 100%;
-        margin-bottom: 5px;
-        display: block;
+        margin-bottom: 20px;
     }
 
     .advanced-search-form .form-control {
         width: 100%;
     }
 
-    /* Optional: Set a max-width for the form groups */
-    .advanced-search-form .form-group {
-        max-width: 300px; /* You can adjust this as needed */
+    .advanced-search-form label {
+        font-weight: 500;
     }
 
-    /* Style for the submit button */
-    .advanced-search-form .btn {
-        width: 100%;
+    /* Bảng sản phẩm */
+    table.table {
+        background-color: #fff;
+        border-radius: 6px;
+        overflow: hidden;
     }
+
+    table thead {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    table th, table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    table img {
+        max-width: 100px;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    table td span {
+        font-style: italic;
+        color: #888;
+    }
+
+    table .btn-group-vertical .btn {
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    /* Nút hành động */
+    .btn {
+        transition: all 0.2s ease-in-out;
+    }
+
+        .btn:hover {
+            transform: scale(1.03);
+        }
+
+    /* Pagination */
+    .pagination {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+        .pagination .btn {
+            margin: 2px;
+            min-width: 40px;
+        }
 </style>
 
-</style>
+
 <div class="row">
     <ol class="breadcrumb">
         <li>

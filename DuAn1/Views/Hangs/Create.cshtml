@@ -56,3 +56,85 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<style>
+    /* Form Container */
+    form {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+        /* Labels */
+        form label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: inline-block;
+            color: #333;
+        }
+
+        /* Inputs & Select */
+        form .form-control {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            width: 100%;
+        }
+
+            form .form-control:focus {
+                border-color: #007bff;
+                outline: none;
+                box-shadow: 0 0 0 2px rgba(0,123,255,0.1);
+            }
+
+    /* Error messages */
+    .text-danger {
+        font-size: 14px;
+        margin-top: 4px;
+        color: #e74c3c;
+    }
+
+    /* Submit Button */
+    form .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+        form .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    /* Page title */
+    h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    /* Section Heading */
+    h4 {
+        font-size: 20px;
+        font-weight: 500;
+        color: #555;
+    }
+
+    /* Back to List link */
+    a {
+        display: inline-block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.2s;
+    }
+
+        a:hover {
+            color: #0056b3;
+        }
+</style>

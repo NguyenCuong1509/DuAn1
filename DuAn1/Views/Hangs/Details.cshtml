@@ -1,43 +1,75 @@
 ﻿@model DuAn1.Models.Hang
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết thương hiệu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<style>
+    .hang-details-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-<div>
-    <h4>Hang</h4>
+        .hang-details-container h1,
+        .hang-details-container h4 {
+            text-align: center;
+            color: #333;
+        }
+
+        .hang-details-container dl dt {
+            font-weight: bold;
+            color: #444;
+        }
+
+        .hang-details-container dl dd {
+            margin-bottom: 15px;
+        }
+
+    .hang-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .hang-actions a {
+            margin: 0 10px;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+            .hang-actions a:hover {
+                background-color: #0056b3;
+            }
+</style>
+
+<div class="hang-details-container">
+    <h1>Chi tiết thương hiệu</h1>
+    <h4>@Model.TenHang</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TenHang)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TenHang)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Website)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Website)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TinhNang)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TinhNang)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
+        <dt class="col-sm-3">Tên hãng</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.TenHang)</dd>
+
+        <dt class="col-sm-3">Website</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Website)</dd>
+
+        <dt class="col-sm-3">Tính năng</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.TinhNang)</dd>
+
+        <dt class="col-sm-3">Trạng thái</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.TrangThai)</dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.MaHang">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+    <div class="hang-actions">
+        <a asp-action="Edit" asp-route-id="@Model?.MaHang">Chỉnh sửa</a>
+        <a asp-action="Index">Quay lại danh sách</a>
+    </div>
 </div>

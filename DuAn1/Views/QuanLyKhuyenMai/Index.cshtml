@@ -1,166 +1,81 @@
 ﻿@model IEnumerable<DuAn1.Models.KhuyenMai>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách khuyến mãi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <style>
-/* General styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    margin-top: 20px;
-}
-
-/* Page title */
-.page-title {
-    color: #007bff;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-/* Button styles */
-.btn {
-    font-size: 14px;
-    padding: 8px 15px;
-    margin: 0 5px;
-    border-radius: 5px;
-    text-align: center;
-    display: inline-block;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
-.btn-warning {
-    background-color: #ffc107;
-    border-color: #ffc107;
-}
-
-.btn-warning:hover {
-    background-color: #e0a800;
-    border-color: #d39e00;
-}
-
-.btn-info {
-    background-color: #17a2b8;
-    border-color: #17a2b8;
-}
-
-.btn-info:hover {
-    background-color: #138496;
-    border-color: #117a8b;
-}
-
-/* Table styles */
-.table {
-    width: 100%;
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-collapse: collapse;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.table th, .table td {
-    padding: 15px 20px;
-    text-align: left;
-    border: 1px solid #dee2e6;
-    vertical-align: middle;
-}
-
-.table th {
-    background-color: #007bff;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
-}
-
-.table-bordered {
-    border: 1px solid #dee2e6;
-}
-
-.table-hover tbody tr:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-}
-    .btn {
-        padding: 6px 12px;
-        font-size: 12px;
+    h1 {
+        color: #007bff;
+        margin-bottom: 20px;
     }
 
-</style>
-<h1>Danh sách khuyến mãi</h1>
+    .table th {
+        text-transform: uppercase;
+        background-color: #007bff;
+        color: white;
+    }
 
-<p>
-    <a asp-action="Create" class="btn btn-info">Tạo khuyến mãi mới</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MaKhuyenMai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TenKhuyenMai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhanTramGiam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NgayBatDau)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NgayKetThuc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrangThai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QuanLy)
-            </th>
-            <th>Chức năng</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaKhuyenMai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenKhuyenMai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhanTramGiam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayBatDau)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayKetThuc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrangThai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuanLy.MaQuanLy)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MaKhuyenMai" class="btn btn-info">Sửa </a>
-                <a asp-action="Details" asp-route-id="@item.MaKhuyenMai" class="btn btn-warning">Chi Tiết</a> 
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    .badge-success {
+        background-color: #28a745;
+    }
+
+    .badge-danger {
+        background-color: #dc3545;
+    }
+
+    .badge-secondary {
+        background-color: #6c757d;
+    }
+</style>
+
+<div class="container mt-4">
+    <h1>📋 Danh sách khuyến mãi</h1>
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-info">
+            ➕ Tạo khuyến mãi mới
+        </a>
+    </div>
+
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.MaKhuyenMai)</th>
+                <th>@Html.DisplayNameFor(model => model.TenKhuyenMai)</th>
+                <th>@Html.DisplayNameFor(model => model.PhanTramGiam)</th>
+                <th>@Html.DisplayNameFor(model => model.NgayBatDau)</th>
+                <th>@Html.DisplayNameFor(model => model.NgayKetThuc)</th>
+                <th>@Html.DisplayNameFor(model => model.TrangThai)</th>
+                <th>@Html.DisplayNameFor(model => model.QuanLy)</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaKhuyenMai</td>
+                    <td>@item.TenKhuyenMai</td>
+                    <td>@item.PhanTramGiam %</td>
+                    <td>@item.NgayBatDau?.ToString("dd/MM/yyyy")</td>
+                    <td>@item.NgayKetThuc?.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <span class="badge
+                                @(item.TrangThai == "Hoạt động" ? "badge-success" :
+                                                            item.TrangThai == "Ngừng" ? "badge-danger" :
+                                                            "badge-secondary")">
+                        @item.TrangThai
+                    </span>
+                </td>
+                <td>@item.QuanLy?.MaQuanLy</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MaKhuyenMai" class="btn btn-info btn-sm">✏️ Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.MaKhuyenMai" class="btn btn-warning btn-sm">🔍 Chi tiết</a>
+                </td>
+            </tr>
+                        }
+        </tbody>
+    </table>
+</div>

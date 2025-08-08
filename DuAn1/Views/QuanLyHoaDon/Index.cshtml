@@ -5,103 +5,102 @@
     var isSearching = !string.IsNullOrEmpty(Context.Request.Query["searchString"]);
 }
 
-<div class="row">
-    <ol class="breadcrumb">
-        <li>
-            <a asp-controller="Home" asp-action="Index">
-                <em class="fa fa-home"></em>
-            </a>
-        </li>
-        <li class="active">Quản lý hóa đơn</li>
-        @if (isSearching)
-        {
-            <li class="active">Tìm kiếm</li>
-        }
-    </ol>
-</div><!--/.row-->
-
-<h1>Danh sách hóa đơn</h1>
-
-<!-- Form tìm kiếm -->
-<form method="get" asp-action="Index">
-    <div class="input-group mb-3">
-        <input type="text" name="searchString" class="form-control" placeholder="Tìm kiếm theo mã hóa đơn" />
-        <input type="text" name="priceFrom" class="form-control" placeholder="Thành tiền từ" />
-        <input type="text" name="priceTo" class="form-control" placeholder="Thành tiền đến" />
-        <select name="trangThai" class="form-control">
-            <option value="">Tất cả trạng thái</option>
-            <option value="Chờ xác nhận">Chờ xác nhận</option>
-            <option value="Bắt đầu giao">Bắt đầu giao</option>
-            <option value="Giao thành công">Giao thành công</option>
-            <option value="Hủy">Hủy</option>
-        </select>
-
-        <span class="input-group-btn">
-            <button class="btn btn-primary" style="height: 171px;" type="submit">Tìm kiếm</button>
-        </span>
-    </div>
-</form>
-
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MaHoaDon)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NgayTao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ThanhTien)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrangThai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaKhachHangNavigation)
-            </th>
-           <th>
-               Chức năng
-           </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaHoaDon) 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NgayTao)
-                </td>
-                <td>
-                    @String.Format("{0:C0}", item.ThanhTien)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TrangThai)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaKhachHangNavigation.MaKhachHang)
-                </td>
-                <td class="btn-group-vertical col-2">
-                    <a asp-action="Details" asp-route-id="@item.MaHoaDon" class="btn btn-info">Chi tiết</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<!-- Nút phân trang -->
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        @for (int i = 1; i <= Math.Ceiling((double)ViewBag.TotalRecords / ViewBag.PageSize); i++)
-        {
-            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-searchString="@Context.Request.Query["searchString"]" asp-route-trangThai="@Context.Request.Query["trangThai"]" asp-route-priceFrom="@Context.Request.Query["priceFrom"]" asp-route-priceTo="@Context.Request.Query["priceTo"]">
-                    @i
-                </a>
+<div class="container mt-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white p-2 rounded shadow-sm">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Trang chủ</a>
             </li>
-        }
-    </ul>
-</nav>
+            <li class="breadcrumb-item active">Quản lý hóa đơn</li>
+            @if (isSearching)
+            {
+                <li class="breadcrumb-item active">Tìm kiếm</li>
+            }
+        </ol>
+    </nav>
+
+    <h2 class="mb-4 text-primary">📄 Danh sách hóa đơn</h2>
+
+    <!-- Form tìm kiếm -->
+    <form method="get" asp-action="Index" class="shadow-sm p-3 bg-light rounded mb-4">
+        <div class="row g-2 align-items-end">
+            <div class="col-md-3">
+                <label for="searchString" class="form-label">Mã hóa đơn</label>
+                <input type="text" name="searchString" class="form-control" placeholder="VD: HD123" />
+            </div>
+            <div class="col-md-2">
+                <label for="priceFrom" class="form-label">Thành tiền từ</label>
+                <input type="text" name="priceFrom" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <label for="priceTo" class="form-label">Thành tiền đến</label>
+                <input type="text" name="priceTo" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label for="trangThai" class="form-label">Trạng thái</label>
+                <select name="trangThai" class="form-select">
+                    <option value="">Tất cả trạng thái</option>
+                    <option value="Chờ xác nhận">Chờ xác nhận</option>
+                    <option value="Bắt đầu giao">Bắt đầu giao</option>
+                    <option value="Giao thành công">Giao thành công</option>
+                    <option value="Hủy">Hủy</option>
+                </select>
+            </div>
+            <div class="col-md-2 text-end">
+                <button class="btn btn-primary w-100" type="submit">🔍 Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Bảng danh sách -->
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-bordered table-hover align-middle text-center bg-white">
+            <thead class="table-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().MaHoaDon)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().NgayTao)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().ThanhTien)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().TrangThai)</th>
+                    <th>Khách hàng</th>
+                    <th>Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MaHoaDon</td>
+                        <td>@item.NgayTao?.ToString("dd/MM/yyyy")</td>
+                        <td>@String.Format("{0:N0}₫", item.ThanhTien)</td>
+                        <td>@item.TrangThai</td>
+                        <td>@item.MaKhachHangNavigation?.HoTen</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.MaHoaDon" class="btn btn-sm btn-info">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Phân trang -->
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            @for (int i = 1; i <= Math.Ceiling((double)ViewBag.TotalRecords / ViewBag.PageSize); i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="@i"
+                       asp-route-searchString="@Context.Request.Query["searchString"]"
+                       asp-route-trangThai="@Context.Request.Query["trangThai"]"
+                       asp-route-priceFrom="@Context.Request.Query["priceFrom"]"
+                       asp-route-priceTo="@Context.Request.Query["priceTo"]">
+                        @i
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

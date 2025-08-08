@@ -1,127 +1,95 @@
 ﻿@model DuAn1.Models.KhuyenMai
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Chỉnh sửa khuyến mãi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <style>
-    /* Apply background color and padding for the entire page */
-   
-    /* Style the header */
+    .edit-wrapper {
+        margin-top: 40px;
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
     h1 {
+        text-align: center;
         color: #007bff;
-        font-size: 2.5rem;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
-    /* Style the subheader */
-    h4 {
-        color: #495057;
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-    }
-
-    /* Form container styling */
     .form-group {
         margin-bottom: 15px;
     }
 
-    /* Label styling */
-    .control-label {
-        font-weight: bold;
-        font-size: 1rem;
-        color: #343a40;
-    }
-
-    /* Input fields styling */
-    input.form-control, select.form-control {
-        height: 40px;
-        font-size: 1rem;
-        border-radius: 5px;
-        border: 1px solid #ced4da;
-    }
-
-    /* Button styling */
     .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        padding: 10px 15px;
-        font-size: 1rem;
-        border-radius: 5px;
-        color: white;
-        cursor: pointer;
+        width: 100%;
     }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-    /* Validation error styling */
-    .text-danger {
-        font-size: 0.875rem;
-        color: #dc3545;
-    }
-
-    /* Back link styling */
     a {
-        color: #007bff;
-        font-size: 1rem;
-        text-decoration: none;
+        display: inline-block;
+        margin-top: 15px;
     }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
 </style>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="MaKhuyenMai" />
-            <div class="form-group">
-                <label asp-for="TenKhuyenMai" class="control-label"></label>
-                <input asp-for="TenKhuyenMai" class="form-control" />
-                <span asp-validation-for="TenKhuyenMai" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhanTramGiam" class="control-label"></label>
-                <input asp-for="PhanTramGiam" class="form-control" />
-                <span asp-validation-for="PhanTramGiam" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NgayBatDau" class="control-label"></label>
-                <input asp-for="NgayBatDau" class="form-control" />
-                <span asp-validation-for="NgayBatDau" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NgayKetThuc" class="control-label"></label>
-                <input asp-for="NgayKetThuc" class="form-control" />
-                <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
-            </div>
-            <div class="form-group" hidden>
-                <label asp-for="TrangThai" class="control-label"></label>
-                <input asp-for="TrangThai" class="form-control" />
-                <span asp-validation-for="TrangThai" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MaQuanLy" class="control-label"></label>
-                <select asp-for="MaQuanLy" class="form-control" asp-items="ViewBag.MaQuanLy"></select>
-                <span asp-validation-for="MaQuanLy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container">
+    <h1>Chỉnh sửa Khuyến Mãi</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6 edit-wrapper">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MaKhuyenMai" />
+
+                <div class="form-group">
+                    <label asp-for="TenKhuyenMai" class="control-label"></label>
+                    <input asp-for="TenKhuyenMai" class="form-control" />
+                    <span asp-validation-for="TenKhuyenMai" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PhanTramGiam" class="control-label"></label>
+                    <input asp-for="PhanTramGiam" class="form-control" />
+                    <span asp-validation-for="PhanTramGiam" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NgayBatDau" class="control-label"></label>
+                    <input asp-for="NgayBatDau" type="date" class="form-control" />
+                    <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NgayKetThuc" class="control-label"></label>
+                    <input asp-for="NgayKetThuc" type="date" class="form-control" />
+                    <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="TrangThai" class="control-label"></label>
+                    <input asp-for="TrangThai" class="form-control" />
+                    <span asp-validation-for="TrangThai" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MaQuanLy" class="control-label"></label>
+                    <select asp-for="MaQuanLy" class="form-control" asp-items="ViewBag.MaQuanLy"></select>
+                    <span asp-validation-for="MaQuanLy" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+                </div>
+            </form>
+
+            <a asp-action="Index">← Quay lại danh sách</a>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

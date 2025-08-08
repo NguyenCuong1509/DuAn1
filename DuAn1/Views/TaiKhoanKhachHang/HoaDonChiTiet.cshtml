@@ -6,8 +6,6 @@
 }
 
 <div class="invoice-detail-container">
-    <h1>Chi tiết Hóa Đơn</h1>
-
     <table class="table table-bordered table-hover custom-table">
         <thead>
             <tr>
@@ -33,51 +31,70 @@
     </table>
 </div>
 
-<style>
+    <style >
     .invoice-detail-container {
         max-width: 960px;
-        margin: 30px auto;
-        padding: 25px;
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        margin: 40px auto;
+        padding: 30px;
+        background: linear-gradient(to bottom right, #fdfdfd, #f6f9fc);
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
         font-family: 'Segoe UI', sans-serif;
     }
 
-        .invoice-detail-container h1 {
-            font-size: 2rem;
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 25px;
-            font-weight: 700;
+    .invoice-detail-container h1 {
+        font-size: 2.2rem;
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: 700;
+        position: relative;
+    }
+
+        .invoice-detail-container h1::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #007bff;
+            margin: 12px auto 0;
+            border-radius: 2px;
         }
 
     .custom-table {
-        background-color: #fff;
-        border-radius: 8px;
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #ffffff;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
 
         .custom-table thead th {
             background-color: #007bff;
-            color: white;
+            color: #ffffff;
             text-align: center;
-            vertical-align: middle;
+            padding: 16px 12px;
             font-weight: 600;
-            padding: 14px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
         }
 
         .custom-table tbody td {
             text-align: center;
-            vertical-align: middle;
-            padding: 12px;
-            color: #34495e;
+            padding: 14px 12px;
             font-size: 0.95rem;
+            color: #2c3e50;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f9fcff;
         }
 
         .custom-table tbody tr:hover {
-            background-color: #f1f9ff;
+            background-color: #e8f1ff;
+            transition: background-color 0.3s ease;
         }
 
     .text-danger {
@@ -85,6 +102,6 @@
     }
 
     .font-weight-bold {
-        font-weight: 600;
+        font-weight: 700;
     }
 </style>

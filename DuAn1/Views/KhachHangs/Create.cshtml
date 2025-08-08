@@ -1,89 +1,71 @@
 ﻿@model DuAn1.Models.KhachHang
+
 @{
     ViewData["Title"] = "Thêm khách hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Thêm khách hàng</h1>
+<div class="container mt-4">
+    <h2 class="mb-4">Thêm khách hàng</h2>
 
-<form asp-action="Create" method="post">
-    <input asp-for="MaKhachHang" type="hidden" />
-    <div class="form-group">
-        <label asp-for="HoTen"></label>
-        <input asp-for="HoTen" class="form-control" />
-        <span asp-validation-for="HoTen" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Sdt"></label>
-        <input asp-for="Sdt" class="form-control" />
-        <span asp-validation-for="Sdt" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="DiaChi"></label>
-        <input asp-for="DiaChi" class="form-control" />
-        <span asp-validation-for="DiaChi" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="GioiTinh"></label>
-        <select asp-for="GioiTinh" class="form-control">
-            <option value="Nam">Nam</option>
-            <option value="Nữ">Nữ</option>
-        </select>
-        <span asp-validation-for="GioiTinh" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="TrangThai"></label>
-        <select asp-for="TrangThai" class="form-control">
-            <option value="Đang hoạt động">Đang hoạt động</option>
-            <option value="Ngừng hoạt động">Ngừng hoạt động</option>
-        </select>
-        <span asp-validation-for="TrangThai" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Username"></label>
-        <input asp-for="Username" class="form-control" />
-        <span asp-validation-for="Username" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Thêm</button>
-        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
-    </div>
-</form>
+    <form asp-action="Create" method="post" class="needs-validation" novalidate>
+        <input asp-for="MaKhachHang" type="hidden" />
 
-<style>
-    .form-group {
-        margin-bottom: 12px;
-    }
+        <div class="form-group mb-3">
+            <label asp-for="HoTen" class="form-label">Họ tên</label>
+            <input asp-for="HoTen" class="form-control" />
+            <span asp-validation-for="HoTen" class="text-danger"></span>
+        </div>
 
-    .form-control {
-        padding: 6px;
-        font-size: 14px;
-    }
+        <div class="form-group mb-3">
+            <label asp-for="Sdt" class="form-label">Số điện thoại</label>
+            <input asp-for="Sdt" class="form-control" />
+            <span asp-validation-for="Sdt" class="text-danger"></span>
+        </div>
 
-    .btn {
-        padding: 6px 12px;
-        font-size: 14px;
-    }
+        <div class="form-group mb-3">
+            <label asp-for="DiaChi" class="form-label">Địa chỉ</label>
+            <input asp-for="DiaChi" class="form-control" />
+            <span asp-validation-for="DiaChi" class="text-danger"></span>
+        </div>
 
-    .btn-primary {
-        background-color: #007bff;
-        color: white;
-    }
+        <div class="form-group mb-3">
+            <label asp-for="GioiTinh" class="form-label">Giới tính</label>
+            <select asp-for="GioiTinh" class="form-select">
+                <option value="">-- Chọn giới tính --</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+            </select>
+            <span asp-validation-for="GioiTinh" class="text-danger"></span>
+        </div>
 
-    .btn-secondary {
-        background-color: #6c757d;
-        color: white;
-    }
+        <div class="form-group mb-3">
+            <label asp-for="TrangThai" class="form-label">Trạng thái</label>
+            <select asp-for="TrangThai" class="form-select">
+                <option value="Đang hoạt động">Đang hoạt động</option>
+                <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+            </select>
+            <span asp-validation-for="TrangThai" class="text-danger"></span>
+        </div>
 
-    .text-danger {
-        font-size: 0.85rem;
-    }
-</style>
+        <div class="form-group mb-3">
+            <label asp-for="Username" class="form-label">Tên đăng nhập</label>
+            <input asp-for="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label asp-for="Password" class="form-label">Mật khẩu</label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Thêm</button>
+            <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+        </div>
+    </form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

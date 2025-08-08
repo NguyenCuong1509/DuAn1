@@ -1,39 +1,39 @@
 ﻿@model DuAn1.Models.MauSac
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Thêm màu sắc";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-<h4>MauSac</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="MaMauSac" class="control-label"></label>
-                <input asp-for="MaMauSac" class="form-control" />
-                <span asp-validation-for="MaMauSac" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TenMauSac" class="control-label"></label>
-                <input asp-for="TenMauSac" class="form-control" />
-                <span asp-validation-for="TenMauSac" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group mb-3">
+                    <label asp-for="MaMauSac" class="form-label">Mã màu</label>
+                    <input asp-for="MaMauSac" class="form-control" placeholder="Nhập mã màu..." />
+                    <span asp-validation-for="MaMauSac" class="text-danger small"></span>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label asp-for="TenMauSac" class="form-label">Tên màu</label>
+                    <input asp-for="TenMauSac" class="form-control" placeholder="Ví dụ: Đỏ, Xanh lá..." />
+                    <span asp-validation-for="TenMauSac" class="text-danger small"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">⬅ Quay lại</a>
+                    <button type="submit" class="btn btn-success">💾 Lưu</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

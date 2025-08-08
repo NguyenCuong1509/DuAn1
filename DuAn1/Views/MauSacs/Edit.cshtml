@@ -1,35 +1,30 @@
 ﻿@model DuAn1.Models.MauSac
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Chỉnh sửa màu sắc";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<div class="container mt-4">
+    <form asp-action="Edit" class="shadow-sm p-4 bg-light rounded">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+        <input type="hidden" asp-for="MaMauSac" />
 
-<h4>MauSac</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="MaMauSac" />
-            <div class="form-group">
-                <label asp-for="TenMauSac" class="control-label"></label>
-                <input asp-for="TenMauSac" class="form-control" />
-                <span asp-validation-for="TenMauSac" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+        <div class="form-group mb-3">
+            <label asp-for="TenMauSac" class="form-label">Tên màu sắc</label>
+            <input asp-for="TenMauSac" class="form-control" />
+            <span asp-validation-for="TenMauSac" class="text-danger"></span>
+        </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+        <div class="d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary">← Quay lại danh sách</a>
+            <button type="submit" class="btn btn-primary">💾 Lưu thay đổi</button>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
