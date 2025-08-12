@@ -207,6 +207,7 @@ namespace DuAn1.Controllers
                 }
 
                 // Tính giá sau khi giảm
+
                 var donGiaSauGiam = donGia - (donGia * phanTramGiam / 100);
 
                 var hoaDonChiTiet = new HoaDonChiTiet

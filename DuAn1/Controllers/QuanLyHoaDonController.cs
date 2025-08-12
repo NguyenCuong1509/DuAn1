@@ -19,6 +19,7 @@ namespace DuAn1.Controllers
         }
 
         // GET: QuanLyHoaDon
+
         public async Task<IActionResult> Index(string? searchString, string? trangThai, decimal? priceFrom, decimal? priceTo, int page = 1, int pageSize = 10)
         {
             var hoaDonsQuery = _context.HoaDons.AsQueryable();

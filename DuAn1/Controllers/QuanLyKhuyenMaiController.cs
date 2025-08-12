@@ -201,6 +201,7 @@ namespace DuAn1.Controllers
             var khuyenMais = await _context.KhuyenMais.ToListAsync();
             var currentDate = DateTime.Now;
 
+
             foreach (var khuyenMai in khuyenMais)
             {
                 if (khuyenMai.NgayBatDau <= currentDate && khuyenMai.NgayKetThuc >= currentDate)
