@@ -84,13 +84,19 @@ namespace DuAn1.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(string id, [Bind("MaQuanLy,TenQuanLy,NgaySinh,DiaChi,GioiTinh,TrangThai,Username,Password")] QuanLy quanLy)
         {
-            if (id != quanLy.MaQuanLy)
-            {
-                return NotFound();
-            }
+            if (id != quanLy.MaQuanLy) return NotFound();
 
             if (ModelState.IsValid)
             {
+                var existingQuanLy = await _context.QuanLies.AsNoTracking().FirstOrDefaultAsync(x => x.MaQuanLy == id);
+                if (existingQuanLy == null) return NotFound();
+
+                // Nếu không nhập password mới, giữ nguyên password cũ
+                if (string.IsNullOrWhiteSpace(quanLy.Password))
+                {
+                    quanLy.Password = existingQuanLy.Password;
+                }
+
                 try
                 {
                     _context.Update(quanLy);
@@ -98,19 +104,14 @@ namespace DuAn1.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!QuanLyExists(quanLy.MaQuanLy))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    if (!_context.QuanLies.Any(e => e.MaQuanLy == id)) return NotFound();
+                    else throw;
                 }
                 return RedirectToAction(nameof(Details), new { id = quanLy.MaQuanLy });
             }
             return View(quanLy);
         }
+
 
         private bool QuanLyExists(string id)
         {
