@@ -1,0 +1,127 @@
+﻿@{
+    var username = Context.Session.GetString("Username");
+    var makh = Context.Session.GetString("MaKhachHang");
+}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ashion | Template</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css2/style.css" type="text/css">
+    <style>
+        .categories__text h1,
+        .categories__text h4,
+        .categories__text p,
+        .categories__text a {
+            color: white;
+        }
+
+        #search-form.d-none {
+            display: none;
+        }
+
+        #search-form.d-block {
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><i class="fa-solid fa-magnifying-glass" id="search-icon"></i></li>
+            <form method="get" asp-action="Index" id="search-form" class="d-none" style="margin-top: -13px;">
+                <div class="input-group">
+                    <input type="text" name="searchString" class="form-control" placeholder="Tìm kiếm theo tên sản phẩm" />
+                    <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+                </div>
+            </form>
+            <li><a asp-controller="GioHang" asp-action="Index"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="~/img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="/DangNhap/DangNhap">Đăng nhập</a>
+            <a href="/DangKyTaiKhoan/Create">Đăng ký</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a asp-controller="TrangBanSanPhams" asp-action="Index"><img src="~/img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li><a asp-controller="TrangBanSanPhams" asp-action="Index">Trang chủ</a></li>
+                            <li><a asp-controller="TrangBanSanPhams" asp-action="CuaHang">Cửa hàng</a></li>
+                            <li><a asp-controller="TrangBanSanPhams" asp-action="LienHe">Liên hệ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        @if (!string.IsNullOrEmpty(username))
+                        {
+                            <div class="header__right__auth">
+                                <a asp-controller="TaiKhoanKhachHang" asp-route-id="@makh" asp-action="Details">Xin chào, @username</a>
+                                <a href="/DangNhap/Logout">Đăng xuất</a>
+                            </div>
+                            <ul class="header__right__widget">
+                                <li><a asp-controller="GioHang" asp-action="Index">Giỏ hàng <i class="fa-solid fa-cart-shopping"></i></a></li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="header__right__auth">
+                                <a href="/DangNhap/DangNhap">Đăng nhập</a>
+                                <a href="/DangKyTaiKhoan/Create">Đăng ký</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="~/js2/jquery-3.3.1.min.js"></script>
+    <script src="~/js2/jquery.slicknav.js"></script>
+    <script src="~/js2/main.js"></script>
+    <script>
+        document.getElementById('search-icon').addEventListener('click', function () {
+            var form = document.getElementById('search-form');
+            form.classList.toggle('d-none');
+            form.classList.toggle('d-block');
+        });
+    </script>
+</body>
+</html>
