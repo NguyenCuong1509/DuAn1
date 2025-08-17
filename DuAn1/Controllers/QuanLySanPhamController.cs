@@ -123,14 +123,11 @@ namespace DuAn1.Controllers
             {
                 return NotFound();
             }
-
-            // Lấy danh sách mã khuyến mãi đang và sắp hoạt động
-            var khuyenMais = await _context.KhuyenMais
-        .Where(k => (k.NgayBatDau <= DateTime.Now && k.NgayKetThuc >= DateTime.Now) || k.NgayBatDau > DateTime.Now)
-        .ToListAsync();
-
-            // Gửi dữ liệu cho View
-            ViewData["KhuyenMais"] = new SelectList(khuyenMais, "MaKhuyenMai", "MaKhuyenMai");
+            // Lọc các mã khuyến mãi có trạng thái "Sắp bắt đầu" hoặc "Đang hoạt động"
+            var khuyenMais = _context.KhuyenMais
+                                     .Where(km => km.TrangThai == "Sắp bắt đầu" || km.TrangThai == "Đang hoạt động")
+                                     .ToList();
+            ViewData["KhuyenMais"] = new SelectList(khuyenMais, "MaKhuyenMai", "TenKhuyenMai");
 
             return View(sanPham);
         }
@@ -182,50 +179,29 @@ namespace DuAn1.Controllers
 
         public IActionResult Create()
         {
-            // Lấy tổng số sản phẩm hiện tại
             int totalSanPham = _context.SanPhams.Count();
-
-            // Tạo mã sản phẩm tiếp theo, giả sử mã sản phẩm có dạng "SP0001", "SP0002", ...
             string newMaSanPham = "SP" + (totalSanPham + 1).ToString("D2");
 
-            // Lọc các mã khuyến mãi có trạng thái "Sắp bắt đầu" hoặc "Đang hoạt động"
             var khuyenMais = _context.KhuyenMais
                                      .Where(km => km.TrangThai == "Sắp bắt đầu" || km.TrangThai == "Đang hoạt động")
                                      .ToList();
 
-            // Lọc các hãng có trạng thái "Đang hợp tác"
             var hangs = _context.Hangs
-                                .Where(h => h.TrangThai == "Đang hợp tác")
+                                .Where(h => h.TrangThai == "1")
                                 .ToList();
 
-            // Thêm lựa chọn "Không có mã khuyến mãi" vào danh sách mã khuyến mãi
-            khuyenMais.Insert(0, new KhuyenMai { MaKhuyenMai = "", TenKhuyenMai = "Không có mã khuyến mãi" });
-
-            // Gửi danh sách khuyến mãi vào ViewBag để sử dụng trong View
             ViewData["MaKhuyenMai"] = new SelectList(khuyenMais, "MaKhuyenMai", "TenKhuyenMai");
-
-            // Gửi mã sản phẩm mới vào ViewData để có thể sử dụng trong View
             ViewData["NewMaSanPham"] = newMaSanPham;
-
-            // Gửi danh sách hãng vào ViewData
             ViewData["MaHang"] = new SelectList(hangs, "MaHang", "TenHang");
-
-            // Gửi danh sách màu sắc vào ViewData
             ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "TenMauSac");
 
             return View();
         }
 
-
-        // POST: SanPhams/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // POST: SanPhams/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaSanPham,TenSanPham,KichCo,DonGia,SoLuongTonKho,TrangThai,KieuKetNoi,KhoangCachKetNoi,DungLuongPin,MaKhuyenMai,MaHang,MaMauSac,HinhMinhHoa")] SanPham sanPham)
         {
-            // Kiểm tra điều kiện không được để trống
             if (string.IsNullOrWhiteSpace(sanPham.MaSanPham))
             {
                 ModelState.AddModelError("MaSanPham", "Mã sản phẩm không được để trống.");
@@ -266,8 +242,6 @@ namespace DuAn1.Controllers
                 ModelState.AddModelError("KhoangCachKetNoi", "Khoảng cách kết nối không được để trống.");
             }
 
-
-            // Kiểm tra nếu DungLuongPin <= 0 hoặc có giá trị trống
             if (sanPham.DungLuongPin <= 0)
             {
                 ModelState.AddModelError("DungLuongPin", "Dung lượng pin phải lớn hơn 0.");
@@ -277,36 +251,36 @@ namespace DuAn1.Controllers
                 ModelState.AddModelError("DungLuongPin", "Dung lượng pin không được để trống.");
             }
 
-
             if (string.IsNullOrWhiteSpace(sanPham.HinhMinhHoa))
             {
                 ModelState.AddModelError("HinhMinhHoa", "URL hình minh họa không được để trống.");
             }
 
-            // Kiểm tra trùng mã sản phẩm
             var existingSanPham = await _context.SanPhams
-                                                 .FirstOrDefaultAsync(sp => sp.MaSanPham == sanPham.MaSanPham);
+                                                .FirstOrDefaultAsync(sp => sp.MaSanPham == sanPham.MaSanPham);
             if (existingSanPham != null)
             {
                 ModelState.AddModelError("MaSanPham", "Mã sản phẩm này đã tồn tại.");
             }
 
-            // Kiểm tra nếu tất cả các điều kiện hợp lệ
             if (ModelState.IsValid)
             {
-                // Thêm sản phẩm mới vào cơ sở dữ liệu
                 _context.Add(sanPham);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Json(new { success = true, message = "Tạo sản phẩm thành công!" });
             }
 
-            // Nếu có lỗi, giữ lại các giá trị trong ViewData
-            ViewData["MaHang"] = new SelectList(_context.Hangs, "MaHang", "MaHang", sanPham.MaHang);
-            ViewData["MaKhuyenMai"] = new SelectList(_context.KhuyenMais, "MaKhuyenMai", "MaKhuyenMai", sanPham.MaKhuyenMai);
-            ViewData["MaMauSac"] = new SelectList(_context.MauSacs, "MaMauSac", "MaMauSac", sanPham.MaMauSac);
-            return View(sanPham);
+            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+            return Json(new { success = false, errors });
         }
 
+        [HttpGet]
+        public IActionResult GetNewProductCode()
+        {
+            int totalSanPham = _context.SanPhams.Count();
+            string newMaSanPham = "SP" + (totalSanPham + 1).ToString("D2");
+            return Json(new { newMaSanPham });
+        }
         public async Task<IActionResult> UpdateStatus(string id)
         {
             if (id == null)
@@ -371,12 +345,10 @@ namespace DuAn1.Controllers
                                      .Where(km => km.TrangThai == "Sắp bắt đầu" || km.TrangThai == "Đang hoạt động")
                                      .ToList();
 
-            // Thêm lựa chọn "Không có mã khuyến mãi"
-            khuyenMais.Insert(0, new KhuyenMai { MaKhuyenMai = "", TenKhuyenMai = "Không có mã khuyến mãi" });
-
+           
             // Lọc các hãng có trạng thái "Đang hợp tác"
             var hangs = _context.Hangs
-                                .Where(h => h.TrangThai == "Đang hợp tác")
+                                .Where(h => h.TrangThai == "1")
                                 .ToList();
 
             // Gửi danh sách khuyến mãi vào ViewData để sử dụng trong View

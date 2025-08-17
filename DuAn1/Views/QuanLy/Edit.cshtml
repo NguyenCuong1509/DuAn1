@@ -141,6 +141,7 @@
             <label asp-for="Password"></label>
             <i class="fas fa-lock"></i>
             <input asp-for="Password" type="password" class="form-control" placeholder="Mật khẩu..." />
+            <small class="form-text text-muted">Nếu không nhập mật khẩu mới, mật khẩu cũ sẽ được giữ nguyên.</small>
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
 

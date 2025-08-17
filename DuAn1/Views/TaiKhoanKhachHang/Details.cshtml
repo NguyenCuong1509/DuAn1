@@ -56,7 +56,7 @@
                     <td>@string.Format("{0:N0} ₫", hoaDon.ThanhTien)</td>
                     <td>@hoaDon.TrangThai</td>
                     <td>
-                        <a asp-controller="GioHang" asp-action="XemHoaDon" asp-route-maHoaDon="@hoaDon.MaHoaDon" class="btn btn-info">Xem chi tiết</a>
+                        <a asp-controller="TaiKhoanKhachHang" asp-action="HoaDonChiTiet" asp-route-maHoaDon="@hoaDon.MaHoaDon" class="btn btn-info">Xem chi tiết</a>
                     </td>
                 </tr>
             }

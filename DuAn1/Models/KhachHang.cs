@@ -25,9 +25,10 @@ namespace DuAn1.Models
 
         [Display(Name = "Địa chỉ")]
         [Required(ErrorMessage = "Địa chỉ là bắt buộc.")]
-        [MaxLength(255)]
+        [MaxLength(255, ErrorMessage = "Địa chỉ không được vượt quá 255 ký tự.")]
+        [RegularExpression(@"^.+,\s*.+,\s*.+,\s*.+$",
+               ErrorMessage = "Địa chỉ phải theo định dạng Thôn/Xã – Huyện – TP, ví dụ: Thôn A, Xã B, Huyện C, TP D.")]
         public string? DiaChi { get; set; }
-
         [Display(Name = "Giới tính")]
         [Required(ErrorMessage = "Giới tính là bắt buộc.")]
         [MaxLength(10)]
@@ -39,13 +40,15 @@ namespace DuAn1.Models
 
         [Display(Name = "Tên đăng nhập")]
         [Required(ErrorMessage = "Tên người dùng là bắt buộc.")]
-        [MaxLength(50)]
+        [MinLength(4, ErrorMessage = "Tên đăng nhập phải ít nhất 8 ký tự.")]
+        [MaxLength(50, ErrorMessage = "Tên đăng nhập không được vượt quá 50 ký tự.")]
         public string? Username { get; set; }
 
         [Display(Name = "Mật khẩu")]
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Mật khẩu là bắt buộc.")]
-        [MaxLength(100)]
+        [MinLength(8, ErrorMessage = "Mật khẩu phải ít nhất 8 ký tự.")]
+        [MaxLength(100, ErrorMessage = "Mật khẩu không được vượt quá 100 ký tự.")]
         public string? Password { get; set; }
 
         // Điều hướng tới các thực thể liên quan

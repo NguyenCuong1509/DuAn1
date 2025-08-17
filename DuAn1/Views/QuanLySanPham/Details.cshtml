@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết sản phẩm</title>
+    <title>@ViewData["Title"]</title>
     <link href="~/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/css/styles.css" rel="stylesheet">
@@ -37,19 +37,19 @@
         }
 
         .product-image {
-            position: relative; /* Đặt vị trí tương đối cho khung hình */
-            overflow: hidden; /* Ẩn phần hình ảnh vượt ra ngoài khung */
-            width: 100%; /* Chiều rộng khung bằng 100% */
-            height: 300px; /* Chiều cao cố định cho khung hình */
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 300px;
         }
 
             .product-image img {
-                position: absolute; /* Đặt hình ảnh ở vị trí tuyệt đối */
-                top: 50%; /* Định vị từ trên xuống giữa */
-                left: 50%; /* Định vị từ trái sang giữa */
-                width: auto; /* Để chiều rộng tự động */
-                height: 100%; /* Chiều cao bằng 100% của khung */
-                transform: translate(-50%, -50%); /* Đưa hình ảnh vào giữa khung */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: auto;
+                height: 100%;
+                transform: translate(-50%, -50%);
             }
 
         .action-links {
@@ -83,64 +83,62 @@
             </li>
         </ol>
     </div><!--/.row-->
+
     <div class="container">
         <div class="product-details">
             <hr />
             <div class="row">
-                <!-- Hình ảnh chiếm 6 cột -->
+                <!-- Hình ảnh -->
                 <div class="col-sm-6">
                     <dt>Hình ảnh</dt>
                     <dd class="product-image">
-                        <img src="@Model.HinhMinhHoa" alt="@Model.TenSanPham" />
+                        <img src="@(string.IsNullOrEmpty(Model.HinhMinhHoa) ? "~/images/no-image.png" : Model.HinhMinhHoa)" alt="@(Model.TenSanPham ?? "Sản phẩm")" />
                     </dd>
                 </div>
-                <!-- Thông tin sản phẩm chiếm 6 cột -->
+
+                <!-- Thông tin chi tiết -->
                 <div class="col-sm-6">
-                    <dl class="row">
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.TenSanPham)</dt>
-                        <dd class="col-sm-8" style=" line-height: 30px; ">@Html.DisplayFor(model => model.TenSanPham)</dd>
+                    <dl class="row product-info">
 
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.DonGia)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">@(@Model.DonGia.HasValue ? String.Format("{0:C0}", @Model.DonGia.Value) : "0")</dd>
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.TenSanPham)</dt>
+                        <dd class="col-sm-8">@(Model.TenSanPham ?? "Không có")</dd>
 
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.SoLuongTonKho)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.SoLuongTonKho)</dd>
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.DonGia)</dt>
+                        <dd class="col-sm-8">@(Model.DonGia.HasValue? String.Format("{0:C0}", Model.DonGia.Value) : "0")</dd>
 
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.KieuKetNoi)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.KieuKetNoi)</dd>
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.SoLuongTonKho)</dt>
+                        <dd class="col-sm-8">@(Model.SoLuongTonKho ?? 0)</dd>
 
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.KichCo)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.KichCo)</dd>
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.KieuKetNoi)</dt>
+                        <dd class="col-sm-8">@(string.IsNullOrEmpty(Model.KieuKetNoi) ? "Không có" : Model.KieuKetNoi)</dd>
 
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.DungLuongPin)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.DungLuongPin)</dd>
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.KichCo)</dt>
+                        <dd class="col-sm-8">@(string.IsNullOrEmpty(Model.KichCo) ? "Không có" : Model.KichCo)</dd>
 
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.KhoangCachKetNoi)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.KhoangCachKetNoi)</dd>
-
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.TrangThai)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.TrangThai)</dd>
-
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.MaHangNavigation)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.MaHangNavigation.TenHang)</dd>
-
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.MaKhuyenMaiNavigation)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">
-                            @if (Model.MaKhuyenMaiNavigation != null)
-                            {
-                                @Html.DisplayFor(model => model.MaKhuyenMaiNavigation.TenKhuyenMai)
-                            }
-                            else
-                            {
-                                <span>Không có mã khuyến mãi</span>
-                            }
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.DungLuongPin)</dt>
+                        <dd class="col-sm-8">
+                            @(Model.DungLuongPin.HasValue? Model.DungLuongPin.Value.ToString() : "0")
                         </dd>
 
-                        <dt class="col-sm-4" style="line-height: 30px; ">@Html.DisplayNameFor(model => model.MaMauSacNavigation)</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">@Html.DisplayFor(model => model.MaMauSacNavigation.TenMauSac)</dd>
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.KhoangCachKetNoi)</dt>
+                        <dd class="col-sm-8">@(string.IsNullOrEmpty(Model.KhoangCachKetNoi) ? "Không có" : Model.KhoangCachKetNoi)</dd>
 
-                        <dt class="col-sm-4" style="line-height: 30px; ">Chọn mã khuyến mãi</dt>
-                        <dd class="col-sm-8" style="line-height: 30px; ">
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.TrangThai)</dt>
+                        <dd class="col-sm-8">@(Model.TrangThai)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.MaHangNavigation)</dt>
+                        <dd class="col-sm-8">@(Model.MaHangNavigation != null ? Model.MaHangNavigation.TenHang : "Không có hãng")</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.MaKhuyenMaiNavigation)</dt>
+                        <dd class="col-sm-8">
+                            @(Model.MaKhuyenMaiNavigation != null ? Model.MaKhuyenMaiNavigation.TenKhuyenMai : "Không có mã khuyến mãi")
+                        </dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(m => m.MaMauSacNavigation)</dt>
+                        <dd class="col-sm-8">@(Model.MaMauSacNavigation != null ? Model.MaMauSacNavigation.TenMauSac : "Không có màu")</dd>
+
+                        <dt class="col-sm-4">Chọn mã khuyến mãi</dt>
+                        <dd class="col-sm-8">
                             <form method="post" asp-action="ApplyPromoCode">
                                 <div class="form-group">
                                     <select class="form-control" name="MaKhuyenMai">
@@ -150,11 +148,12 @@
                                             <option value="@khuyenMai.Value">@khuyenMai.Text</option>
                                         }
                                     </select>
-                                    <button type="submit" class="btn btn-success" style="margin-top: 10px;">Áp dụng</button>
+                                    <button type="submit" class="btn btn-success mt-2">Áp dụng</button>
                                 </div>
                                 <input type="hidden" name="MaSanPham" value="@Model.MaSanPham" />
                             </form>
                         </dd>
+
                     </dl>
                 </div>
             </div>

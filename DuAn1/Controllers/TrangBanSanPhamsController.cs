@@ -145,7 +145,7 @@ namespace DuAn1.Controllers
             return View(sanPham);
         }
 
-        private async Task<IActionResult> AddToCartInternal(string MaSanPham, int SoLuong, bool redirectToPrevious = false)
+        private async Task<IActionResult> AddToCartInternal(string MaSanPham, int SoLuong, bool redirectToCuaHang = false)
         {
             var username = HttpContext.Session.GetString("Username");
             var user = await _context.KhachHangs.FirstOrDefaultAsync(u => u.Username == username);
@@ -182,13 +182,10 @@ namespace DuAn1.Controllers
             _context.GioHangs.Update(cart);
             await _context.SaveChangesAsync();
 
-            if (redirectToPrevious)
-            {
-                var referer = Request.Headers["Referer"].ToString();
-                return string.IsNullOrEmpty(referer) ? RedirectToAction("CuaHang") : Redirect(referer);
-            }
+            if (redirectToCuaHang)
+                return RedirectToAction("CuaHang"); // luôn redirect về CuaHang
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index"); // mặc định vẫn về Index
         }
 
         [HttpPost]
@@ -196,5 +193,6 @@ namespace DuAn1.Controllers
 
         [HttpPost]
         public Task<IActionResult> AddToCartCuaHang(string MaSanPham, int SoLuong) => AddToCartInternal(MaSanPham, SoLuong, true);
+
     }
 }

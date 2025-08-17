@@ -20,23 +20,20 @@ namespace DuAn1.Controllers
         // GET: TaiKhoanKhachHang/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null)
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Username")))
             {
-                return NotFound();
+                return RedirectToAction("DangNhap", "DangNhap");
             }
 
             var khachHang = await _context.KhachHangs
-                .Include(k => k.HoaDons) // Tải danh sách hóa đơn
+                .Include(k => k.HoaDons)
                 .FirstOrDefaultAsync(m => m.MaKhachHang == id);
 
-            if (khachHang == null)
-            {
-                return NotFound();
-            }
-
+            if (khachHang == null) return NotFound();
 
             return View(khachHang);
         }
+
         // GET: TaiKhoanKhachHang/Edit/5 (Tùy chọn, có thể bỏ nếu chỉ dùng modal)
         public async Task<IActionResult> Edit(string id)
         {
@@ -83,6 +80,8 @@ namespace DuAn1.Controllers
 
                     _context.Update(khachHang);
                     await _context.SaveChangesAsync();
+
+                    HttpContext.Session.SetString("Username", khachHang.Username);
                     return Json(new { success = true, redirectUrl = Url.Action(nameof(Details), new { id = khachHang.MaKhachHang }) });
                 }
                 catch (DbUpdateConcurrencyException)
@@ -104,26 +103,75 @@ namespace DuAn1.Controllers
             System.Diagnostics.Debug.WriteLine($"ModelState Errors: {string.Join(", ", errors)}");
             return Json(new { success = false, message = string.Join(", ", errors) });
         }
-        // GET: TaiKhoanKhachHang/HoaDonChiTiet/5
-        public async Task<IActionResult> HoaDonChiTiet(string maHoaDon)
+      public async Task<IActionResult> HoaDonChiTiet(string maHoaDon)
+{
+    if (maHoaDon == null) return NotFound();
+
+    var chiTiets = await _context.HoaDonChiTiets
+        .Include(h => h.MaSanPhamNavigation)
+        .Where(h => h.MaHoaDon == maHoaDon)
+        .ToListAsync();
+
+    var hoaDon = await _context.HoaDons
+        .FirstOrDefaultAsync(h => h.MaHoaDon == maHoaDon);
+
+    if (chiTiets == null || !chiTiets.Any() || hoaDon == null) return NotFound();
+
+    var model = new HoaDonDetailViewModel
+    {
+        MaHoaDon = hoaDon.MaHoaDon,
+        MaKhachHang = hoaDon.MaKhachHang,
+        TrangThai = hoaDon.TrangThai,
+        ChiTiets = chiTiets
+    };
+
+    return View(model);
+}
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> HuyHoaDon(string MaHoaDon)
         {
-            if (maHoaDon == null)
+            if (string.IsNullOrEmpty(MaHoaDon))
+                return RedirectToAction("Details");
+
+            var hoaDon = await _context.HoaDons
+                .Include(hd => hd.HoaDonChiTiets)
+                .FirstOrDefaultAsync(hd => hd.MaHoaDon == MaHoaDon);
+
+            if (hoaDon == null)
+                return RedirectToAction("Details");
+
+            // Chỉ cho hủy nếu trạng thái là "Chờ xác nhận"
+            if (hoaDon.TrangThai == "Chờ xác nhận")
             {
-                return NotFound();
+                hoaDon.TrangThai = "Đã hủy";
+                _context.Update(hoaDon);
+
+                // Nếu muốn trả lại số lượng tồn kho
+                foreach (var ct in hoaDon.HoaDonChiTiets)
+                {
+                    var sanPham = await _context.SanPhams.FindAsync(ct.MaSanPham);
+                    if (sanPham != null)
+                    {
+                        sanPham.SoLuongTonKho += ct.SoLuong;
+                        _context.Update(sanPham);
+                    }
+                }
+
+                await _context.SaveChangesAsync();
             }
 
-            var hoaDonChiTiet = await _context.HoaDonChiTiets
-                .Include(h => h.MaSanPhamNavigation) // Tải thông tin sản phẩm
-                .Where(h => h.MaHoaDon == maHoaDon)
-                .ToListAsync();
-
-            if (hoaDonChiTiet == null || !hoaDonChiTiet.Any())
-            {
-                return NotFound();
-            }
-
-            return View(hoaDonChiTiet);
+            return RedirectToAction("Details", new { id = hoaDon.MaKhachHang });
         }
 
     }
+    public class HoaDonDetailViewModel
+    {
+        public string MaHoaDon { get; set; } = "";
+        public string MaKhachHang { get; set; } = "";
+        public string TrangThai { get; set; } = "";
+        public IEnumerable<HoaDonChiTiet> ChiTiets { get; set; } = new List<HoaDonChiTiet>();
+    }
+
 }

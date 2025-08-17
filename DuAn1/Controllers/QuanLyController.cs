@@ -43,28 +43,6 @@ namespace DuAn1.Controllers
         }
 
 
-        // GET: QuanLy/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: QuanLy/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaQuanLy,TenQuanLy,NgaySinh,DiaChi,GioiTinh,TrangThai,Username,Password")] QuanLy quanLy)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(quanLy);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Details));
-            }
-            return View(quanLy);
-        }
-
         // GET: QuanLy/Edit/5
         public async Task<IActionResult> Edit(string id)
         {

@@ -41,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="KieuKetNoi" class="control-label"></label>
-                <select asp-for="KieuKetNoi" class="form-control">
+                <select asp-for="KieuKetNoi" style="height:50px" class="form-control">
                     <option value="Không dây">Không dây</option>
                     <option value="Có dây">Có dây</option>
                 </select>
@@ -74,18 +74,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="MaKhuyenMai" class="control-label"></label>
-                <select asp-for="MaKhuyenMai" class="form-control" asp-items="ViewBag.MaKhuyenMai"></select>
+                <select asp-for="MaKhuyenMai" class="form-control" style="height:50px" asp-items="ViewBag.MaKhuyenMai">
+                    <option value="">Chọn mã khuyến mãi</option>
+                </select>
                 <span asp-validation-for="MaKhuyenMai" class="text-danger"></span>
             </div>
 
+
             <div class="form-group">
                 <label asp-for="MaHang" class="control-label"></label>
-                <select asp-for="MaHang" class="form-control" asp-items="ViewBag.MaHang"></select>
+                <select asp-for="MaHang" class="form-control" style="height:50px" asp-items="ViewBag.MaHang"></select>
                 <span asp-validation-for="MaHang" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MaMauSac" class="control-label"></label>
-                <select asp-for="MaMauSac" class="form-control" asp-items="ViewBag.MaMauSac"></select>
+                <select asp-for="MaMauSac" class="form-control" style="height:50px" asp-items="ViewBag.MaMauSac"></select>
                 <span asp-validation-for="MaMauSac" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -161,6 +164,7 @@
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        width: 100%;
     }
 
     img {

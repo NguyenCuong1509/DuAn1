@@ -68,5 +68,35 @@ app.MapControllerRoute(
 //        context.SaveChanges();
 //    }
 //}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var context = scope.ServiceProvider.GetRequiredService<Duan1Context>();
+
+//    // Danh sách màu sắc cần thêm
+//    var colors = new List<MauSac>
+//    {
+//        new MauSac { MaMauSac = "MS01", TenMauSac = "Đỏ" },
+//        new MauSac { MaMauSac = "MS02", TenMauSac = "Xanh dương" },
+//        new MauSac { MaMauSac = "MS03", TenMauSac = "Xanh lá" },
+//        new MauSac { MaMauSac = "MS04", TenMauSac = "Vàng" },
+//        new MauSac { MaMauSac = "MS05", TenMauSac = "Cam" },
+//        new MauSac { MaMauSac = "MS06", TenMauSac = "Tím" },
+//        new MauSac { MaMauSac = "MS07", TenMauSac = "Hồng" },
+//        new MauSac { MaMauSac = "MS08", TenMauSac = "Trắng" },
+//        new MauSac { MaMauSac = "MS09", TenMauSac = "Đen" },
+//        new MauSac { MaMauSac = "MS10", TenMauSac = "Xám" }
+//    };
+
+//    foreach (var color in colors)
+//    {
+//        if (!context.MauSacs.Any(c => c.MaMauSac == color.MaMauSac))
+//        {
+//            context.MauSacs.Add(color);
+//        }
+//    }
+
+//    context.SaveChanges();
+//}
+
 
 app.Run();

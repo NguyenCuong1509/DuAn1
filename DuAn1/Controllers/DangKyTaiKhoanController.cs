@@ -64,26 +64,38 @@ namespace DuAn1.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra username đã tồn tại trong KhachHang hoặc QuanLy
+                bool usernameExists = await _context.KhachHangs.AnyAsync(k => k.Username == khachHang.Username)
+                                      || await _context.QuanLies.AnyAsync(q => q.Username == khachHang.Username);
+
+                if (usernameExists)
+                {
+                    ModelState.AddModelError("Username", "⚠ Username đã tồn tại, vui lòng chọn username khác.");
+                    return View(khachHang);
+                }
+
+                // Lưu khách hàng
                 _context.Add(khachHang);
                 await _context.SaveChangesAsync();
-                var gioHangCount = _context.GioHangs.Count();
-                var maGioHang = $"GH{gioHangCount + 1}";  // Tạo mã giỏ hàng tự động theo số lượng giỏ hàng hiện tại
+
+                // Tạo giỏ hàng cho khách hàng
+                var gioHangCount = await _context.GioHangs.CountAsync();
+                var maGioHang = $"GH{gioHangCount + 1}";
 
                 var gioHang = new GioHang
                 {
-                    MaGioHang = maGioHang,  // Mã giỏ hàng tạo tự động
-                    MaKhachHang = khachHang.MaKhachHang,  // Liên kết giỏ hàng với khách hàng
-                    NgayThem = DateTime.Now,  // Ngày thêm giỏ hàng
-                    SoLoaiSanPham = 0  // Ban đầu giỏ hàng chưa có sản phẩm
+                    MaGioHang = maGioHang,
+                    MaKhachHang = khachHang.MaKhachHang,
+                    NgayThem = DateTime.Now,
+                    SoLoaiSanPham = 0
                 };
 
-                // Thêm giỏ hàng vào cơ sở dữ liệu
                 _context.GioHangs.Add(gioHang);
-                await _context.SaveChangesAsync();  // Lưu giỏ hàng vào cơ sở dữ liệu
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction("DangNhap", "DangNhap");
-
-
             }
+
             return View(khachHang);
         }
 

@@ -146,7 +146,6 @@ namespace DuAn1.Controllers
 
 
 
-
         [HttpPost]
         public async Task<IActionResult> ThanhToan()
         {
@@ -160,7 +159,7 @@ namespace DuAn1.Controllers
             var cart = await _context.GioHangs
                 .Include(g => g.SanPhamGioHangs)
                     .ThenInclude(spg => spg.MaSanPhamNavigation)
-                        .ThenInclude(sp => sp.MaKhuyenMaiNavigation) // Bao gồm mã khuyến mãi
+                        .ThenInclude(sp => sp.MaKhuyenMaiNavigation)
                 .FirstOrDefaultAsync(g => g.MaKhachHang == user.MaKhachHang);
 
             if (cart == null || !cart.SanPhamGioHangs.Any())
@@ -168,6 +167,18 @@ namespace DuAn1.Controllers
                 return RedirectToAction("Index");
             }
 
+            // --- Kiểm tra tồn kho trước khi thanh toán ---
+            foreach (var item in cart.SanPhamGioHangs)
+            {
+                var sp = await _context.SanPhams.FirstOrDefaultAsync(s => s.MaSanPham == item.MaSanPham);
+                if (sp == null || (sp.SoLuongTonKho ?? 0) < item.SoLuong)
+                {
+                    TempData["ErrorMessage"] = $"Sản phẩm {sp?.TenSanPham ?? item.MaSanPham} không đủ tồn kho.";
+                    return RedirectToAction("Index"); // Hoặc trang giỏ hàng
+                }
+            }
+
+            // --- Tạo hóa đơn ---
             var hoaDon = new HoaDon
             {
                 MaHoaDon = "HD" + (await _context.HoaDons.CountAsync() + 1),
@@ -175,15 +186,7 @@ namespace DuAn1.Controllers
                 ThanhTien = cart.SanPhamGioHangs.Sum(item =>
                 {
                     var donGia = item.MaSanPhamNavigation?.DonGia ?? 0;
-                    var phanTramGiam = 0m; // Khởi tạo phần trăm giảm giá
-
-                    var khuyenMai = item.MaSanPhamNavigation?.MaKhuyenMaiNavigation;
-                    if (khuyenMai != null && khuyenMai.NgayBatDau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
-                    {
-                        phanTramGiam = khuyenMai.PhanTramGiam ?? 0;
-                    }
-
-                    // Tính giá sau khi giảm
+                    var phanTramGiam = item.MaSanPhamNavigation?.MaKhuyenMaiNavigation?.PhanTramGiam ?? 0;
                     var giaSauGiam = donGia - (donGia * phanTramGiam / 100);
                     return item.SoLuong * giaSauGiam;
                 }),
@@ -195,65 +198,74 @@ namespace DuAn1.Controllers
             _context.HoaDons.Add(hoaDon);
             await _context.SaveChangesAsync();
 
+            // --- Tạo chi tiết hóa đơn & trừ tồn kho ---
             foreach (var item in cart.SanPhamGioHangs)
             {
                 var donGia = item.MaSanPhamNavigation?.DonGia ?? 0;
-                var phanTramGiam = 0m; // Khởi tạo phần trăm giảm giá
+                var phanTramGiam = item.MaSanPhamNavigation?.MaKhuyenMaiNavigation?.PhanTramGiam ?? 0;
+                var giaSauGiam = donGia - (donGia * phanTramGiam / 100);
 
-                var khuyenMai = item.MaSanPhamNavigation?.MaKhuyenMaiNavigation;
-                if (khuyenMai != null && khuyenMai.NgayBatDau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
-                {
-                    phanTramGiam = khuyenMai.PhanTramGiam ?? 0;
-                }
-
-                // Tính giá sau khi giảm
-
-                var donGiaSauGiam = donGia - (donGia * phanTramGiam / 100);
-
+                // Chi tiết hóa đơn
                 var hoaDonChiTiet = new HoaDonChiTiet
                 {
                     MaHoaDon = hoaDon.MaHoaDon,
                     MaSanPham = item.MaSanPham,
                     SoLuong = item.SoLuong,
-                    DonGia = donGiaSauGiam // Sử dụng giá đã giảm
+                    DonGia = giaSauGiam
                 };
-
                 _context.HoaDonChiTiets.Add(hoaDonChiTiet);
+
+                // Trừ tồn kho
+                var sp = await _context.SanPhams.FirstOrDefaultAsync(s => s.MaSanPham == item.MaSanPham);
+                if (sp != null)
+                {
+                    sp.SoLuongTonKho -= item.SoLuong;
+                    if (sp.SoLuongTonKho < 0)
+                        sp.SoLuongTonKho = 0;
+                }
             }
 
-            // Xóa giỏ hàng sau khi thanh toán
-            var carts = await _context.GioHangs
-                .FirstOrDefaultAsync(g => g.MaGioHang == hoaDon.MaGioHang);
+            // --- Xóa giỏ hàng ---
+            var cartItems = await _context.SanPhamGioHangs
+                .Where(spg => spg.MaGioHang == cart.MaGioHang)
+                .ToListAsync();
+            _context.SanPhamGioHangs.RemoveRange(cartItems);
 
-            if (carts != null)
-            {
-                var cartItems = await _context.SanPhamGioHangs
-                    .Where(spg => spg.MaGioHang == carts.MaGioHang)
-                    .ToListAsync();
-
-                _context.SanPhamGioHangs.RemoveRange(cartItems);
-                await _context.SaveChangesAsync();
-            }
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("XemHoaDon", new { maHoaDon = hoaDon.MaHoaDon });
         }
 
 
-
-        // Xác nhận thanh toán
         [HttpPost]
         public async Task<IActionResult> HuyHoaDon(string MaHoaDon)
         {
-            var hoaDon = await _context.HoaDons.FirstOrDefaultAsync(hd => hd.MaHoaDon == MaHoaDon);
+            var hoaDon = await _context.HoaDons
+                .Include(hd => hd.HoaDonChiTiets) // Lấy chi tiết hóa đơn
+                .FirstOrDefaultAsync(hd => hd.MaHoaDon == MaHoaDon);
 
             if (hoaDon == null)
             {
-                return RedirectToAction("Index"); // If the invoice is not found, redirect to the cart page
+                return RedirectToAction("Index"); // Hóa đơn không tồn tại
             }
 
-            // Update the invoice status to "Paid"
+            // --- Hoàn trả tồn kho ---
+            foreach (var chiTiet in hoaDon.HoaDonChiTiets)
+            {
+                var sp = await _context.SanPhams.FirstOrDefaultAsync(s => s.MaSanPham == chiTiet.MaSanPham);
+                if (sp != null)
+                {
+                    if (!sp.SoLuongTonKho.HasValue)
+                        sp.SoLuongTonKho = 0;
+
+                    sp.SoLuongTonKho += chiTiet.SoLuong; // Cộng lại số lượng
+                }
+            }
+
+            // Cập nhật trạng thái hóa đơn
             hoaDon.TrangThai = "Hủy";
             _context.HoaDons.Update(hoaDon);
+
             await _context.SaveChangesAsync();
 
             return RedirectToAction("XemHoaDon", new { maHoaDon = hoaDon.MaHoaDon });

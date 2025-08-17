@@ -3,120 +3,76 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\giohang\\xemhoadon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\giohang\\xemhoadon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\giohang\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\giohang\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\taikhoankhachhang\\hoadonchitiet.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\taikhoankhachhang\\hoadonchitiet.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\taikhoankhachhang\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\taikhoankhachhang\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\shared\\nonefooter.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\shared\\nonefooter.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\shared\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\shared\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanly\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanly\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\controllers\\dangkytaikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\controllers\\dangkytaikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\hangs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\hangs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\models\\hang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\models\\hang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\hangs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\hangs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\hangs\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\hangs\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanly\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanly\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\hangs\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\hangs\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\models\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\models\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\controllers\\quanlycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\controllers\\quanlycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanly\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanly\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\controllers\\dangnhapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\controllers\\dangnhapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\models\\khuyenmai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\models\\khuyenmai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\controllers\\taikhoankhachhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\controllers\\taikhoankhachhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\controllers\\dangkytaikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\controllers\\dangkytaikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\taikhoankhachhang\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\taikhoankhachhang\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\taikhoankhachhang\\hoadonchitiet.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\taikhoankhachhang\\hoadonchitiet.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\controllers\\giohangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\controllers\\giohangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\controllers\\trangbansanphamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\controllers\\trangbansanphamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanlyhoadon\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlyhoadon\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\trangbansanphams\\cuahang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\trangbansanphams\\cuahang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanlyhoadon\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlyhoadon\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\controllers\\quanlysanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\controllers\\quanlysanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\khachhangs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\khachhangs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\khachhangs\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\khachhangs\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\khachhangs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\khachhangs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanlykhuyenmai\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlykhuyenmai\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanlykhuyenmai\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlykhuyenmai\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanlykhuyenmai\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlykhuyenmai\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanlykhuyenmai\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlykhuyenmai\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\mausacs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\mausacs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\mausacs\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\mausacs\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\mausacs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\mausacs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|c:\\users\\admin\\source\\repos\\duanbantainghe\\duan1\\views\\quanlysanpham\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10DFFC28-993B-4B72-95A7-E33821A7625D}|DuAn1\\DuAn1.csproj|solutionrelative:duan1\\views\\quanlysanpham\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -126,7 +82,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -146,359 +102,225 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\GioHang\\Index.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\GioHang\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\GioHang\\Index.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\GioHang\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-16T17:24:33.532Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HoaDonChiTiet.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TaiKhoanKhachHang\\HoaDonChiTiet.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\TaiKhoanKhachHang\\HoaDonChiTiet.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TaiKhoanKhachHang\\HoaDonChiTiet.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\TaiKhoanKhachHang\\HoaDonChiTiet.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-16T17:23:16.132Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TaiKhoanKhachHang\\Details.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\TaiKhoanKhachHang\\Details.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TaiKhoanKhachHang\\Details.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\TaiKhoanKhachHang\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-16T17:23:24.607Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "XemHoaDon.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\GioHang\\XemHoaDon.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\GioHang\\XemHoaDon.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\GioHang\\XemHoaDon.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\GioHang\\XemHoaDon.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-16T17:22:34.285Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "nonefooter.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Shared\\nonefooter.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\Shared\\nonefooter.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Shared\\nonefooter.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\Shared\\nonefooter.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-16T17:21:42.333Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "dangnhap.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Shared\\dangnhap.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\Shared\\dangnhap.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Shared\\dangnhap.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\Shared\\dangnhap.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-16T17:20:56.953Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DangKyTaiKhoanController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\DangKyTaiKhoanController.cs",
-              "RelativeDocumentMoniker": "DuAn1\\Controllers\\DangKyTaiKhoanController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\DangKyTaiKhoanController.cs",
-              "RelativeToolTip": "DuAn1\\Controllers\\DangKyTaiKhoanController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAowD4AAAAAAAAAAAAAAA==",
+              "Title": "Hang.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Models\\Hang.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Models\\Hang.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Models\\Hang.cs",
+              "RelativeToolTip": "DuAn1\\Models\\Hang.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAgwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T16:49:00.233Z",
+              "WhenOpened": "2025-08-17T17:09:57.441Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-14T02:13:25.206Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Program.cs",
-              "RelativeDocumentMoniker": "DuAn1\\Program.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Program.cs",
-              "RelativeToolTip": "DuAn1\\Program.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T01:41:13.664Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLy\\Edit.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLy\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLy\\Edit.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLy\\Edit.cshtml",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAAwJ4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-14T01:34:57.653Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "QuanLyController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\QuanLyController.cs",
-              "RelativeDocumentMoniker": "DuAn1\\Controllers\\QuanLyController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\QuanLyController.cs",
-              "RelativeToolTip": "DuAn1\\Controllers\\QuanLyController.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAQwHEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T01:34:36.837Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLy\\Details.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLy\\Details.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLy\\Details.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLy\\Details.cshtml",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAcwF4AAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:25:52.16Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Hangs\\Index.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\Hangs\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Hangs\\Index.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\Hangs\\Index.cshtml",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAAGEAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-14T02:05:46.85Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\KhachHangs\\Create.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\KhachHangs\\Create.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\KhachHangs\\Create.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\KhachHangs\\Create.cshtml",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:24:45.135Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Hangs\\Edit.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\Hangs\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Hangs\\Edit.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\Hangs\\Edit.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAwDoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:13:07.624Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Hangs\\Details.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\Hangs\\Details.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Hangs\\Details.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\Hangs\\Details.cshtml",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAwEsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:11:26.715Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Hangs\\Create.cshtml",
               "RelativeDocumentMoniker": "DuAn1\\Views\\Hangs\\Create.cshtml",
               "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Hangs\\Create.cshtml",
               "RelativeToolTip": "DuAn1\\Views\\Hangs\\Create.cshtml",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAAAIsAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACYAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:09:51.008Z"
+              "WhenOpened": "2025-08-17T17:09:11.147Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 2,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLy\\Edit.cshtml",
+              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLy\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLy\\Edit.cshtml",
+              "RelativeToolTip": "DuAn1\\Views\\QuanLy\\Edit.cshtml",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAgwI8AAAB0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-17T16:34:47.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "KhuyenMai.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Models\\KhuyenMai.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Models\\KhuyenMai.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Models\\KhuyenMai.cs",
+              "RelativeToolTip": "DuAn1\\Models\\KhuyenMai.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA+wCIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T16:21:06.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "QuanLyController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\QuanLyController.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Controllers\\QuanLyController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\QuanLyController.cs",
+              "RelativeToolTip": "DuAn1\\Controllers\\QuanLyController.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T16:17:42.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QuanLy.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Models\\QuanLy.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Models\\QuanLy.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Models\\QuanLy.cs",
+              "RelativeToolTip": "DuAn1\\Models\\QuanLy.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAuwCoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T16:17:47.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "DuAn1\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "DuAn1\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAswFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-17T15:03:37.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DangNhapController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\DangNhapController.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Controllers\\DangNhapController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\DangNhapController.cs",
+              "RelativeToolTip": "DuAn1\\Controllers\\DangNhapController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAvwB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T08:33:33.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "KhachHang.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Models\\KhachHang.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Models\\KhachHang.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Models\\KhachHang.cs",
+              "RelativeToolTip": "DuAn1\\Models\\KhachHang.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T08:23:19.611Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DangKyTaiKhoanController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\DangKyTaiKhoanController.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Controllers\\DangKyTaiKhoanController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\DangKyTaiKhoanController.cs",
+              "RelativeToolTip": "DuAn1\\Controllers\\DangKyTaiKhoanController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAuwEQAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T08:20:31.966Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TaiKhoanKhachHangController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\TaiKhoanKhachHangController.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Controllers\\TaiKhoanKhachHangController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\TaiKhoanKhachHangController.cs",
+              "RelativeToolTip": "DuAn1\\Controllers\\TaiKhoanKhachHangController.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAAAFMAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T08:05:29.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TaiKhoanKhachHang\\Details.cshtml",
+              "RelativeDocumentMoniker": "DuAn1\\Views\\TaiKhoanKhachHang\\Details.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TaiKhoanKhachHang\\Details.cshtml",
+              "RelativeToolTip": "DuAn1\\Views\\TaiKhoanKhachHang\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-17T08:01:55.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "HoaDonChiTiet.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TaiKhoanKhachHang\\HoaDonChiTiet.cshtml",
+              "RelativeDocumentMoniker": "DuAn1\\Views\\TaiKhoanKhachHang\\HoaDonChiTiet.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TaiKhoanKhachHang\\HoaDonChiTiet.cshtml",
+              "RelativeToolTip": "DuAn1\\Views\\TaiKhoanKhachHang\\HoaDonChiTiet.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-17T08:01:48.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CuaHang.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TrangBanSanPhams\\CuaHang.cshtml",
+              "RelativeDocumentMoniker": "DuAn1\\Views\\TrangBanSanPhams\\CuaHang.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\TrangBanSanPhams\\CuaHang.cshtml",
+              "RelativeToolTip": "DuAn1\\Views\\TrangBanSanPhams\\CuaHang.cshtml",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAAAM0AAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-17T07:45:02.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "TrangBanSanPhamsController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\TrangBanSanPhamsController.cs",
               "RelativeDocumentMoniker": "DuAn1\\Controllers\\TrangBanSanPhamsController.cs",
               "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\TrangBanSanPhamsController.cs",
               "RelativeToolTip": "DuAn1\\Controllers\\TrangBanSanPhamsController.cs",
-              "ViewState": "AgIAAK0AAAAAAAAAAAAAwMAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAAAMIAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T12:22:55.103Z"
+              "WhenOpened": "2025-08-17T07:37:07.289Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\KhachHangs\\Details.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\KhachHangs\\Details.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\KhachHangs\\Details.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\KhachHangs\\Details.cshtml",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAAAF4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:23:53.688Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\KhachHangs\\Index.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\KhachHangs\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\KhachHangs\\Index.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\KhachHangs\\Index.cshtml",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:22:48.253Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyKhuyenMai\\Edit.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLyKhuyenMai\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyKhuyenMai\\Edit.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLyKhuyenMai\\Edit.cshtml",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:21:58.604Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyHoaDon\\Index.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLyHoaDon\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyHoaDon\\Index.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLyHoaDon\\Index.cshtml",
-              "ViewState": "AgIAADwAAAAAAAAAAAD4v0wAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:17:38.565Z"
+              "DocumentIndex": 13,
+              "Title": "GioHangController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\GioHangController.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Controllers\\GioHangController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\GioHangController.cs",
+              "RelativeToolTip": "DuAn1\\Controllers\\GioHangController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T07:36:55.047Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyHoaDon\\Details.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLyHoaDon\\Details.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyHoaDon\\Details.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLyHoaDon\\Details.cshtml",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAAAEEAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:18:31.507Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyKhuyenMai\\Details.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLyKhuyenMai\\Details.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyKhuyenMai\\Details.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLyKhuyenMai\\Details.cshtml",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAAAIkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:21:24.028Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyKhuyenMai\\Create.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLyKhuyenMai\\Create.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyKhuyenMai\\Create.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLyKhuyenMai\\Create.cshtml",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAAAHoAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLySanPham\\Create.cshtml",
+              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLySanPham\\Create.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLySanPham\\Create.cshtml",
+              "RelativeToolTip": "DuAn1\\Views\\QuanLySanPham\\Create.cshtml",
+              "ViewState": "AgIAALgAAAAAAAAAAADwv9EAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:20:30.004Z"
+              "WhenOpened": "2025-08-17T04:35:08.829Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyKhuyenMai\\Index.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\QuanLyKhuyenMai\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\QuanLyKhuyenMai\\Index.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\QuanLyKhuyenMai\\Index.cshtml",
-              "ViewState": "AgIAADwAAAAAAAAAAAAUwD4AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:19:30.175Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\MauSacs\\Edit.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\MauSacs\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\MauSacs\\Edit.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\MauSacs\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:16:28.784Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\MauSacs\\Create.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\MauSacs\\Create.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\MauSacs\\Create.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\MauSacs\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:16:00.568Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\MauSacs\\Index.cshtml",
-              "RelativeDocumentMoniker": "DuAn1\\Views\\MauSacs\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Views\\MauSacs\\Index.cshtml",
-              "RelativeToolTip": "DuAn1\\Views\\MauSacs\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:14:18.747Z"
+              "DocumentIndex": 16,
+              "Title": "QuanLySanPhamController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\QuanLySanPhamController.cs",
+              "RelativeDocumentMoniker": "DuAn1\\Controllers\\QuanLySanPhamController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\DuAnBanTaiNghe\\DuAn1\\Controllers\\QuanLySanPhamController.cs",
+              "RelativeToolTip": "DuAn1\\Controllers\\QuanLySanPhamController.cs",
+              "ViewState": "AgIAAGkBAAAAAAAAAAAuwBoBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T04:35:02.761Z"
             }
           ]
         }
